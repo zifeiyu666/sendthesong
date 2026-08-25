@@ -18,6 +18,12 @@ export async function getPublicPricingPlans(): Promise<ActionResult<PricingPlan[
     return actionResponse.success([])
   }
 
+  const siteKey = process.env.PRICING_SITE_KEY?.trim()
+  if (!siteKey) {
+    console.error('PRICING_SITE_KEY is not set')
+    return actionResponse.error('Pricing site is not configured')
+  }
+
   const environment = process.env.NODE_ENV === 'production' ? 'live' : 'test'
 
   try {
@@ -26,6 +32,7 @@ export async function getPublicPricingPlans(): Promise<ActionResult<PricingPlan[
       .from(pricingPlansSchema)
       .where(
         and(
+          eq(pricingPlansSchema.siteKey, siteKey),
           eq(pricingPlansSchema.environment, environment),
           eq(pricingPlansSchema.isActive, true)
         )

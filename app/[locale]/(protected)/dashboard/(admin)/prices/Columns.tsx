@@ -17,6 +17,17 @@ type PricingPlan = typeof pricingPlansSchema.$inferSelect;
 
 export const columns: ColumnDef<PricingPlan>[] = [
   {
+    accessorKey: "siteKey",
+    header: "Site",
+    minSize: 120,
+    cell: ({ row }) => (
+      <Badge variant="outline" className="font-mono text-xs">
+        {row.getValue("siteKey")}
+      </Badge>
+    ),
+    enableSorting: true,
+  },
+  {
     accessorKey: "environment",
     header: ({ column }) => {
       return (

@@ -1,0 +1,2 @@
+ALTER TABLE "pricing_plans" ADD COLUMN "site_key" varchar(100) DEFAULT 'default' NOT NULL;--> statement-breakpoint
+CREATE INDEX "idx_pricing_plans_site_environment_active_order" ON "pricing_plans" USING btree ("site_key","environment","is_active","display_order");
