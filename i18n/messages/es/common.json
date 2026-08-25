@@ -131,7 +131,8 @@
             {"isSubTitle": true, "name": "Recursos"},
             {"href": "/blog", "name": "Todos los artículos"},
             {"href": "/glossary", "name": "Glosario"},
-            {"href": "https://aihustle.tools", "name": "AI Hustle Tools", "target": "_blank", "rel": "noopener nofollow"}
+            {"href": "https://aihustle.tools", "name": "AI Hustle Tools", "target": "_blank", "rel": "noopener nofollow"},
+            {"href": "https://songtell.art", "name": "Songtell.art", "target": "_blank", "rel": "noopener nofollow"}
           ]
         },
         {
