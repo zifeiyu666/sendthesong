@@ -57,6 +57,7 @@ async function main() {
         .insert(pricingPlansTable)
         .values({
           id: plan.id,
+          siteKey: plan.siteKey ?? 'default',
           environment: plan.environment,
           groupSlug: plan.groupSlug ?? 'default',
           cardTitle: plan.cardTitle,
@@ -89,6 +90,7 @@ async function main() {
         .onConflictDoUpdate({
           target: pricingPlansTable.id,
           set: {
+            siteKey: plan.siteKey ?? 'default',
             environment: plan.environment,
             groupSlug: plan.groupSlug ?? 'default',
             cardTitle: plan.cardTitle,

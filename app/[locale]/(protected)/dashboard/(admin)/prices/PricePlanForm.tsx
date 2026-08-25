@@ -88,6 +88,7 @@ const featureSchema = z.object({
 });
 
 const pricingPlanFormSchema = z.object({
+  siteKey: z.string().trim().min(1, "Site key is required.").max(100),
   environment: z.enum(["test", "live"], {
     required_error: "Environment is required.",
   }),
@@ -160,6 +161,7 @@ export function PricePlanForm({ initialData, planId }: PricePlanFormProps) {
   const form = useForm<PricingPlanFormValues>({
     resolver: zodResolver(pricingPlanFormSchema),
     defaultValues: {
+      siteKey: initialData?.siteKey ?? "default",
       environment: initialData?.environment ?? "test",
       groupSlug: initialData?.groupSlug ?? "default",
       cardTitle: initialData?.cardTitle ?? "",
@@ -858,6 +860,26 @@ export function PricePlanForm({ initialData, planId }: PricePlanFormProps) {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-baseline">
+                  <FormField
+                    control={form.control}
+                    name="siteKey"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Site key *</FormLabel>
+                        <FormControl>
+                          <Input
+                            {...field}
+                            disabled={isLoading}
+                            placeholder="onecustomsong"
+                          />
+                        </FormControl>
+                        <FormDescription>
+                          Must match PRICING_SITE_KEY in the target site's environment.
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                   <FormField
                     control={form.control}
                     name="environment"

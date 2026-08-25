@@ -182,6 +182,7 @@ export const pricingPlanGroups = pgTable('pricing_plan_groups', {
 
 export const pricingPlans = pgTable('pricing_plans', {
   id: uuid('id').primaryKey().defaultRandom(),
+  siteKey: varchar('site_key', { length: 100 }).default('default').notNull(),
   environment: pricingPlanEnvironmentEnum('environment').notNull(),
   groupSlug: varchar('group_slug', { length: 100 })
     .references(() => pricingPlanGroups.slug, { onDelete: 'restrict' })
@@ -225,7 +226,14 @@ export const pricingPlans = pgTable('pricing_plans', {
     .defaultNow()
     .notNull()
     .$onUpdate(() => new Date()),
-})
+}, (table) => ({
+  siteEnvironmentActiveOrderIdx: index('idx_pricing_plans_site_environment_active_order').on(
+    table.siteKey,
+    table.environment,
+    table.isActive,
+    table.displayOrder,
+  ),
+}))
 
 export const orders = pgTable(
   'orders',

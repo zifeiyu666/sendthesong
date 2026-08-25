@@ -154,6 +154,7 @@ export async function createPricingPlanAction({
     const [newPlan] = await db
       .insert(pricingPlansSchema)
       .values({
+        siteKey: planData.siteKey?.trim() || 'default',
         environment: planData.environment,
         groupSlug: planData.groupSlug || 'default',
         cardTitle: planData.cardTitle,
@@ -296,6 +297,10 @@ export async function updatePricingPlanAction({
       recurringInterval: planData.recurringInterval || null,
     }
 
+    if (typeof dataToUpdate.siteKey === 'string') {
+      dataToUpdate.siteKey = dataToUpdate.siteKey.trim() || 'default'
+    }
+
     if (dataToUpdate.price) {
       dataToUpdate.price = dataToUpdate.price.toString()
     }
@@ -387,4 +392,3 @@ export async function deletePricingPlanAction({
     )
   }
 }
-
