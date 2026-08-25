@@ -24,7 +24,15 @@ export async function getPublicPricingPlans(): Promise<ActionResult<PricingPlan[
     return actionResponse.error('Pricing site is not configured')
   }
 
-  const environment = process.env.NODE_ENV === 'production' ? 'live' : 'test'
+  const configuredEnvironment = process.env.PRICING_ENV?.trim()
+  const environment =
+    configuredEnvironment ||
+    (process.env.NODE_ENV === 'production' ? 'live' : 'test')
+
+  if (environment !== 'test' && environment !== 'live') {
+    console.error('PRICING_ENV must be either "test" or "live"')
+    return actionResponse.error('Pricing environment is not configured correctly')
+  }
 
   try {
     const plans = await db
