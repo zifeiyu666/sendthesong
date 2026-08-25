@@ -7,6 +7,7 @@ import { type FinalSongPlayerData } from "@/components/song/FinalSongPlayer";
 import { MusicVideoStudioCta } from "@/components/song/MusicVideoStudioCta";
 import { type WallArtSongOption } from "@/components/song/WallArtEditorDrawer";
 import { WallArtStudioCta } from "@/components/song/WallArtStudioCta";
+import { isTestimonialsEnabled } from "@/config/features";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { Link as I18nLink } from "@/i18n/routing";
 import {
@@ -570,12 +571,14 @@ export default function CustomSongLyricGiftsPage({
         </div>
       </section>
 
-      <Testimonials
-        title="Lyric gifts people keep"
-        description="When the words include their real life, the song, poster, or video feels less like a template and more like a memory."
-        items={testimonials}
-        contentWidthClassName="max-w-6xl"
-      />
+      {isTestimonialsEnabled && (
+        <Testimonials
+          title="Lyric gifts people keep"
+          description="When the words include their real life, the song, poster, or video feels less like a template and more like a memory."
+          items={testimonials}
+          contentWidthClassName="max-w-6xl"
+        />
+      )}
 
       <FAQ
         title="Custom song lyric gift questions"

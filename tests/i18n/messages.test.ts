@@ -32,7 +32,7 @@ async function collectJsonFiles(directory: string): Promise<string[]> {
 describe('English i18n manifest', () => {
   test('merges common messages at the root with every named namespace', () => {
     assert.equal(englishMessages.Home.title, 'One Custom Song');
-    assert.equal(englishMessages.Landing.Hero.getStarted, 'Start a Free Preview');
+    assert.equal(englishMessages.Landing.Hero.getStarted, 'Start creating for free');
     assert.equal(englishMessages.Pricing.title, 'Choose the custom song gift that fits your moment');
     assert.equal(englishMessages.CreditHistory.type_welcome_bonus, 'Welcome Bonus');
   });

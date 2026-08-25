@@ -7,6 +7,7 @@ import OccasionHeroVisual from "@/components/occasions/OccasionHeroVisual";
 import HowItWorksSection from "@/components/shared/HowItWorksSection";
 import { type FinalSongPlayerData } from "@/components/song/FinalSongPlayer";
 import { type WallArtSongOption } from "@/components/song/WallArtEditorDrawer";
+import { isTestimonialsEnabled } from "@/config/features";
 import { Button } from "@/components/ui/button";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { Link as I18nLink } from "@/i18n/routing";
@@ -372,12 +373,14 @@ export default function OccasionLandingPage({
         wallArtSongOptions={wallArtSongOptions}
       />
 
-      <Testimonials
-        title={config.testimonials.title}
-        description={config.testimonials.description}
-        items={testimonials}
-        contentWidthClassName="max-w-6xl"
-      />
+      {isTestimonialsEnabled && (
+        <Testimonials
+          title={config.testimonials.title}
+          description={config.testimonials.description}
+          items={testimonials}
+          contentWidthClassName="max-w-6xl"
+        />
+      )}
 
       <section className="bg-white px-6 py-16 sm:px-8 md:py-20 lg:px-12 xl:px-16">
         <div className="mx-auto max-w-6xl">

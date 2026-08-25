@@ -12,6 +12,10 @@ import Testimonials from "@/components/home/Testimonials";
 import { BG1 } from "@/components/shared/BGs";
 import { type FinalSongPlayerData } from "@/components/song/FinalSongPlayer";
 import { type WallArtSongOption } from "@/components/song/WallArtEditorDrawer";
+import {
+  isCustomerReactionsEnabled,
+  isTestimonialsEnabled,
+} from "@/config/features";
 import { buildSongShareUrl, getFinalSongsForOwner } from "@/lib/ai/final-song";
 import { getSession } from "@/lib/auth/server";
 import { getLocale, getMessages } from "next-intl/server";
@@ -93,7 +97,7 @@ export default async function HomeComponent() {
 
       {/* <DiagonalCounterflowShowcase /> */}
 
-      {messages.Landing.CustomerReactions && (
+      {isCustomerReactionsEnabled && messages.Landing.CustomerReactions && (
         <ScrollReveal>
           {/* <CustomerReactionCollage /> */}
           <CustomerReactions sectionId="customer-reactions-grid" />
@@ -140,7 +144,7 @@ export default async function HomeComponent() {
       {messages.Pricing && <PricingAll />}
       {messages.Pricing && <PricingByPaymentType />} */}
 
-      {messages.Landing.Testimonials && (
+      {isTestimonialsEnabled && messages.Landing.Testimonials && (
         <ScrollReveal>
           <Testimonials />
         </ScrollReveal>

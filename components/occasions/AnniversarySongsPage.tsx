@@ -7,6 +7,7 @@ import AnniversaryHeroVisual from "@/components/occasions/AnniversaryHeroVisual"
 import HowItWorksSection from "@/components/shared/HowItWorksSection";
 import { type FinalSongPlayerData } from "@/components/song/FinalSongPlayer";
 import { type WallArtSongOption } from "@/components/song/WallArtEditorDrawer";
+import { isTestimonialsEnabled } from "@/config/features";
 import { Button } from "@/components/ui/button";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { Link as I18nLink } from "@/i18n/routing";
@@ -503,12 +504,14 @@ export default function AnniversarySongsPage({
         wallArtSongOptions={wallArtSongOptions}
       />
 
-      <Testimonials
-        title="Anniversary songs that stay with people"
-        description="When the song reflects the real relationship, it lands differently from any off-the-shelf love song."
-        items={testimonials}
-        contentWidthClassName="max-w-6xl"
-      />
+      {isTestimonialsEnabled && (
+        <Testimonials
+          title="Anniversary songs that stay with people"
+          description="When the song reflects the real relationship, it lands differently from any off-the-shelf love song."
+          items={testimonials}
+          contentWidthClassName="max-w-6xl"
+        />
+      )}
 
       <FAQ
         title="Common anniversary song questions"
