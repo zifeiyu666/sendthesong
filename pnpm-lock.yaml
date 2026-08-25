@@ -257,6 +257,9 @@ importers:
       '@tiptap/extension-youtube':
         specifier: ^3.10.1
         version: 3.10.1(@tiptap/core@3.10.1(@tiptap/pm@3.10.1))
+      '@tiptap/pm':
+        specifier: ^3.10.1
+        version: 3.10.1
       '@tiptap/react':
         specifier: ^3.10.1
         version: 3.10.1(@floating-ui/dom@1.7.4)(@tiptap/core@3.10.1(@tiptap/pm@3.10.1))(@tiptap/pm@3.10.1)(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
