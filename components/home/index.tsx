@@ -19,6 +19,7 @@ import {
 import { buildSongShareUrl, getFinalSongsForOwner } from "@/lib/ai/final-song";
 import { getSession } from "@/lib/auth/server";
 import { getLocale, getMessages } from "next-intl/server";
+import Link from "next/link";
 
 function getTimestampedLyrics(
   metadata: unknown,
@@ -155,6 +156,26 @@ export default async function HomeComponent() {
           <FAQ />
         </ScrollReveal>
       )}
+
+      <aside
+        aria-label="友情链接"
+        className="mx-auto flex w-full max-w-8xl flex-wrap items-center justify-center gap-x-2 gap-y-1 border-t border-stone-900/[0.06] px-4 py-5 text-xs text-stone-500 sm:px-6 lg:px-8"
+      >
+        <span className="tracking-wide">友情链接</span>
+        <span aria-hidden="true" className="text-stone-400">
+          ·
+        </span>
+        <Link
+          href="https://seektool.ai/"
+          title="SeekTool.ai Tools Directory"
+          prefetch={false}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="text-stone-600 transition-colors hover:text-stone-900"
+        >
+          SeekTool.ai Tools Directory
+        </Link>
+      </aside>
     </div>
   );
 }
