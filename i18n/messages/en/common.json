@@ -1,8 +1,8 @@
 {
   "Home": {
     "title": "One Custom Song",
-    "tagLine": "<strong>Personalized AI songs by One Custom Song.</strong><br></br> Gift an unforgettable track for birthdays, anniversaries, or just because.",
-    "description": "Turn your memories into studio-quality custom songs in minutes. Create a personalized music gift for birthdays, weddings, anniversaries, and more."
+    "tagLine": "<strong>Personalized Song Gifts in Minutes.</strong><br></br> ",
+    "description": "Create a personalised song for any occasion. one custom song gift turns memories into music. Great for birthdays, anniversaries, weddings, and more."
   },
   "Login": {
     "title": "Welcome back",
@@ -137,7 +137,7 @@
     "heroTitleLine1": "Ideas, guides, and stories",
     "heroTitleLine2": "for meaningful song gifts",
     "emptyMessage": "No posts found.",
-    "allArticles": "All articles >",
+    "allArticles": "All articles →",
     "BlogDetail": {
       "featured": "Featured Post",
       "viewCount": "{count} views",
@@ -503,7 +503,7 @@
           "title": "Gift Ideas",
           "links": [
             {
-              "name": "AI Song Preview Tool",
+              "name": "Create a Song",
               "href": "/create-song"
             },
             {
@@ -519,48 +519,16 @@
               "href": "/occasions/custom-song-for-wife"
             },
             {
-              "name": "Mother's Day song gifts",
-              "href": "/occasions/mothers-day"
-            },
-            {
-              "name": "Father's Day song gifts",
-              "href": "/occasions/fathers-day"
-            },
-            {
-              "name": "Valentine's Day song gifts",
-              "href": "/occasions/valentines-day"
-            },
-            {
-              "name": "Congratulations song gifts",
-              "href": "/occasions/congratulations"
-            },
-            {
-              "name": "Wedding song gifts",
-              "href": "/occasions/wedding"
-            },
-            {
-              "name": "Memorial song gifts",
-              "href": "/occasions/in-memoriam"
-            },
-            {
-              "name": "Thank you song gifts",
-              "href": "/occasions/thank-you"
-            },
-            {
-              "name": "Get well soon song gifts",
-              "href": "/occasions/get-well-soon"
-            },
-            {
               "name": "Music personalized gifts",
               "href": "/music/personalized-gift"
             },
             {
-              "name": "Gift playlists",
-              "href": "/playlists"
-            },
-            {
               "name": "Custom Song Lyric Gifts",
               "href": "/free-custom-song-lyric-gifts"
+            },
+            {
+              "name": "View all Gift Ideas →",
+              "href": "/gifts"
             }
           ]
         },
@@ -577,11 +545,44 @@
       ]
     }
   },
+  "GiftHub": {
+    "badge": "Gift ideas",
+    "title": "Personalized Gift Ideas",
+    "description": "Find a meaningful custom song gift for birthdays, anniversaries, holidays, and the moments only your story can explain.",
+    "heroLine1": "A gift that sounds",
+    "heroLine2": "like your story",
+    "coreLabel": "Start here",
+    "coreTitle": "Popular personalized gifts",
+    "occasionLabel": "Shop by occasion",
+    "occasionTitle": "Songs for every meaningful moment",
+    "formatLabel": "Gift formats",
+    "formatTitle": "Make the memory easy to keep",
+    "cta": "Create a song",
+    "explore": "Explore",
+    "core": {
+      "create": "Create a custom song",
+      "createDescription": "Turn a memory, message, and mood into a free song preview.",
+      "birthday": "Birthday song gifts",
+      "birthdayDescription": "Give their name, memories, and favorite feeling a melody.",
+      "anniversary": "Anniversary song gifts",
+      "anniversaryDescription": "Celebrate the story you have built together with a song.",
+      "wife": "Custom songs for wife",
+      "wifeDescription": "Write a love song around the details only you know about her."
+    },
+    "formats": {
+      "music": "Personalized music gifts",
+      "musicDescription": "Pair a custom song with a music video and printable keepsake.",
+      "playlists": "Gift playlists",
+      "playlistsDescription": "Browse occasion, recipient, and style-led playlist ideas.",
+      "lyrics": "Custom song lyric gifts",
+      "lyricsDescription": "Turn your lyrics into printable wall art and visual keepsakes."
+    }
+  },
   "CreateSong": {
-    "title": "Free AI Song Generator | Preview Your Song",
-    "description": "Turn your story into a quick song preview, refine the lyrics and style, then unlock the final MP3 when it feels right.",
-    "srTitle": "Free AI Song Generator",
-    "srDescription": "Start from a personal story, preview a generated song, then refine the lyrics, style, and delivery before unlocking the full MP3."
+    "title": "Create Your Personalised Song Gift",
+    "description": "Turn your story into a unique, personalised song for your loved ones. Choose the occasion, style, and personalize your musical gift in just a few steps",
+    "srTitle": "Create Your Personalised Song Gift",
+    "srDescription": "Turn your story into a unique, personalised song for your loved ones. Choose the occasion, style, and personalize your musical gift in just a few steps"
   },
   "Subscription": {
     "title": "Subscription",

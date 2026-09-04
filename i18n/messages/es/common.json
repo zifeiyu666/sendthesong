@@ -1,8 +1,8 @@
 {
   "Home": {
     "title": "One Custom Song",
-    "tagLine": "<strong>Canciones personalizadas con IA de One Custom Song.</strong><br></br> Un regalo inolvidable para cumpleaños, aniversarios o cualquier ocasión.",
-    "description": "Convierte tus recuerdos en una canción personalizada con sonido de estudio. Crea en minutos un regalo musical único para cumpleaños, bodas, aniversarios y mucho más."
+    "tagLine": "<strong>Regalos musicales personalizados en minutos.</strong><br></br> ",
+    "description": "Crea una canción personalizada para cualquier ocasión. Un regalo musical único que convierte tus recuerdos en música. Ideal para cumpleaños, aniversarios, bodas y mucho más."
   },
   "Login": {
     "title": "Te damos la bienvenida",
@@ -62,7 +62,7 @@
     "heroTitleLine1": "Ideas, guías e historias",
     "heroTitleLine2": "para regalar canciones con significado",
     "emptyMessage": "No se encontraron artículos.",
-    "allArticles": "Ver todos los artículos >",
+    "allArticles": "Ver todos los artículos →",
     "BlogDetail": {
       "featured": "Artículo destacado", "viewCount": "{count} visualizaciones", "accessRestricted": "Acceso restringido",
       "unauthorized": "Este artículo solo está disponible para usuarios con sesión iniciada", "premium": "Contenido premium",
@@ -139,21 +139,13 @@
           "id": "gift-ideas",
           "title": "Ideas de regalo",
           "links": [
-            {"name": "Herramienta de muestra con IA", "href": "/create-song"},
+            {"name": "Crear una canción", "href": "/create-song"},
             {"name": "Canciones de cumpleaños", "href": "/occasions/custom-happy-birthday-song"},
             {"name": "Canciones de aniversario", "href": "/occasions/anniversary"},
             {"name": "Canciones personalizadas para esposa", "href": "/occasions/custom-song-for-wife"},
-            {"name": "Canciones para el Día de la Madre", "href": "/occasions/mothers-day"},
-            {"name": "Canciones para el Día del Padre", "href": "/occasions/fathers-day"},
-            {"name": "Canciones de San Valentín", "href": "/occasions/valentines-day"},
-            {"name": "Canciones de felicitación", "href": "/occasions/congratulations"},
-            {"name": "Canciones para bodas", "href": "/occasions/wedding"},
-            {"name": "Canciones en memoria", "href": "/occasions/in-memoriam"},
-            {"name": "Canciones de agradecimiento", "href": "/occasions/thank-you"},
-            {"name": "Canciones para desear una pronta recuperación", "href": "/occasions/get-well-soon"},
             {"name": "Regalos musicales personalizados", "href": "/music/personalized-gift"},
-            {"name": "Listas de reproducción para regalar", "href": "/playlists"},
-            {"name": "Regalos con letras personalizadas", "href": "/free-custom-song-lyric-gifts"}
+            {"name": "Regalos con letras personalizadas", "href": "/free-custom-song-lyric-gifts"},
+            {"name": "Ver todas las ideas de regalo →", "href": "/gifts"}
           ]
         },
         {
@@ -164,11 +156,44 @@
       ]
     }
   },
+  "GiftHub": {
+    "badge": "Ideas de regalo",
+    "title": "Ideas de regalos personalizados",
+    "description": "Encuentra una canción-regalo especial para cumpleaños, aniversarios, fiestas y momentos que solo vuestra historia puede contar.",
+    "heroLine1": "Un regalo que suena",
+    "heroLine2": "a vuestra historia",
+    "coreLabel": "Empieza aquí",
+    "coreTitle": "Regalos personalizados populares",
+    "occasionLabel": "Por ocasión",
+    "occasionTitle": "Canciones para cada momento importante",
+    "formatLabel": "Formatos de regalo",
+    "formatTitle": "Convierte el recuerdo en algo duradero",
+    "cta": "Crear una canción",
+    "explore": "Explorar",
+    "core": {
+      "create": "Crear una canción personalizada",
+      "createDescription": "Convierte un recuerdo, un mensaje y un estilo en una muestra gratuita.",
+      "birthday": "Canciones de cumpleaños",
+      "birthdayDescription": "Pon su nombre, recuerdos y emoción favorita en una melodía.",
+      "anniversary": "Canciones de aniversario",
+      "anniversaryDescription": "Celebra vuestra historia con una canción que podáis repetir.",
+      "wife": "Canciones personalizadas para esposa",
+      "wifeDescription": "Escribe una canción de amor con los detalles que solo tú conoces."
+    },
+    "formats": {
+      "music": "Regalos musicales personalizados",
+      "musicDescription": "Combina una canción, un vídeo musical y un recuerdo imprimible.",
+      "playlists": "Listas de reproducción para regalar",
+      "playlistsDescription": "Descubre ideas por ocasión, destinatario y estilo musical.",
+      "lyrics": "Regalos con letras personalizadas",
+      "lyricsDescription": "Convierte tus letras en láminas y recuerdos visuales."
+    }
+  },
   "CreateSong": {
-    "title": "Crea una canción personalizada con IA",
-    "description": "Cuéntanos tu historia y crea gratis una muestra de canción personalizada en pocos minutos.",
-    "srTitle": "Generador de canciones personalizadas",
-    "srDescription": "Crea una canción a partir de tus recuerdos, nombres y mensaje."
+    "title": "Crea tu regalo musical personalizado",
+    "description": "Convierte tu historia en una canción única y personalizada para tus seres queridos. Elige la ocasión y el estilo, y personaliza tu regalo musical en pocos pasos.",
+    "srTitle": "Crea tu regalo musical personalizado",
+    "srDescription": "Convierte tu historia en una canción única y personalizada para tus seres queridos. Elige la ocasión y el estilo, y personaliza tu regalo musical en pocos pasos."
   },
   "Subscription": {
     "title": "Suscripción", "description": "Consulta y gestiona tu suscripción.", "notSubscribed": "No tienes una suscripción activa.",

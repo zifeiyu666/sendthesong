@@ -4,6 +4,7 @@ import { TwitterX } from "@/components/social-icons/icons";
 import { siteConfig } from "@/config/site";
 import { Link as I18nLink } from "@/i18n/routing";
 import {
+  FOOTER_ARTICLE_LINK_LIMIT,
   getArticleNavigationLinks,
   withArticleFooterLinks,
 } from "@/lib/cms/article-navigation";
@@ -22,7 +23,7 @@ export default async function Footer() {
     getMessages(),
     getTranslations("Home"),
     getTranslations("Footer"),
-    getArticleNavigationLinks(locale),
+    getArticleNavigationLinks(locale, FOOTER_ARTICLE_LINK_LIMIT),
   ]);
 
   const footerLinks = withArticleFooterLinks(

@@ -11,6 +11,7 @@ import { getTranslations } from "next-intl/server";
 import { cache } from "react";
 
 const ARTICLE_LINK_LIMIT = 6;
+export const FOOTER_ARTICLE_LINK_LIMIT = 5;
 type NavigationPost = Pick<
   PostBase,
   "title" | "slug" | "status" | "isPinned" | "publishedAt"

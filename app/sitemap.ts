@@ -38,6 +38,12 @@ const staticPages: {
     priority: 0.8,
   },
   {
+    path: '/gifts',
+    lastModified: '2026-08-27',
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  },
+  {
     path: '/voice-clone',
     lastModified: '2026-07-30',
     changeFrequency: 'weekly',
@@ -79,6 +85,12 @@ const staticPages: {
     changeFrequency: 'weekly',
     priority: 0.8,
   },
+  {
+    path: '/gift-my-music',
+    lastModified: '2026-08-27',
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  },
   ...getAllPlaylistPaths().map((path) => ({
     path,
     lastModified: '2026-07-09',
@@ -114,6 +126,7 @@ const englishOnlyStaticPaths = new Set([
   ...getAllOccasionLandingConfigs().map(
     (occasion) => `/occasions/${occasion.slug}`,
   ),
+  '/gift-my-music',
 ]);
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
