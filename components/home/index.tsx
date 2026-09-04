@@ -5,11 +5,6 @@ import HowItWorks from "@/components/home/HowItWorks";
 import OccasionShowcase from "@/components/home/OccasionShowcase";
 import OurProducts from "@/components/home/OurProducts";
 import VoicePersonalization from "@/components/home/VoicePersonalization";
-import WallArtGallery, {
-  PRODUCT_DIMENSIONS,
-  type WallArtImage,
-} from "@/components/home/WallArtGallery";
-
 import SongfinchComparison from "@/components/home/SongfinchComparison";
 import ScrollReveal from "@/components/home/ScrollReveal";
 import Testimonials from "@/components/home/Testimonials";
@@ -20,8 +15,6 @@ import { type FinalSongPlayerData } from "@/components/song/FinalSongPlayer";
 import { type WallArtSongOption } from "@/components/song/WallArtEditorDrawer";
 import { buildSongShareUrl, getFinalSongsForOwner } from "@/lib/ai/final-song";
 import { getSession } from "@/lib/auth/server";
-import { listR2Objects } from "@/lib/cloudflare/r2";
-import { R2_PUBLIC_URL } from "@/lib/cloudflare/public-url";
 import { getLocale, getMessages } from "next-intl/server";
 
 function getTimestampedLyrics(
@@ -54,55 +47,10 @@ function getTimestampedLyrics(
   };
 }
 
-async function getProductGalleryImages(): Promise<WallArtImage[]> {
-  const objects = [] as Awaited<ReturnType<typeof listR2Objects>>["objects"];
-  let continuationToken: string | undefined;
-
-  try {
-    do {
-      const result = await listR2Objects({
-        prefix: "products/",
-        pageSize: 1000,
-        continuationToken,
-      });
-      if (result.error) return [];
-      objects.push(...result.objects);
-      continuationToken = result.nextContinuationToken;
-    } while (continuationToken);
-  } catch (error) {
-    console.error("Failed to load product gallery from R2:", error);
-    return [];
-  }
-
-  const imageObjects = objects
-    .filter((object) => object.key.toLowerCase().endsWith(".webp"))
-    .sort((a, b) => a.key.localeCompare(b.key));
-  const videoKeys = new Set(
-    objects
-      .filter((object) => object.key.toLowerCase().endsWith(".mp4"))
-      .map((object) => object.key.slice(0, -4).toLowerCase()),
-  );
-
-  return imageObjects.map((object) => {
-    const fileName = object.key.split("/").pop() ?? object.key;
-    const [width, height] = PRODUCT_DIMENSIONS[fileName] ?? [4, 5];
-    const stem = object.key.slice(0, -5).toLowerCase();
-    return {
-      src: `${R2_PUBLIC_URL}/${object.key}`,
-      width,
-      height,
-      videoSrc: videoKeys.has(stem)
-        ? `${R2_PUBLIC_URL}/${object.key.slice(0, -5)}.mp4`
-        : undefined,
-    };
-  });
-}
-
 export default async function HomeComponent() {
-  const [messages, locale, productGalleryImages] = await Promise.all([
+  const [messages, locale] = await Promise.all([
     getMessages(),
     getLocale(),
-    getProductGalleryImages(),
   ]);
   const session = await getSession();
   const isAuthenticated = Boolean(session?.user);
@@ -200,12 +148,6 @@ export default async function HomeComponent() {
       {messages.Landing.VoicePersonalization && (
         <ScrollReveal>
           <VoicePersonalization />
-        </ScrollReveal>
-      )}
-
-      {messages.Landing.WallArtGallery && (
-        <ScrollReveal>
-          <WallArtGallery images={productGalleryImages} />
         </ScrollReveal>
       )}
 
