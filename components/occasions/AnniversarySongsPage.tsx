@@ -100,6 +100,12 @@ const useCases: IconBlock[] = [
     icon: <Music2 className="size-5" />,
   },
   {
+    title: "For a one year anniversary",
+    description:
+      "A one year anniversary song should name the firsts: the first apartment, the first hard week, the first inside joke, and the promise you still mean.",
+    icon: <Clock3 className="size-5" />,
+  },
+  {
     title: "For milestone marriage anniversaries",
     description:
       "A marriage anniversary song works especially well for 5th, 10th, 25th, or 50th anniversaries when shared history matters most.",
@@ -141,6 +147,11 @@ const partnerSongIdeas: IconBlock[] = [
 ];
 
 const exampleBriefs = [
+  {
+    label: "One year",
+    title: "One year anniversary song",
+    text: "Write a warm acoustic one year anniversary song for Jordan and Alex. Mention the first cramped kitchen, late trains home, the dog's first walk, and how twelve months already feel like a life you chose.",
+  },
   {
     label: "Boyfriend",
     title: "Anniversary song for a boyfriend",
@@ -198,6 +209,11 @@ const testimonials: TestimonialItem[] = [
 ];
 
 const faqs = [
+  {
+    question: "How do I create a custom song for anniversary?",
+    answer:
+      "Share your names, milestone year, and a few memories, then generate a personalized anniversary song. Preview it free, adjust the lyrics and style, and unlock the full track when it feels like your story.",
+  },
   {
     question: "What are the best anniversary songs for couples?",
     answer:
@@ -306,16 +322,16 @@ export default function AnniversarySongsPage({
               <span>Anniversary song gifts</span>
             </div>
 
-            <h1 className="mt-5 max-w-[12ch] text-balance font-sans text-[2.5rem] font-black leading-[0.98] tracking-normal text-[#250f0b] min-[420px]:text-[2.9rem] sm:text-[3.7rem] lg:text-[4.45rem]">
-              Anniversary Songs for Couples
+            <h1 className="mt-5 max-w-[14ch] text-balance font-sans text-[2.5rem] font-black leading-[0.98] tracking-normal text-[#250f0b] min-[420px]:text-[2.9rem] sm:text-[3.7rem] lg:text-[4.45rem]">
+              Personalized Anniversary Song
             </h1>
 
             <p className="mt-5 max-w-lg text-base leading-7 text-[#6c5f59] sm:text-lg">
-              Turn your names, favorite memories, and shared promises into an
-              anniversary song that sounds personal from the first line. Whether
-              it is for a boyfriend, girlfriend, or spouse, you can create a
-              free preview, refine the lyrics, and make an anniversary gift that
-              feels more lasting than a playlist.
+              Turn your names, favorite memories, and shared promises into a
+              personalized anniversary song that sounds like your relationship
+              from the first line. Use it as a custom song for anniversary
+              dinner, a milestone surprise, or a keepsake they can replay. Start
+              with a free preview, then refine the lyrics until it feels right.
             </p>
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">

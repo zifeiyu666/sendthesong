@@ -2486,9 +2486,9 @@ export function getOccasionLandingConfig(
       shortName: "Anniversary",
       primaryKeyword: "personalized anniversary song",
       metadata: {
-        title: "Anniversary Songs for Couples",
+        title: "Personalized Anniversary Song | Custom Song for Couples",
         description:
-          "Create a personalized anniversary song from your names, memories, milestones, and shared story.",
+          "Create a personalized anniversary song from your names, memories, and shared story. Preview a custom song for anniversary free, then share it.",
       },
       hero: {
         ...configs["valentines-day"]!.hero,
