@@ -6,6 +6,23 @@ import { fileURLToPath } from "node:url";
 const withNextIntl = createNextIntlPlugin();
 const root = fileURLToPath(new URL(".", import.meta.url));
 
+const LOCALE_PREFIX = "/:locale(en|es|ja)";
+
+function localeAwareRedirects(source, destination, { keepLocale = false } = {}) {
+  return [
+    {
+      source,
+      destination,
+      statusCode: 301,
+    },
+    {
+      source: `${LOCALE_PREFIX}${source}`,
+      destination: keepLocale ? `${LOCALE_PREFIX}${destination}` : destination,
+      statusCode: 301,
+    },
+  ];
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   redirects: async () => [
@@ -54,6 +71,12 @@ const nextConfig = {
       destination: "/:locale/music-video-gift-maker",
       permanent: true,
     },
+    ...localeAwareRedirects("/privacy", "/privacy-policy"),
+    ...localeAwareRedirects("/terms", "/terms-of-service"),
+    ...localeAwareRedirects("/team", "/about", { keepLocale: true }),
+    ...localeAwareRedirects("/support", "/about", { keepLocale: true }),
+    ...localeAwareRedirects("/contact", "/about", { keepLocale: true }),
+    ...localeAwareRedirects("/gifts/song-message", "/gifts", { keepLocale: true }),
   ],
   images: {
     unoptimized:

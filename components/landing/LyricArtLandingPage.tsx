@@ -44,17 +44,17 @@ type Faq = {
 
 const previewImages = [
   {
-    src: "https://cdn.sendthesong.io/products/wall-art-01.webp",
+    src: "/images/blog/custom-song-lyric-gifts/wall-art-studio-lyric-portrait.png",
     alt: "Custom song lyrics wall art in a portrait frame",
     className: "md:translate-y-10",
   },
   {
-    src: "https://cdn.sendthesong.io/products/wall-art-14.webp",
+    src: "/images/blog/custom-song-lyric-gifts/wall-art-studio-record-poster.png",
     alt: "Framed song lyrics wall art in a landscape layout",
     className: "",
   },
   {
-    src: "https://cdn.sendthesong.io/products/wall-art-07.webp",
+    src: "/images/blog/custom-song-lyric-gifts/wall-art-studio-editor.png",
     alt: "Personalized lyric wall decor preview",
     className: "md:translate-y-16",
   },
@@ -246,7 +246,7 @@ function PreviewComposition({ variant }: { variant: LandingVariant }) {
             fill
             priority
             sizes="(min-width: 1024px) 24vw, 42vw"
-            src="https://cdn.sendthesong.io/products/wall-art-01.webp"
+            src="/images/blog/custom-song-lyric-gifts/wall-art-studio-lyric-portrait.png"
           />
         </div>
       </div>
@@ -258,7 +258,7 @@ function PreviewComposition({ variant }: { variant: LandingVariant }) {
             fill
             priority
             sizes="(min-width: 1024px) 26vw, 45vw"
-            src="https://cdn.sendthesong.io/products/wall-art-07.webp"
+            src="/images/blog/custom-song-lyric-gifts/wall-art-studio-editor.png"
           />
         </div>
       </div>
@@ -269,7 +269,7 @@ function PreviewComposition({ variant }: { variant: LandingVariant }) {
             className="object-cover"
             fill
             sizes="(min-width: 1024px) 32vw, 58vw"
-            src="https://cdn.sendthesong.io/products/wall-art-14.webp"
+            src="/images/blog/custom-song-lyric-gifts/wall-art-studio-record-poster.png"
           />
         </div>
       </div>
@@ -569,7 +569,7 @@ export default function LyricArtLandingPage({
               className="object-cover object-center mix-blend-multiply"
               fill
               sizes="(min-width: 1024px) 40vw, 100vw"
-              src="https://cdn.sendthesong.io/products/wall-art-18.webp"
+              src="/images/blog/custom-song-lyric-gifts/wall-art-studio-picture-with-lyrics.png"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#e9b957]/55 via-transparent to-transparent lg:bg-gradient-to-r" />
             <div className="absolute bottom-6 right-6 flex items-center gap-3 rounded-full bg-white/90 px-5 py-3 text-sm font-black shadow-xl backdrop-blur">

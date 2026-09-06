@@ -19,7 +19,7 @@ export async function generateMetadata({
     title: "Song Lyrics Poster Maker | Create Printable Lyric Posters",
     description:
       "Make a song lyrics poster online. Customize lyrics, typography, colors, layouts, and artwork, then download an aesthetic printable music poster.",
-    images: ["https://cdn.sendthesong.io/products/wall-art-07.webp"],
+    images: ["/images/blog/custom-song-lyric-gifts/wall-art-studio-editor.png"],
     locale: locale as Locale,
     path: "/lyric-poster-maker",
   });

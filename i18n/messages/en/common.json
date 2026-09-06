@@ -399,6 +399,16 @@
             "name": "Custom Song Lyric Gifts",
             "href": "/free-custom-song-lyric-gifts",
             "description": "Turn custom lyrics into printable wall art and keepsakes."
+          },
+          {
+            "name": "Lyric Poster Maker",
+            "href": "/lyric-poster-maker",
+            "description": "Design an aesthetic song lyrics poster with editable layouts and typography."
+          },
+          {
+            "name": "Custom Lyrics Wall Art",
+            "href": "/custom-song-lyrics-wall-art",
+            "description": "Turn a meaningful song into personalized, printable lyric wall decor."
           }
         ]
       }
@@ -525,6 +535,14 @@
             {
               "name": "Custom Song Lyric Gifts",
               "href": "/free-custom-song-lyric-gifts"
+            },
+            {
+              "name": "Lyric Poster Maker",
+              "href": "/lyric-poster-maker"
+            },
+            {
+              "name": "Custom Lyrics Wall Art",
+              "href": "/custom-song-lyrics-wall-art"
             },
             {
               "name": "View all Gift Ideas →",

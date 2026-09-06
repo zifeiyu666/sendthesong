@@ -19,7 +19,7 @@ export async function generateMetadata({
     title: "Custom Song Lyrics Wall Art | Personalized Music Decor",
     description:
       "Create custom song lyrics wall art with personalized lyrics, names, dates, colors, and layouts. Export print-ready lyric decor for your favorite frame.",
-    images: ["https://cdn.sendthesong.io/products/wall-art-01.webp"],
+    images: ["/images/blog/custom-song-lyric-gifts/wall-art-studio-lyric-portrait.png"],
     locale: locale as Locale,
     path: "/custom-song-lyrics-wall-art",
   });

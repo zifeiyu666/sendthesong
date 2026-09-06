@@ -208,6 +208,16 @@
           "name": "オリジナル歌詞ギフト",
           "href": "/free-custom-song-lyric-gifts",
           "description": "オリジナル歌詞を印刷できるアートや記念品に。"
+        },
+        {
+          "name": "歌詞ポスターメーカー",
+          "href": "/lyric-poster-maker",
+          "description": "歌詞、フォント、レイアウトを編集してポスターを作れます。"
+        },
+        {
+          "name": "オリジナル歌詞ウォールアート",
+          "href": "/custom-song-lyrics-wall-art",
+          "description": "大切な曲を、印刷できる歌詞アートに。"
         }
         ]
       }
@@ -289,6 +299,14 @@
             {
               "name": "オリジナル歌詞ギフト",
               "href": "/free-custom-song-lyric-gifts"
+            },
+            {
+              "name": "歌詞ポスターメーカー",
+              "href": "/lyric-poster-maker"
+            },
+            {
+              "name": "オリジナル歌詞ウォールアート",
+              "href": "/custom-song-lyrics-wall-art"
             },
             {
               "name": "すべてのギフトアイデアを見る →",

@@ -105,7 +105,9 @@
         {"name": "Canciones de cumpleaños", "href": "/occasions/custom-happy-birthday-song", "description": "Crea una canción de cumpleaños con nombres, historias y recuerdos."},
         {"name": "Canciones de aniversario", "href": "/occasions/anniversary", "description": "Convierte vuestra historia en una canción de aniversario para escuchar una y otra vez."},
         {"name": "Regalos musicales personalizados", "href": "/music/personalized-gift", "description": "Descubre canciones, vídeos y recuerdos personalizados para amantes de la música."},
-        {"name": "Regalos con letras personalizadas", "href": "/free-custom-song-lyric-gifts", "description": "Convierte letras personalizadas en láminas imprimibles y recuerdos únicos."}
+        {"name": "Regalos con letras personalizadas", "href": "/free-custom-song-lyric-gifts", "description": "Convierte letras personalizadas en láminas imprimibles y recuerdos únicos."},
+        {"name": "Creador de pósters de letras", "href": "/lyric-poster-maker", "description": "Diseña un póster estético con la letra de la canción, tipografía y layouts editables."},
+        {"name": "Láminas con letras personalizadas", "href": "/custom-song-lyrics-wall-art", "description": "Convierte una canción especial en decoración imprimible con la letra."}
       ]}
     ]
   },
@@ -145,6 +147,8 @@
             {"name": "Canciones personalizadas para esposa", "href": "/occasions/custom-song-for-wife"},
             {"name": "Regalos musicales personalizados", "href": "/music/personalized-gift"},
             {"name": "Regalos con letras personalizadas", "href": "/free-custom-song-lyric-gifts"},
+            {"name": "Creador de pósters de letras", "href": "/lyric-poster-maker"},
+            {"name": "Láminas con letras personalizadas", "href": "/custom-song-lyrics-wall-art"},
             {"name": "Ver todas las ideas de regalo →", "href": "/gifts"}
           ]
         },

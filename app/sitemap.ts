@@ -56,6 +56,18 @@ const staticPages: {
     priority: 0.8,
   },
   {
+    path: '/custom-song-lyrics-wall-art',
+    lastModified: '2026-08-19',
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  },
+  {
+    path: '/lyric-poster-maker',
+    lastModified: '2026-08-19',
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  },
+  {
     path: '/occasions/custom-happy-birthday-song',
     lastModified: '2026-07-08',
     changeFrequency: 'weekly',
@@ -122,6 +134,8 @@ const englishOnlyStaticPaths = new Set([
   '/terms-of-service',
   '/refund-policy',
   '/voice-clone',
+  '/custom-song-lyrics-wall-art',
+  '/lyric-poster-maker',
   '/occasions/custom-song-for-wife',
   ...getAllOccasionLandingConfigs().map(
     (occasion) => `/occasions/${occasion.slug}`,
