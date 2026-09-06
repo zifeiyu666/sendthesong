@@ -80,6 +80,12 @@ const staticPages: {
     priority: 0.8,
   },
   {
+    path: '/alternatives/songfinch',
+    lastModified: '2026-09-06',
+    changeFrequency: 'weekly',
+    priority: 0.85,
+  },
+  {
     path: '/occasions/anniversary',
     lastModified: '2026-07-08',
     changeFrequency: 'weekly',

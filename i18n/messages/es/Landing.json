@@ -286,6 +286,7 @@
         "us": "Editor de póster con la letra incluido"
       }
     ],
+    "fullComparisonCta": "Lee la comparativa completa de la alternativa a Songfinch",
     "painPoints": [
       {
         "icon": "value",
@@ -306,6 +307,72 @@
         "icon": "bundle",
         "title": "Un regalo musical más completo",
         "description": "Además de la canción, puedes crear un vídeo con fotos y una lámina imprimible con la letra para entregar el recuerdo de distintas formas."
+      }
+    ]
+  },
+  "SongfinchAlternative": {
+    "title": "Alternativa a Songfinch: canciones personalizadas con muestra gratis",
+    "description": "¿Buscas una alternativa a Songfinch? Crea una canción personalizada en minutos, escucha una muestra gratis, edita la letra y desbloquea la pista completa con vídeo y arte de letra.",
+    "hero": {
+      "badge": "Una alternativa práctica a Songfinch",
+      "h1": "Alternativa a Songfinch",
+      "description": "Songfinch escribe una canción personalizada después de pagar más de 199 $ y esperar varios días. One Custom Song te deja oír una muestra gratis en minutos, cambiar la letra y decidir antes de desbloquear la canción completa.",
+      "cta": "Crear una muestra gratis",
+      "secondaryCta": "Ver la comparativa",
+      "imageAlt": "Persona creando un regalo musical personalizado en un escritorio, flujo de una alternativa a Songfinch",
+      "cardTitle": "Escucha primero. Paga cuando suene bien.",
+      "cardDescription": "La misma idea de regalo que Songfinch: una canción original a partir de tu historia. Un camino distinto: escuchar antes de comprar."
+    },
+    "loveSongCta": "Canción de amor personalizada",
+    "lovedOneCta": "Canción para alguien querido",
+    "whoTitle": "Para quién es esta alternativa a Songfinch",
+    "whoDescription": "Elige One Custom Song si quieres un regalo al estilo Songfinch sin la espera, el primer borrador cerrado ni una entrega solo en audio.",
+    "who": [
+      {
+        "title": "Necesitas la canción esta semana",
+        "description": "Cumpleaños y aniversarios no esperan cuatro a siete días. Una muestra puede estar lista en minutos."
+      },
+      {
+        "title": "Quieres oírla antes de pagar",
+        "description": "Una canción personal es un riesgo si no la escuchas. Previsualiza letra y voz, y desbloquea cuando suene a esa persona."
+      },
+      {
+        "title": "Vas a seguir editando",
+        "description": "Nombres, bromas y el segundo verso casi siempre necesitan un ajuste. Edita en tu cuenta en lugar de una ronda de correos."
+      },
+      {
+        "title": "Quieres más que un MP3",
+        "description": "Al desbloquear la canción también puedes crear vídeo y láminas imprimibles con la letra."
+      }
+    ],
+    "faqTitle": "Preguntas sobre la alternativa a Songfinch",
+    "faqDescription": "Respuestas directas si estás comparando Songfinch con One Custom Song.",
+    "faqCtaTitle": "Empieza con una muestra, no con 199 $ de espera.",
+    "faqCtaDescription": "Cuenta la historia, escucha la muestra y desbloquea la canción completa si encaja.",
+    "faq": [
+      {
+        "question": "¿One Custom Song es una alternativa a Songfinch?",
+        "answer": "Sí. Ambos convierten una historia personal en una canción original. One Custom Song está pensado para una muestra gratis, más rapidez, ediciones de letra en tu cuenta y extras de regalo que Songfinch no incluye."
+      },
+      {
+        "question": "¿En qué se diferencia el precio de Songfinch?",
+        "answer": "Songfinch empieza en 199 $ por canción, pagados por adelantado. One Custom Song te deja oír una muestra primero y desbloquear la pista completa a un precio más bajo, con herramientas de vídeo y arte de letra después del desbloqueo."
+      },
+      {
+        "question": "¿Qué tan rápido es comparado con Songfinch?",
+        "answer": "Songfinch suele entregar en 4 a 7 días. One Custom Song genera una muestra en unos dos minutos para que puedas iterar el mismo día."
+      },
+      {
+        "question": "¿Puedo editar la letra?",
+        "answer": "Sí. Cambia letra y género desde tu panel hasta que el mensaje sea el correcto. No quedas atado a un único borrador enviado por correo."
+      },
+      {
+        "question": "¿La canción seguirá sintiéndose hecha a mano?",
+        "answer": "La calidad del regalo depende de la historia: nombres, recuerdos y la frase que solo tú escribirías. La muestra existe para que lo juzgues antes de pagar."
+      },
+      {
+        "question": "¿También puedo hacer una canción de amor o para alguien querido?",
+        "answer": "Sí. Empieza aquí, o usa las páginas de canción de amor personalizada y canción para alguien querido si ya sabes la relación."
       }
     ]
   },

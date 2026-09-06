@@ -271,6 +271,7 @@
         "us": "歌詞ポスター編集機能あり"
       }
     ],
+    "fullComparisonCta": "Songfinchの代替比較を詳しく見る",
     "painPoints": [
       {
         "icon": "value",
@@ -291,6 +292,72 @@
         "icon": "bundle",
         "title": "曲以外のギフトも作れます",
         "description": "写真入り動画や印刷できる歌詞アートを加え、ひとつの思い出をさまざまな形で贈れます。"
+      }
+    ]
+  },
+  "SongfinchAlternative": {
+    "title": "Songfinchの代替：先に試聴できるオリジナルソング",
+    "description": "Songfinchの代替をお探しなら。数分でオリジナルソングを作り、無料プレビューを聴き、歌詞を直してから、動画と歌詞アート付きで完成版を受け取れます。",
+    "hero": {
+      "badge": "実務的なSongfinchの代替",
+      "h1": "Songfinchの代替",
+      "description": "Songfinchは199ドル以上を先に支払い、数日待ってから曲が届きます。One Custom Songは数分で無料プレビューを聴き、歌詞を直し、完成版を解禁する前に判断できます。",
+      "cta": "無料プレビューを作る",
+      "secondaryCta": "比較を見る",
+      "imageAlt": "デスクでオリジナルソングのギフトを作っている人。Songfinch代替の作成フロー",
+      "cardTitle": "先に聴く。しっくり来てから支払う。",
+      "cardDescription": "Songfinchと同じ贈り物の発想：物語からオリジナル曲を。違うのは、買う前に聴けること。"
+    },
+    "loveSongCta": "パーソナライズされたラブソング",
+    "lovedOneCta": "大切な人のための一曲",
+    "whoTitle": "このSongfinch代替が向いている人",
+    "whoDescription": "待ち時間や、一度きりの原稿、音源だけの納品を避けたいなら One Custom Song を選んでください。",
+    "who": [
+      {
+        "title": "今週中に曲が必要",
+        "description": "誕生日や記念日は4〜7日待ってくれません。プレビューは数分で用意できます。"
+      },
+      {
+        "title": "払う前に聴きたい",
+        "description": "オリジナルソングは中身が命です。歌詞と歌声を確認してから完成版を解禁できます。"
+      },
+      {
+        "title": "何度も直したい",
+        "description": "名前や冗談、2番の歌詞は調整がつきものです。メール往復ではなくダッシュボードで直せます。"
+      },
+      {
+        "title": "MP3以上の贈り物が欲しい",
+        "description": "解禁後はミュージックビデオと印刷できる歌詞アートも作れます。"
+      }
+    ],
+    "faqTitle": "Songfinch代替についての質問",
+    "faqDescription": "SongfinchとOne Custom Songを比較している方向けの回答です。",
+    "faqCtaTitle": "199ドルの待ち時間より、まずプレビューを。",
+    "faqCtaDescription": "物語を伝えてサンプルを聴き、しっくり来たら完成版を解禁できます。",
+    "faq": [
+      {
+        "question": "One Custom SongはSongfinchの代替ですか？",
+        "answer": "はい。どちらも個人の物語をオリジナル曲にします。One Custom Songは無料プレビュー、短い待ち時間、アカウント内での歌詞編集、Songfinchに含まれないギフト機能のために作られています。"
+      },
+      {
+        "question": "料金はSongfinchとどう違いますか？",
+        "answer": "Songfinchは1曲199ドルからで前払いです。One Custom Songは先にプレビューを聴き、より手頃な価格で完成版を解禁でき、解禁後に動画と歌詞アートのツールも使えます。"
+      },
+      {
+        "question": "納期はSongfinchと比べてどうですか？",
+        "answer": "Songfinchは通常4〜7日です。One Custom Songは約2分でスタジオ風のプレビューを作り、その日のうちに直せます。"
+      },
+      {
+        "question": "歌詞は直せますか？",
+        "answer": "はい。メッセージが合うまで、ダッシュボードで歌詞とジャンルを変更できます。一度出した原稿に固定されません。"
+      },
+      {
+        "question": "手作り感は残りますか？",
+        "answer": "贈り物の質は、名前や思い出、あなたにしか書けない一文にかかっています。プレビューは、支払う前にそれを判断するためのものです。"
+      },
+      {
+        "question": "ラブソングや大切な人への曲も作れますか？",
+        "answer": "はい。このページから始めるか、関係が決まっているならラブソング／大切な人向けのページを使ってください。"
       }
     ]
   },

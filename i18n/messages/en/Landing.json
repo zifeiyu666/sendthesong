@@ -289,6 +289,7 @@
         "us": "Included free with lyric poster editors"
       }
     ],
+    "fullComparisonCta": "Read the full Songfinch alternative comparison",
     "painPoints": [
       {
         "icon": "value",
@@ -309,6 +310,72 @@
         "icon": "bundle",
         "title": "A Complete Personalized Music Gift Bundle",
         "description": "A song is great, but a multimedia memory is legendary. Every unlocked track comes with free customizable music video creators and printable wall art templates. It's a complete personalized music gift ecosystem that Songfinch simply doesn't offer."
+      }
+    ]
+  },
+  "SongfinchAlternative": {
+    "title": "Songfinch Alternative: Custom Songs You Can Preview First",
+    "description": "Looking for a Songfinch alternative? Create a custom song in minutes, hear a free preview, edit the lyrics, and unlock a full track with music video and lyric art tools.",
+    "hero": {
+      "badge": "A practical Songfinch alternative",
+      "h1": "Songfinch Alternative",
+      "description": "Songfinch writes a custom song after you pay $199+ and wait several days. One Custom Song lets you hear a free preview in minutes, change the lyrics, and keep the gift under your control before you unlock the full track.",
+      "cta": "Create a free song preview",
+      "secondaryCta": "See the comparison",
+      "imageAlt": "Person creating a custom song gift at a sunlit desk, a Songfinch alternative workflow",
+      "cardTitle": "Preview first. Pay when it sounds right.",
+      "cardDescription": "Same gift idea as Songfinch: an original song from your story. Different path: listen before you buy."
+    },
+    "loveSongCta": "Personalized love song",
+    "lovedOneCta": "Song for a loved one",
+    "whoTitle": "Who this Songfinch alternative is for",
+    "whoDescription": "Choose One Custom Song when you want the Songfinch-style gift without the wait, the locked-in first draft, or a song-only delivery.",
+    "who": [
+      {
+        "title": "You need the song this week",
+        "description": "Birthdays, anniversaries, and last-minute gifts do not wait four to seven days. A preview can be ready in minutes."
+      },
+      {
+        "title": "You want to hear it before you pay",
+        "description": "A custom song is personal. Preview the lyrics and vocal, then unlock the full track when it sounds like them."
+      },
+      {
+        "title": "You will keep editing",
+        "description": "Names, inside jokes, and the second verse often need a pass. Edit in the dashboard instead of emailing a revision round."
+      },
+      {
+        "title": "You want more than an MP3",
+        "description": "The unlocked song opens music video templates and printable lyric art, so the gift can live on a phone and on a wall."
+      }
+    ],
+    "faqTitle": "Songfinch alternative questions",
+    "faqDescription": "Straight answers if you are comparing Songfinch with One Custom Song.",
+    "faqCtaTitle": "Skip the $199 wait. Start with a preview.",
+    "faqCtaDescription": "Tell the story, hear the sample, then unlock the full song if it feels right.",
+    "faq": [
+      {
+        "question": "Is One Custom Song a Songfinch alternative?",
+        "answer": "Yes. Both turn a personal story into an original song. One Custom Song is built for a free preview, faster turnaround, lyric edits in your account, and gift extras Songfinch does not bundle."
+      },
+      {
+        "question": "How is pricing different from Songfinch?",
+        "answer": "Songfinch starts at $199 per song paid up front. One Custom Song lets you hear a preview first and unlock the full track at a lower price, with video and wall-art tools included after unlock."
+      },
+      {
+        "question": "How fast is a custom song compared with Songfinch?",
+        "answer": "Songfinch typically delivers in 4 to 7 days. One Custom Song generates a studio-style preview in about two minutes so you can iterate the same day."
+      },
+      {
+        "question": "Can I edit lyrics like I would with a songwriter service?",
+        "answer": "Yes. Change lyrics and genre from your dashboard until the message is right. You are not locked into a single mailed draft."
+      },
+      {
+        "question": "Will the song still feel handmade?",
+        "answer": "The quality of the gift depends on the story you provide: names, memories, and the line only you would write. The preview exists so you can judge that before you pay."
+      },
+      {
+        "question": "Can I make a love song or a song for a loved one here too?",
+        "answer": "Yes. Start from this page, or use the personalized love song and song for a loved one landings if you already know the relationship."
       }
     ]
   },

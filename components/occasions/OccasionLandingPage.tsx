@@ -413,7 +413,9 @@ export default function OccasionLandingPage({
               >
                 {config.locale === "ja"
                   ? `${page.shortName}${config.ui.songSuffix}`
-                  : `${config.ui.songSuffix} de ${page.shortName}`}
+                  : config.locale === "es"
+                    ? `${config.ui.songSuffix} de ${page.shortName}`
+                    : `${page.shortName} ${config.ui.songSuffix}`}
               </I18nLink>
             ))}
           </nav>

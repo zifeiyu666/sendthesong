@@ -11,6 +11,8 @@ export const OCCASION_LANDING_SLUGS = [
   "in-memoriam",
   "thank-you",
   "get-well-soon",
+  "love-song",
+  "loved-one",
 ] as const;
 
 export type OccasionLandingSlug = (typeof OCCASION_LANDING_SLUGS)[number];
@@ -2015,6 +2017,455 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
           question: "Does a personalized recovery song give medical advice?",
           answer:
             "No. The song is an emotional gift, not medical guidance. Keep the lyrics focused on care, companionship, encouragement, and the recipient's own story.",
+        },
+      ],
+    },
+  }),
+
+  "love-song": createConfig({
+    slug: "love-song",
+    occasion: "just-because",
+    shortName: "Love",
+    primaryKeyword: "personalized love song",
+    keywords: [
+      "personalized love song",
+      "personalised love song",
+      "custom love song",
+      "personalized love songs",
+      "custom love songs",
+      "make a personalized love song",
+      "love song gift",
+    ],
+    metadata: {
+      title: "Personalized Love Song Gift",
+      description:
+        "Create a personalized love song from names, private memories, and the message you want them to keep. Preview a custom love song free, then share it as a gift.",
+    },
+    palette: {
+      accent: "#c23d4b",
+      accentDark: "#9b2c39",
+      soft: "#fff0f2",
+      muted: "#f6eee8",
+      ink: "#2a1418",
+    },
+    hero: {
+      badge: "Custom love songs from a real story",
+      title: "Personalized Love Song",
+      description:
+        "Turn the way you met, the joke only you two know, and the promise you still mean into a personalized love song. Hear a free preview, shape the lyrics, and give a custom love song they can replay.",
+      image: "/images/occasions/personalized-love-song-hero.webp",
+      imageAlt:
+        "Couple slow-dancing in a kitchen while sharing headphones and listening to a personalized love song",
+      cardTitle: "Written for one relationship, not a playlist of love songs",
+      cardDescription:
+        "Names, places, ordinary Tuesdays, and the line you have been trying to say out loud.",
+      cta: "Create a Personalized Love Song",
+    },
+    storyDetails:
+      "Add both names, how you met, a daily ritual, an inside joke, and the feeling you want the chorus to carry.",
+    styleOptions:
+      "romantic ballad, acoustic, R&B, jazz, indie folk, or soft pop",
+    deliveryIdeas:
+      "Play it during a quiet dinner, send the private link before you see them, or pair the track with lyric wall art.",
+    moments: {
+      title: "Personalized love songs for the people you actually love",
+      description:
+        "A custom love song works for a partner, a new relationship, a long marriage, or a just-because night when a generic track is not enough.",
+      items: [
+        {
+          title: "For a partner",
+          description:
+            "Build the verses around your names, the first date, and the ordinary life you chose together.",
+          icon: "heart",
+        },
+        {
+          title: "For a new love",
+          description:
+            "Keep it specific and light: the first text, the first kitchen dance, the moment it started to feel real.",
+          icon: "sparkles",
+        },
+        {
+          title: "For a long marriage",
+          description:
+            "Honor years of small loyalty, the house you made, and the promise that still holds.",
+          icon: "rings",
+        },
+        {
+          title: "Just because",
+          description:
+            "You do not need an anniversary. A personalized love song can arrive on an ordinary Wednesday.",
+          icon: "sun",
+        },
+        {
+          title: "Long distance",
+          description:
+            "Send a private listening page when you cannot be in the same room.",
+          icon: "message",
+        },
+        {
+          title: "Proposal or vow moment",
+          description:
+            "Use the song as the first dance, the after-yes surprise, or the letter you cannot quite write.",
+          icon: "music",
+        },
+      ],
+    },
+    topics: {
+      title: "Love-song searches that need a real story, not a generic chorus",
+      description:
+        "These queries convert when the page and the lyrics name one relationship instead of recycling stock romance.",
+      items: [
+        {
+          title: "Personalized love song",
+          description:
+            "The head term. The gift is original music with their name and the details only you share.",
+          keywords: ["personalized love song", "personalised love song"],
+          prompt:
+            "Name both of you, the cafe where you met, the phrase you still text, and what home sounds like with them in it.",
+          icon: "heart",
+        },
+        {
+          title: "Custom love song gift",
+          description:
+            "People searching this want something they can send, play, and keep, not a streaming playlist.",
+          keywords: ["custom love song", "custom love songs"],
+          prompt:
+            "Describe how you will deliver it: dinner, a link by text, or a lyric print beside the audio.",
+          icon: "gift",
+        },
+        {
+          title: "Love song with your names",
+          description:
+            "Names belong in the chorus when they sound natural, not forced into every line.",
+          keywords: ["personalized love songs", "love song with names"],
+          prompt:
+            "Put first names in the hook and save the private jokes for the second verse.",
+          icon: "sparkles",
+        },
+        {
+          title: "A love song that is not generic",
+          description:
+            "Skip moonlight and forever. Use the dented kettle, the late train, the dog's name.",
+          keywords: ["make a personalized love song", "original love song gift"],
+          prompt:
+            "List three objects from your life together and one thing you still thank them for.",
+          icon: "star",
+        },
+      ],
+    },
+    examples: {
+      title: "Start with a few true details",
+      description:
+        "A useful love-song brief needs names, one memory, and the mood. Plain language is enough.",
+      items: [
+        {
+          label: "Kitchen slow dance",
+          title: "Tuesday light",
+          text: "Write a warm acoustic love song for Maya and Theo. Mention the Lisbon bookstore, dancing after midnight, the chipped blue mug, and the promise to keep choosing each other.",
+        },
+        {
+          label: "Long marriage",
+          title: "Still the same laugh",
+          text: "Create a romantic ballad for Priya and James, 14 years in. Include the porch light, Saturday pancakes, the joke about her terrible parking, and how home still starts when she walks in.",
+        },
+        {
+          label: "Just because",
+          title: "No holiday required",
+          text: "Make a soft R&B love song for Alex from Sam. Mention late-night grocery runs, the playlist they share, and the text that still says 'on my way' like a love letter.",
+        },
+      ],
+    },
+    testimonials: {
+      title: "Love songs that sound like one couple, not every couple",
+      description:
+        "The line that lands is almost always a detail a store-bought song could never know.",
+      items: [
+        {
+          quote:
+            "It used the nickname I only say in the kitchen. He played it twice before he said anything.",
+          author: "Elena R.",
+          badge: "Personalized love song",
+        },
+        {
+          quote:
+            "We did not wait for an anniversary. The chorus sounded like our Tuesday nights, which was the point.",
+          author: "Marcus T.",
+          badge: "Just because",
+        },
+        {
+          quote:
+            "I sent the preview first. When the full song arrived, it already felt like ours.",
+          author: "Sofia K.",
+          badge: "Custom love song gift",
+        },
+      ],
+    },
+    faq: {
+      title: "Personalized love song questions",
+      description:
+        "How to turn a real relationship into a custom love song gift without sounding like a greeting card.",
+      ctaTitle: "Ready to write their love song?",
+      ctaDescription:
+        "Add the names, the memory, and the message. Start with a free personalized preview.",
+      items: [
+        {
+          question: "Can I create a personalized love song with our names?",
+          answer:
+            "Yes. Add both names, how you say them, and the details that make the relationship specific. Names can sit naturally in the chorus or verses.",
+        },
+        {
+          question: "Is this different from a Valentine's Day song page?",
+          answer:
+            "Yes. Valentine's Day is a date. A personalized love song is the year-round gift: the same story engine, without needing February 14.",
+        },
+        {
+          question: "Can I hear the custom love song before I pay?",
+          answer:
+            "Yes. You get a free preview, then you can refine lyrics or style before unlocking the full track.",
+        },
+        {
+          question: "What if I am not a songwriter?",
+          answer:
+            "Write the way you talk. A name, a place, a habit, and one honest sentence are enough for the song maker to draft lyrics.",
+        },
+        {
+          question: "Can I make a love song if we are long distance?",
+          answer:
+            "Yes. Share a private listening page by text or email so they can hear it the same night, wherever they are.",
+        },
+        {
+          question: "Can I pair the song with something they can hold?",
+          answer:
+            "Yes. Unlocking the track also opens music video and printable lyric wall art tools if you want a keepsake besides the audio.",
+        },
+      ],
+    },
+  }),
+
+  "loved-one": createConfig({
+    slug: "loved-one",
+    occasion: "just-because",
+    shortName: "Loved one",
+    primaryKeyword: "song for a loved one",
+    keywords: [
+      "create a song for a loved one",
+      "create song for loved one",
+      "make a song for a loved one",
+      "song for a loved one",
+      "custom songs for loved ones",
+      "personalized songs for loved ones",
+      "make a song for someone",
+    ],
+    metadata: {
+      title: "Create a Song for a Loved One",
+      description:
+        "Create a song for a loved one from your story, their name, and the message you want them to keep. Preview a personalized song free, then send it as a gift.",
+    },
+    palette: {
+      accent: "#b85c38",
+      accentDark: "#8f4327",
+      soft: "#fff3ea",
+      muted: "#f3ece4",
+      ink: "#26170f",
+    },
+    hero: {
+      badge: "A song for someone you love, not a generic dedication",
+      title: "Create a Song for a Loved One",
+      description:
+        "Tell the story only your family knows. We turn names, memories, and the thing you have been meaning to say into an original song. Preview it free, then send a song for a loved one they can replay.",
+      image: "/images/occasions/song-for-a-loved-one-hero.webp",
+      imageAlt:
+        "Adult and parent listening together to a custom song made for a loved one",
+      cardTitle: "For the person who would recognize every line",
+      cardDescription:
+        "Partner, parent, sibling, friend, or the relative who showed up. The relationship belongs in the lyrics.",
+      cta: "Create a Song for Someone You Love",
+    },
+    storyDetails:
+      "Name the loved one, your relationship, one memory they would recognize, and the message you have not said cleanly yet.",
+    styleOptions:
+      "warm acoustic, folk pop, ballad, country, soul, or gentle pop",
+    deliveryIdeas:
+      "Play it in the living room, send a private link, or add it to a family video.",
+    moments: {
+      title: "Songs for the loved ones who are hard to shop for",
+      description:
+        "A custom song works when a card feels thin: gratitude, apology, missing someone, or celebrating a life that is still unfolding.",
+      items: [
+        {
+          title: "For a parent",
+          description:
+            "Use the advice they still give, the meal they cook, and the quiet way they take care of people.",
+          icon: "heart",
+        },
+        {
+          title: "For a partner",
+          description:
+            "Write the ordinary loyalty: the ride home, the shared playlist, the night they waited up.",
+          icon: "sparkles",
+        },
+        {
+          title: "For a friend",
+          description:
+            "Honor the history that is not romantic and still deserves a chorus.",
+          icon: "star",
+        },
+        {
+          title: "For a sibling",
+          description:
+            "Childhood rooms, old nicknames, and the person who still knows the family jokes.",
+          icon: "music",
+        },
+        {
+          title: "Across distance",
+          description:
+            "Send the song when you cannot visit. A private page is enough.",
+          icon: "message",
+        },
+        {
+          title: "For a hard season",
+          description:
+            "Keep the tone honest. Support, memory, and presence can live in a song without pretending everything is easy.",
+          icon: "flower",
+        },
+      ],
+    },
+    topics: {
+      title: "Searches from people who want to make a song for someone",
+      description:
+        "These phrases are less about a holiday and more about one relationship that needs a voice.",
+      items: [
+        {
+          title: "Create a song for a loved one",
+          description:
+            "The head term. Start with the relationship and one true scene, then choose the feeling.",
+          keywords: [
+            "create a song for a loved one",
+            "create song for loved one",
+          ],
+          prompt:
+            "Say who they are to you, one memory from last year, and the sentence you want them to replay.",
+          icon: "heart",
+        },
+        {
+          title: "Make a song for a loved one",
+          description:
+            "Same intent, more urgent wording. The page should get them into the story form fast.",
+          keywords: [
+            "make a song for a loved one",
+            "make a song for someone",
+          ],
+          prompt:
+            "Write like a voice note: their name, what happened, how you felt, what you hope they hear.",
+          icon: "sparkles",
+        },
+        {
+          title: "Custom songs for loved ones",
+          description:
+            "Families sometimes want more than one song. Keep each track tied to one person.",
+          keywords: [
+            "custom songs for loved ones",
+            "personalized songs for loved ones",
+          ],
+          prompt:
+            "If you are making more than one, give each person a distinct memory so the songs do not blur.",
+          icon: "gift",
+        },
+        {
+          title: "A song they will recognize",
+          description:
+            "Recognition beats poetry. Objects, nicknames, and specific rooms outperform abstract love language.",
+          keywords: ["song for a loved one", "personal song for someone"],
+          prompt:
+            "List three details a stranger would not know and one quality you never thanked them for.",
+          icon: "star",
+        },
+      ],
+    },
+    examples: {
+      title: "Start with the relationship, then one scene",
+      description:
+        "Name who they are, what happened, and the feeling. That is a complete brief.",
+      items: [
+        {
+          label: "For a parent",
+          title: "The porch light",
+          text: "Write a warm acoustic song for my mom, Linda, from Emma. Mention Sunday pancakes, the garden, her saying about always making room, and how I still call when the day goes sideways.",
+        },
+        {
+          label: "For a partner",
+          title: "On my way",
+          text: "Create a folk-pop song for Jordan from Alex. Include late trains, the grocery-store flowers, the dog's name Maple, and the quiet loyalty of showing up.",
+        },
+        {
+          label: "For a friend",
+          title: "Twenty years of jokes",
+          text: "Make a grateful pop song for Priya, my friend since school. Mention the broken-down car, the terrible concert, and the way she still answers on the first ring.",
+        },
+      ],
+    },
+    testimonials: {
+      title: "Songs that sound like a specific person",
+      description:
+        "The best reactions come when the loved one hears a detail they thought only they remembered.",
+      items: [
+        {
+          quote:
+            "I made it for my dad. The line about the workshop radio got him before the chorus did.",
+          author: "Chris N.",
+          badge: "Song for a parent",
+        },
+        {
+          quote:
+            "We were not celebrating anything. I just needed a way to say it. She replayed the preview on speaker.",
+          author: "Amina S.",
+          badge: "Just because",
+        },
+        {
+          quote:
+            "My brother and I each added one memory. It sounded like growing up in our house.",
+          author: "Diego L.",
+          badge: "Family song",
+        },
+      ],
+    },
+    faq: {
+      title: "Creating a song for a loved one",
+      description:
+        "How to turn a relationship into original music without needing to be a musician.",
+      ctaTitle: "Ready to make their song?",
+      ctaDescription:
+        "Name the loved one, add one true memory, and start with a free preview.",
+      items: [
+        {
+          question: "Who counts as a loved one?",
+          answer:
+            "Anyone the lyrics should recognize: a partner, parent, child, sibling, friend, or the person who stepped into that role. State the relationship clearly so the point of view is right.",
+        },
+        {
+          question: "Do I need a holiday to create a song for a loved one?",
+          answer:
+            "No. Birthdays and anniversaries work, but the same flow is built for just-because messages, distance, and thank-yous that never fit a card.",
+        },
+        {
+          question: "Can I preview the song before I send it?",
+          answer:
+            "Yes. Listen to a free sample, adjust the lyrics or style, then unlock the full track when it sounds like them.",
+        },
+        {
+          question: "What if I do not know what to write?",
+          answer:
+            "Answer three prompts: their name, one memory, and the sentence you want them to keep. That is enough to draft a song.",
+        },
+        {
+          question: "Can more than one person contribute?",
+          answer:
+            "Yes. Collect a short memory from siblings or friends and ask the chorus to hold the shared message.",
+        },
+        {
+          question: "How do I send the song?",
+          answer:
+            "Share a private listening page, play it in person, or pair the track with a music video or printable lyrics.",
         },
       ],
     },

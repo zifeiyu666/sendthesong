@@ -8,6 +8,7 @@ import {
   XCircle,
   Zap
 } from "lucide-react";
+import { Link as I18nLink } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 
 type ComparisonRow = {
@@ -29,7 +30,11 @@ const painPointIcons = {
   bundle: Gift,
 } as const;
 
-export default function SongfinchComparison() {
+export default function SongfinchComparison({
+  showFullComparisonLink = true,
+}: {
+  showFullComparisonLink?: boolean;
+}) {
   const t = useTranslations("Landing.SongfinchComparison");
   const rows = t.raw("rows") as ComparisonRow[];
   const painPoints = t.raw("painPoints") as PainPoint[];
@@ -143,6 +148,17 @@ export default function SongfinchComparison() {
             );
           })}
         </div>
+
+        {showFullComparisonLink ? (
+          <p className="mt-8 text-center">
+            <I18nLink
+              href="/alternatives/songfinch"
+              className="text-sm font-semibold text-primary underline-offset-4 hover:underline"
+            >
+              {t("fullComparisonCta")}
+            </I18nLink>
+          </p>
+        ) : null}
       </div>
     </section>
   );

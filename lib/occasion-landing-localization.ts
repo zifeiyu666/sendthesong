@@ -147,6 +147,32 @@ const spanish: Record<OccasionLandingSlug, OccasionLocaleData> = {
       "Envíala con un mensaje breve, reúne voces de amigos o añádela a un vídeo tranquilo y positivo.",
     audience: "un amigo, compañero o familiar que necesita apoyo",
   },
+  "love-song": {
+    name: "Canción de amor",
+    keyword: "canción de amor personalizada",
+    heroTitle: "Canción de amor personalizada",
+    heroDescription:
+      "Convierte vuestros nombres, recuerdos privados y la promesa que todavía significa algo en una canción de amor original. Escucha una muestra gratis y ajústala antes de regalarla.",
+    story:
+      "Añade los dos nombres, cómo os conocisteis, una rutina cotidiana, una broma privada y lo que quieres que diga el estribillo.",
+    styles: "balada romántica, acústico, R&B, jazz, folk o pop suave",
+    delivery:
+      "Ponla durante una cena, envía el enlace privado o acompáñala con una lámina de la letra.",
+    audience: "tu pareja, esposo, esposa o la persona que amas",
+  },
+  "loved-one": {
+    name: "Persona querida",
+    keyword: "canción para alguien querido",
+    heroTitle: "Crea una canción para alguien que quieres",
+    heroDescription:
+      "Cuenta la historia que solo vuestra familia conoce. Convertimos el nombre, los recuerdos y lo que llevas tiempo queriendo decir en una canción original. Escucha una muestra gratis y envíala.",
+    story:
+      "Nombra a esa persona, vuestra relación, un recuerdo que reconocería y el mensaje que aún no has dicho con claridad.",
+    styles: "acústico cálido, folk pop, balada, country, soul o pop suave",
+    delivery:
+      "Reprodúcela en casa, envía un enlace privado o añádela a un vídeo familiar.",
+    audience: "un padre, una pareja, un hermano, un amigo o alguien de la familia",
+  },
 };
 
 const japanese: Record<OccasionLandingSlug, OccasionLocaleData> = {
@@ -284,6 +310,32 @@ const japanese: Record<OccasionLandingSlug, OccasionLocaleData> = {
     delivery:
       "短いメッセージと送ったり、友人の声を集めたり、穏やかな動画に加えたりできます。",
     audience: "支えを必要としている友人、同僚、家族",
+  },
+  "love-song": {
+    name: "ラブソング",
+    keyword: "パーソナライズされたラブソング",
+    heroTitle: "ふたりのためのオリジナルラブソング",
+    heroDescription:
+      "名前、ふたりだけの思い出、今も続く約束を一曲に。無料プレビューで歌詞を整えてから贈れます。",
+    story:
+      "ふたりの名前、出会い、いつもの習慣、内緒の冗談、サビに残したい気持ちを入れます。",
+    styles: "ロマンチックバラード、アコースティック、R&B、ジャズ、フォーク、ソフトポップ",
+    delivery:
+      "食事の時間に流したり、プライベートなリンクで送ったり、歌詞のポスターと一緒に贈ったりできます。",
+    audience: "恋人、夫、妻、愛する人",
+  },
+  "loved-one": {
+    name: "大切な人",
+    keyword: "大切な人のためのオリジナルソング",
+    heroTitle: "大切な人のための一曲をつくる",
+    heroDescription:
+      "家族だけが知る物語を、名前と思い出と、ずっと伝えたかった言葉の曲に。無料プレビューを聴いてから贈れます。",
+    story:
+      "相手の名前、関係、その人が思い出す場面、まだはっきり言えていないメッセージを入れます。",
+    styles: "温かいアコースティック、フォークポップ、バラード、カントリー、ソウル、優しいポップ",
+    delivery:
+      "リビングで流したり、プライベートなリンクを送ったり、家族の動画に加えたりできます。",
+    audience: "親、パートナー、兄弟、友人、家族",
   },
 };
 

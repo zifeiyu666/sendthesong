@@ -62,6 +62,8 @@ describe("occasion landing localization", () => {
   test("localizes every dynamic occasion into Spanish and Japanese", () => {
     assert.ok(OCCASION_LANDING_SLUGS.includes("anniversary"));
     assert.ok(OCCASION_LANDING_SLUGS.includes("birthday"));
+    assert.ok(OCCASION_LANDING_SLUGS.includes("love-song"));
+    assert.ok(OCCASION_LANDING_SLUGS.includes("loved-one"));
 
     const english = getAllOccasionLandingConfigs("en");
     for (const locale of ["es", "ja"]) {
