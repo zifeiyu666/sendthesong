@@ -2,7 +2,7 @@ import { PageHero } from "@/components/shared/PageHero";
 import { Locale, LOCALES } from "@/i18n/routing";
 import { getAllOccasionLandingConfigs } from "@/lib/occasion-landing-pages";
 import { constructMetadata } from "@/lib/metadata";
-import { ArrowUpRight, Gift, Heart, Music2 } from "lucide-react";
+import { ArrowUpRight, Church, Gift, Heart, MessageCircleHeart, Music2 } from "lucide-react";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/routing";
@@ -36,7 +36,10 @@ export default async function GiftsPage({ params }: { params: Params }) {
     { href: "/create-song", title: t("core.create"), description: t("core.createDescription"), icon: Music2 },
     { href: "/occasions/custom-happy-birthday-song", title: t("core.birthday"), description: t("core.birthdayDescription"), icon: Gift },
     { href: "/occasions/anniversary", title: t("core.anniversary"), description: t("core.anniversaryDescription"), icon: Heart },
+    { href: "/gifts/song-message", title: t("core.songMessage"), description: t("core.songMessageDescription"), icon: MessageCircleHeart },
     { href: "/occasions/custom-song-for-wife", title: t("core.wife"), description: t("core.wifeDescription"), icon: Heart },
+    { href: "/occasions/custom-song-for-husband", title: t("core.husband"), description: t("core.husbandDescription"), icon: Heart },
+    { href: "/prayer-song", title: t("core.prayerSong"), description: t("core.prayerSongDescription"), icon: Church },
   ];
 
   return (
@@ -59,7 +62,7 @@ export default async function GiftsPage({ params }: { params: Params }) {
           </Link>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {coreCards.map(({ href, title, description, icon: Icon }) => (
             <Link key={href} href={href} className="group rounded-3xl border border-stone-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg">
               <Icon className="size-6 text-primary" aria-hidden="true" />

@@ -44,6 +44,12 @@ const staticPages: {
     priority: 0.8,
   },
   {
+    path: '/gifts/song-message',
+    lastModified: '2026-08-19',
+    changeFrequency: 'weekly',
+    priority: 0.9,
+  },
+  {
     path: '/voice-clone',
     lastModified: '2026-07-30',
     changeFrequency: 'weekly',
@@ -78,6 +84,24 @@ const staticPages: {
     lastModified: '2026-08-05',
     changeFrequency: 'weekly',
     priority: 0.8,
+  },
+  {
+    path: '/occasions/custom-song-for-husband',
+    lastModified: '2026-09-06',
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  },
+  {
+    path: '/our-song',
+    lastModified: '2026-09-06',
+    changeFrequency: 'weekly',
+    priority: 0.85,
+  },
+  {
+    path: '/prayer-song',
+    lastModified: '2026-09-07',
+    changeFrequency: 'weekly',
+    priority: 0.85,
   },
   {
     path: '/alternatives/songfinch',
@@ -143,6 +167,10 @@ const englishOnlyStaticPaths = new Set([
   '/custom-song-lyrics-wall-art',
   '/lyric-poster-maker',
   '/occasions/custom-song-for-wife',
+  '/occasions/custom-song-for-husband',
+  '/our-song',
+  '/prayer-song',
+  '/gifts/song-message',
   ...getAllOccasionLandingConfigs().map(
     (occasion) => `/occasions/${occasion.slug}`,
   ),

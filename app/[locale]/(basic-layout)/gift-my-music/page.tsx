@@ -31,9 +31,9 @@ function getTimestampedLyrics(metadata: unknown): FinalSongPlayerData["timestamp
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { locale } = await params;
   return constructMetadata({
-    title: "Gift My Music | Personalized Music Gifts Made for Them",
-    description: "Gift my music with a custom song made from your memories, message, and their favorite sound. Create a personalized music gift with a free preview, music video, and lyric keepsake.",
-    keywords: ["gift my music", "personalized music gift", "custom song gift", "meaningful music gift"],
+    title: "Record a Song Gift | Gift My Music",
+    description: "Record a song gift from your memories, message, and their favorite sound. Preview a personalized music gift free, then send a track they can keep.",
+    keywords: ["record a song gift", "gift my music", "personalized music gift", "custom song gift", "meaningful music gift"],
     locale: locale as Locale,
     path: "/gift-my-music",
     availableLocales: ["en"],

@@ -381,6 +381,11 @@
             "description": "Turn a story into a free song preview before unlocking the full track."
           },
           {
+            "name": "Send a Song with a Message",
+            "href": "/gifts/song-message",
+            "description": "Add a spoken blessing or greeting to a custom song made for them."
+          },
+          {
             "name": "Birthday song gifts",
             "href": "/occasions/custom-happy-birthday-song",
             "description": "Create a personal birthday song with names, stories, and memories."
@@ -389,6 +394,21 @@
             "name": "Anniversary song gifts",
             "href": "/occasions/anniversary",
             "description": "Turn your love story into an anniversary song they can replay."
+          },
+          {
+            "name": "Custom songs for husband",
+            "href": "/occasions/custom-song-for-husband",
+            "description": "Write a personal song around the details only you know about him."
+          },
+          {
+            "name": "Our song personalised",
+            "href": "/our-song",
+            "description": "Create one special song for the two of you, preview it free, then keep it."
+          },
+          {
+            "name": "Custom prayer song",
+            "href": "/prayer-song",
+            "description": "Turn a blessing, testimony, or hope into a personalized prayer song gift."
           },
           {
             "name": "Music personalized gifts",
@@ -411,6 +431,11 @@
             "description": "Turn a meaningful song into personalized, printable lyric wall decor."
           }
         ]
+      },
+      {
+        "id": "pricing",
+        "name": "Pricing",
+        "href": "/pricing"
       }
     ]
   },
@@ -504,7 +529,7 @@
               "href": "https://songtell.art",
               "name": "Songtell.art",
               "target": "_blank",
-              "rel": "noopener nofollow"
+              "rel": "noopener"
             }
           ]
         },
@@ -517,6 +542,10 @@
               "href": "/create-song"
             },
             {
+              "name": "Send a Song with a Message",
+              "href": "/gifts/song-message"
+            },
+            {
               "name": "Birthday song gifts",
               "href": "/occasions/custom-happy-birthday-song"
             },
@@ -527,6 +556,18 @@
             {
               "name": "Custom songs for wife",
               "href": "/occasions/custom-song-for-wife"
+            },
+            {
+              "name": "Custom songs for husband",
+              "href": "/occasions/custom-song-for-husband"
+            },
+            {
+              "name": "Our song personalised",
+              "href": "/our-song"
+            },
+            {
+              "name": "Custom prayer song",
+              "href": "/prayer-song"
             },
             {
               "name": "Music personalized gifts",
@@ -585,7 +626,13 @@
       "anniversary": "Anniversary song gifts",
       "anniversaryDescription": "Celebrate the story you have built together with a song.",
       "wife": "Custom songs for wife",
-      "wifeDescription": "Write a love song around the details only you know about her."
+      "wifeDescription": "Write a love song around the details only you know about her.",
+      "husband": "Custom songs for husband",
+      "husbandDescription": "Write a personal song around the details only you know about him.",
+      "songMessage": "Send a song with a message",
+      "songMessageDescription": "Record a blessing or opening greeting and fold it into a custom song.",
+      "prayerSong": "Custom prayer song",
+      "prayerSongDescription": "Turn a blessing, testimony, or hope into a personalized prayer song."
     },
     "formats": {
       "music": "Personalized music gifts",

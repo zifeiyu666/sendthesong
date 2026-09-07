@@ -190,6 +190,11 @@
             "description": "物語から無料サンプルを作り、完成版を購入する前に試聴できます。"
           },
           {
+            "name": "メッセージを添えて曲を贈る",
+            "href": "/gifts/song-message",
+            "description": "話し言葉の祝福や挨拶を、相手のためのカスタムソングに織り込みます。"
+          },
+          {
             "name": "誕生日ソング",
             "href": "/occasions/custom-happy-birthday-song",
             "description": "名前や思い出を入れた誕生日ソングを作れます。"
@@ -198,6 +203,21 @@
             "name": "記念日ソング",
             "href": "/occasions/anniversary",
             "description": "二人の物語を、何度でも聴ける記念日の曲に。"
+          },
+          {
+            "name": "夫のためのオリジナルソング",
+            "href": "/occasions/custom-song-for-husband",
+            "description": "あなただけが知る彼の物語を一曲に。"
+          },
+          {
+            "name": "ふたりの一曲",
+            "href": "/our-song",
+            "description": "ふたりのための特別な一曲を作り、無料で試聴してから残せます。"
+          },
+          {
+            "name": "祈りのカスタムソング",
+            "href": "/prayer-song",
+            "description": "祝福、証し、願いを、聴ける祈りの歌にします。"
           },
           {
             "name": "音楽のパーソナルギフト",
@@ -220,7 +240,8 @@
           "description": "大切な曲を、印刷できる歌詞アートに。"
         }
         ]
-      }
+      },
+      { "id": "pricing", "name": "料金", "href": "/pricing" }
     ]
   },
   "Footer": {
@@ -275,7 +296,7 @@
             { "href": "/blog", "name": "すべての記事" },
             { "href": "/glossary", "name": "用語集" },
             { "href": "https://aihustle.tools", "name": "AI Hustle Tools", "target": "_blank", "rel": "noopener nofollow" },
-            { "href": "https://songtell.art", "name": "Songtell.art", "target": "_blank", "rel": "noopener nofollow" }
+            { "href": "https://songtell.art", "name": "Songtell.art", "target": "_blank", "rel": "noopener" }
           ]
         },
         {
@@ -283,6 +304,7 @@
           "title": "ギフトアイデア",
           "links": [
             { "name": "曲を作る", "href": "/create-song" },
+            { "name": "メッセージを添えて曲を贈る", "href": "/gifts/song-message" },
             {
               "name": "誕生日ソング",
               "href": "/occasions/custom-happy-birthday-song"
@@ -292,6 +314,12 @@
               "name": "妻のためのオリジナルソング",
               "href": "/occasions/custom-song-for-wife"
             },
+            {
+              "name": "夫のためのオリジナルソング",
+              "href": "/occasions/custom-song-for-husband"
+            },
+            { "name": "ふたりの一曲", "href": "/our-song" },
+            { "name": "祈りのカスタムソング", "href": "/prayer-song" },
             {
               "name": "音楽のパーソナルギフト",
               "href": "/music/personalized-gift"
@@ -344,7 +372,13 @@
       "anniversary": "記念日ソング",
       "anniversaryDescription": "ふたりの物語を、何度も聴ける歌にします。",
       "wife": "妻へ贈るオリジナルソング",
-      "wifeDescription": "あなただけが知る彼女の魅力をラブソングに。"
+      "wifeDescription": "あなただけが知る彼女の魅力をラブソングに。",
+      "husband": "夫へ贈るオリジナルソング",
+      "husbandDescription": "あなただけが知る彼の物語を一曲に。",
+      "songMessage": "メッセージを添えて曲を贈る",
+      "songMessageDescription": "祝福や冒頭の挨拶を録音し、カスタムソングに織り込みます。",
+      "prayerSong": "祈りのカスタムソング",
+      "prayerSongDescription": "祝福、証し、願いを、聴ける祈りの歌にします。"
     },
     "formats": {
       "music": "音楽のパーソナルギフト",

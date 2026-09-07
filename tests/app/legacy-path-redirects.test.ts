@@ -12,7 +12,6 @@ test("GSC 404 aliases permanently redirect to current routes", () => {
     ['"/team"', '"/about"'],
     ['"/support"', '"/about"'],
     ['"/contact"', '"/about"'],
-    ['"/gifts/song-message"', '"/gifts"'],
   ];
 
   for (const [from, to] of expected) {

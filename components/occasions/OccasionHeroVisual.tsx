@@ -2,13 +2,22 @@
 
 import { Music2 } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useRef, type CSSProperties, type MouseEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  type CSSProperties,
+  type MouseEvent,
+  type ReactNode,
+} from "react";
+
+import { cn } from "@/lib/utils";
 
 type OccasionHeroVisualProps = {
   image: string;
   imageAlt: string;
-  cardTitle: string;
-  cardDescription: string;
+  cardTitle?: string;
+  cardDescription?: string;
+  overlay?: ReactNode;
   accent: string;
 };
 
@@ -17,6 +26,7 @@ export default function OccasionHeroVisual({
   imageAlt,
   cardTitle,
   cardDescription,
+  overlay,
   accent,
 }: OccasionHeroVisualProps) {
   const sceneRef = useRef<HTMLDivElement | null>(null);
@@ -98,22 +108,29 @@ export default function OccasionHeroVisual({
             <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(255,255,255,0.12),transparent_42%,rgba(31,20,16,0.15))]" />
           </div>
 
-          <div className="absolute -bottom-5 left-5 right-5 transition-transform duration-500 ease-out md:left-auto md:w-[310px] [transform:translate3d(var(--hero-card-x),var(--hero-card-y),44px)] will-change-transform">
-            <div className="rounded-lg border border-white/70 bg-white/90 p-4 shadow-[0_22px_56px_rgba(43,25,20,0.2)] backdrop-blur-md">
-              <div className="flex items-start gap-3">
-                <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[var(--hero-accent)] text-white">
-                  <Music2 className="size-4" />
-                </span>
-                <div>
-                  <p className="text-sm font-black text-[#261712]">
-                    {cardTitle}
-                  </p>
-                  <p className="mt-1 text-xs leading-5 text-[#6f625c]">
-                    {cardDescription}
-                  </p>
+          <div
+            className={cn(
+              "absolute -bottom-5 left-5 right-5 z-10 transition-transform duration-500 ease-out md:left-auto [transform:translate3d(var(--hero-card-x),var(--hero-card-y),44px)] will-change-transform",
+              overlay ? "md:w-[min(100%,22.5rem)]" : "md:w-[310px]",
+            )}
+          >
+            {overlay ?? (
+              <div className="rounded-lg border border-white/70 bg-white/90 p-4 shadow-[0_22px_56px_rgba(43,25,20,0.2)] backdrop-blur-md">
+                <div className="flex items-start gap-3">
+                  <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[var(--hero-accent)] text-white">
+                    <Music2 className="size-4" />
+                  </span>
+                  <div>
+                    <p className="text-sm font-black text-[#261712]">
+                      {cardTitle}
+                    </p>
+                    <p className="mt-1 text-xs leading-5 text-[#6f625c]">
+                      {cardDescription}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

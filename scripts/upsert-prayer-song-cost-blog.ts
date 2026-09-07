@@ -133,12 +133,12 @@ function buildContent({
 
 - A custom prayer song can cost anywhere from coffee-money to $199+ on traditional custom song sites, depending on how it is made and how many revisions are included.
 - At onecustomsong.com, you can start with one song for ${singlePrice}, step up to Pro for ${proPrice}/month, or unlock Unlimited for ${unlimitedPrice}/year.
-- You can preview first, tweak lyrics and style before paying, and move much faster than the week-long turnaround common with traditional custom music services.
+- You can [preview a custom prayer song](/prayer-song) first, tweak lyrics and style before paying, and move much faster than the week-long turnaround common with traditional custom music services.
 - For gift-givers, the biggest practical advantages are lower upfront risk, faster turnaround, and much more freedom to retry until the song feels right.
 
 ## How much does a custom prayer song cost?
 
-If you are searching for how much does a custom prayer song cost, the short answer is this: prices range from affordable AI-assisted tools to premium handcrafted services that can start around $199 or more for a single song. onecustomsong.com sits at the low-risk, high-flexibility end of that spectrum. You can generate a personalized prayer song starting at ${singlePrice}, test the direction before committing, and keep refining the song concept instead of paying a large upfront fee and waiting days for delivery.
+If you are searching for how much does a custom prayer song cost, the short answer is this: prices range from affordable AI-assisted tools to premium handcrafted services that can start around $199 or more for a single song. onecustomsong.com sits at the low-risk, high-flexibility end of that spectrum. You can [turn your prayer into a song](/prayer-song) starting at ${singlePrice}, test the direction before committing, and keep refining the song concept instead of paying a large upfront fee and waiting days for delivery.
 
 That pricing difference matters because prayer songs are deeply personal. They are often written for healing, remembrance, encouragement, weddings, baptisms, birthdays, church celebrations, or family milestones. In those situations, speed, emotional fit, and the ability to retry the wording can matter just as much as the final audio file.
 
@@ -155,7 +155,7 @@ People usually commission or generate custom prayer songs for occasions like:
 - birthdays and milestone celebrations
 - church and family events
 
-Because the message is so personal, the best custom prayer song experience is not just about production quality. It is also about how easily you can adjust the lyrics, tone, and pacing until the song sounds emotionally true.
+Because the message is so personal, the best [custom prayer song](/prayer-song) experience is not just about production quality. It is also about how easily you can adjust the lyrics, tone, and pacing until the song sounds emotionally true.
 
 ## onecustomsong.com vs. traditional custom music sites
 
@@ -240,7 +240,7 @@ Traditional custom song services often take several days. onecustomsong.com is d
 
 ## Create your own prayer song
 
-If you want to turn a memory, blessing, or heartfelt message into music without paying a large upfront fee, explore the current plans on [/pricing](/pricing) or start creating at [/create-song](/create-song).`;
+If you want to turn a memory, blessing, or heartfelt message into music without paying a large upfront fee, start on the [custom prayer song landing page](/prayer-song), compare plans on [/pricing](/pricing), or begin creating at [/create-song](/create-song).`;
 }
 
 async function main() {
@@ -351,7 +351,6 @@ async function main() {
       isPinned: false,
       status: "published" as const,
       visibility: "public" as const,
-      publishedAt: new Date(),
     };
 
     const [existingPost] = await db
@@ -385,7 +384,10 @@ async function main() {
     } else {
       const [createdPost] = await db
         .insert(posts)
-        .values(postData)
+        .values({
+          ...postData,
+          publishedAt: new Date(),
+        })
         .returning({
           id: posts.id,
         });

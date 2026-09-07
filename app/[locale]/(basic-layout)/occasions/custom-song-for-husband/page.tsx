@@ -1,12 +1,10 @@
-import BirthdaySongsPage from "@/components/occasions/BirthdaySongsPage";
-import OccasionLandingPage from "@/components/occasions/OccasionLandingPage";
+import HusbandSongsPage from "@/components/occasions/HusbandSongsPage";
 import { type FinalSongPlayerData } from "@/components/song/FinalSongPlayer";
 import { type WallArtSongOption } from "@/components/song/WallArtEditorDrawer";
 import { Locale } from "@/i18n/routing";
 import { buildSongShareUrl, getFinalSongsForOwner } from "@/lib/ai/final-song";
 import { getSession } from "@/lib/auth/server";
 import { constructMetadata } from "@/lib/metadata";
-import { getOccasionLandingConfig } from "@/lib/occasion-landing-pages";
 import { Metadata } from "next";
 
 type Params = Promise<{ locale: string }>;
@@ -49,23 +47,30 @@ export async function generateMetadata({
   const { locale } = await params;
 
   return constructMetadata({
-    title: locale === "es" ? "Canción de cumpleaños personalizada con nombre" : locale === "ja" ? "名前入りオリジナル誕生日ソング" : "Happy Birthday Song With Custom Name",
-    description: locale === "es"
-      ? "Crea una canción de cumpleaños personalizada con nombres, recuerdos y una muestra gratuita. Un regalo musical único, listo para compartir."
-      : locale === "ja" ? "名前や思い出を入れた誕生日ソングを作成できます。無料サンプルを試聴してから、大切な人へ贈れます。"
-      : "Create a happy birthday song with a custom name, memories, AI vocals, a free preview, and a personalized keepsake.",
+    title:
+      locale === "es"
+        ? "Canción personalizada para tu esposo"
+        : locale === "ja"
+          ? "夫のためのオリジナルソング"
+          : "Personalized Songs for Husband | Custom Song Gift",
+    description:
+      locale === "es"
+        ? "Crea una canción personalizada para tu esposo con recuerdos, nombres y un mensaje de amor. Escucha una muestra gratis antes de compartirla."
+        : locale === "ja"
+          ? "夫との思い出や名前、伝えたい気持ちからオリジナルソングを作成。無料プレビューを試聴してから贈れます。"
+          : "Create personalized songs for your husband with memories, names, and a message he will recognize. Preview a custom song before you share it.",
+    images: ["/images/occasions/custom-song-for-husband-hero.webp"],
     locale: locale as Locale,
-    path: "/occasions/custom-happy-birthday-song",
-    images: ["/images/occasions/birthday-custom-song-hero.webp"],
+    path: "/occasions/custom-song-for-husband",
   });
 }
 
-export default async function BirthdayOccasionPage({
+export default async function CustomSongForHusbandPage({
   params,
 }: {
   params: Params;
 }) {
-  const { locale } = await params;
+  await params;
   const session = await getSession();
   const isAuthenticated = Boolean(session?.user);
   const finalSongs = session?.user
@@ -105,20 +110,8 @@ export default async function BirthdayOccasionPage({
     }),
   );
 
-  const localizedConfig = getOccasionLandingConfig("birthday", locale);
-  if (locale !== "en" && localizedConfig) {
-    return (
-      <OccasionLandingPage
-        config={localizedConfig}
-        isAuthenticated={isAuthenticated}
-        musicVideoSongOptions={musicVideoSongOptions}
-        wallArtSongOptions={wallArtSongOptions}
-      />
-    );
-  }
-
   return (
-    <BirthdaySongsPage
+    <HusbandSongsPage
       isAuthenticated={isAuthenticated}
       musicVideoSongOptions={musicVideoSongOptions}
       wallArtSongOptions={wallArtSongOptions}

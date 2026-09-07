@@ -94,6 +94,41 @@ export const messageSongBriefTemplates: SongBriefTemplate[] = [
   },
 ];
 
+export const prayerSongBriefTemplates: SongBriefTemplate[] = [
+  {
+    name: "Ruth",
+    relationship: "mom",
+    occasion: { label: "Get Well Soon", value: "get-well-soon" },
+    message: "Lord, cover Ruth with rest, courage, and the peace she has given all of us.",
+    story:
+      "Hospital mornings, her favorite hymn, and the way she still asks how everyone else is doing.",
+  },
+  {
+    name: "Daniel",
+    relationship: "husband",
+    occasion: { label: "Just Because", value: "just-because" },
+    message: "Daniel, may this house stay full of patience, laughter, and a faith that holds.",
+    story:
+      "Sunday drives, late-night prayers at the kitchen table, and the quiet strength he never advertises.",
+  },
+  {
+    name: "Mia",
+    relationship: "daughter",
+    occasion: { label: "Birthday", value: "birthday" },
+    message: "Mia, you are loved, protected, and never walking into a new year alone.",
+    story:
+      "Bedtime blessings, backpack notes, and the courage she shows even when she is unsure.",
+  },
+  {
+    name: "James",
+    relationship: "dad",
+    occasion: { label: "In Memoriam", value: "in-memoriam" },
+    message: "Thank you for the faith you planted. We still hear it when we gather.",
+    story:
+      "His worn Bible, the porch light left on, and the blessing he said before every meal.",
+  },
+];
+
 const occasionValuesByLabel = new Map<string, string>([
   ...occasions.map(
     (occasion) =>
@@ -110,6 +145,13 @@ const occasionValuesByLabel = new Map<string, string>([
       ] as [string, string],
   ),
   ...messageSongBriefTemplates.map(
+    (template) =>
+      [
+        template.occasion.label.trim().toLowerCase(),
+        template.occasion.value,
+      ] as [string, string],
+  ),
+  ...prayerSongBriefTemplates.map(
     (template) =>
       [
         template.occasion.label.trim().toLowerCase(),

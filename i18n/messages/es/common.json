@@ -102,13 +102,18 @@
       {"name": "Mis voces", "href": "/voices"},
       {"name": "Ideas de regalo", "href": "/music/personalized-gift", "items": [
         {"name": "Crear una canción", "href": "/create-song", "description": "Convierte una historia en una muestra gratuita antes de desbloquear la canción completa."},
+        {"name": "Envía una canción con un mensaje", "href": "/gifts/song-message", "description": "Añade una bendición hablada o un saludo a una canción hecha para ellos."},
         {"name": "Canciones de cumpleaños", "href": "/occasions/custom-happy-birthday-song", "description": "Crea una canción de cumpleaños con nombres, historias y recuerdos."},
         {"name": "Canciones de aniversario", "href": "/occasions/anniversary", "description": "Convierte vuestra historia en una canción de aniversario para escuchar una y otra vez."},
+        {"name": "Canciones para esposo", "href": "/occasions/custom-song-for-husband", "description": "Escribe una canción con los detalles que solo tú conoces de él."},
+        {"name": "Nuestra canción personalizada", "href": "/our-song", "description": "Crea una canción especial para los dos, escucha una muestra y consérvala."},
+        {"name": "Canción de oración personalizada", "href": "/prayer-song", "description": "Convierte una bendición, un testimonio o una esperanza en una canción de oración."},
         {"name": "Regalos musicales personalizados", "href": "/music/personalized-gift", "description": "Descubre canciones, vídeos y recuerdos personalizados para amantes de la música."},
         {"name": "Regalos con letras personalizadas", "href": "/free-custom-song-lyric-gifts", "description": "Convierte letras personalizadas en láminas imprimibles y recuerdos únicos."},
         {"name": "Creador de pósters de letras", "href": "/lyric-poster-maker", "description": "Diseña un póster estético con la letra de la canción, tipografía y layouts editables."},
         {"name": "Láminas con letras personalizadas", "href": "/custom-song-lyrics-wall-art", "description": "Convierte una canción especial en decoración imprimible con la letra."}
-      ]}
+      ]},
+      {"id": "pricing", "name": "Precios", "href": "/pricing"}
     ]
   },
   "Footer": {
@@ -134,7 +139,7 @@
             {"href": "/blog", "name": "Todos los artículos"},
             {"href": "/glossary", "name": "Glosario"},
             {"href": "https://aihustle.tools", "name": "AI Hustle Tools", "target": "_blank", "rel": "noopener nofollow"},
-            {"href": "https://songtell.art", "name": "Songtell.art", "target": "_blank", "rel": "noopener nofollow"}
+            {"href": "https://songtell.art", "name": "Songtell.art", "target": "_blank", "rel": "noopener"}
           ]
         },
         {
@@ -142,9 +147,13 @@
           "title": "Ideas de regalo",
           "links": [
             {"name": "Crear una canción", "href": "/create-song"},
+            {"name": "Envía una canción con un mensaje", "href": "/gifts/song-message"},
             {"name": "Canciones de cumpleaños", "href": "/occasions/custom-happy-birthday-song"},
             {"name": "Canciones de aniversario", "href": "/occasions/anniversary"},
             {"name": "Canciones personalizadas para esposa", "href": "/occasions/custom-song-for-wife"},
+            {"name": "Canciones para esposo", "href": "/occasions/custom-song-for-husband"},
+            {"name": "Nuestra canción personalizada", "href": "/our-song"},
+            {"name": "Canción de oración personalizada", "href": "/prayer-song"},
             {"name": "Regalos musicales personalizados", "href": "/music/personalized-gift"},
             {"name": "Regalos con letras personalizadas", "href": "/free-custom-song-lyric-gifts"},
             {"name": "Creador de pósters de letras", "href": "/lyric-poster-maker"},
@@ -182,7 +191,13 @@
       "anniversary": "Canciones de aniversario",
       "anniversaryDescription": "Celebra vuestra historia con una canción que podáis repetir.",
       "wife": "Canciones personalizadas para esposa",
-      "wifeDescription": "Escribe una canción de amor con los detalles que solo tú conoces."
+      "wifeDescription": "Escribe una canción de amor con los detalles que solo tú conoces.",
+      "husband": "Canciones para esposo",
+      "husbandDescription": "Escribe una canción con los detalles que solo tú conoces de él.",
+      "songMessage": "Envía una canción con un mensaje",
+      "songMessageDescription": "Graba una bendición o un saludo de apertura y únelo a una canción personalizada.",
+      "prayerSong": "Canción de oración personalizada",
+      "prayerSongDescription": "Convierte una bendición, un testimonio o una esperanza en una canción de oración."
     },
     "formats": {
       "music": "Regalos musicales personalizados",

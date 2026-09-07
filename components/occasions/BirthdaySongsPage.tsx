@@ -44,9 +44,9 @@ type SpecificPeopleSpotlight = {
 
 const benefits: IconBlock[] = [
   {
-    title: "Their name in the chorus",
+    title: "Happy birthday song with custom name",
     description:
-      "Add the birthday person's name, inside jokes, favorite memories, and the message you want them to hear in a custom happy birthday song.",
+      "Put their name in the chorus, then add inside jokes, favorite memories, and the message you want them to hear in a custom happy birthday song.",
     icon: <MessageCircleHeart className="size-6" />,
   },
   {
@@ -400,7 +400,10 @@ export default function BirthdaySongsPage({
         </div>
       </section>
 
-      <section className="bg-white px-6 py-16 sm:px-8 md:py-20 lg:px-12 xl:px-16">
+      <section
+        id="with-name"
+        className="bg-white px-6 py-16 sm:px-8 md:py-20 lg:px-12 xl:px-16"
+      >
         <div className="mx-auto max-w-6xl">
           <SectionHeader
             eyebrow="Why it works"

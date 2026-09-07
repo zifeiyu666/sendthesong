@@ -252,9 +252,9 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
       "personalized Mother's Day gift",
     ],
     metadata: {
-      title: "Custom Mother's Day Song for Mom",
+      title: "Personalized Song for Mom | Custom Mother's Day Gift",
       description:
-        "Create a custom Mother's Day song with her name, family memories, and a free preview. Make a personalized song for Mom she can replay anytime.",
+        "Create a personalized song for mom with her name, family memories, and a free preview. Make a custom Mother's Day song she can replay anytime.",
     },
     palette: {
       accent: "#d1495b",
@@ -473,9 +473,9 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
       "personalized Father's Day gift",
     ],
     metadata: {
-      title: "Custom Father's Day Song for Dad",
+      title: "Personalized Song for Dad | Custom Father's Day Gift",
       description:
-        "Create a custom Father's Day song with Dad's name, stories, and a free preview. Make a personalized song for Dad that sounds like your family.",
+        "Create a personalized song for dad with his name, stories, and a free preview. Make a custom Father's Day song that sounds like your family.",
     },
     palette: {
       accent: "#287271",
@@ -915,11 +915,13 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
       "achievement song",
       "promotion gift",
       "AI celebration song",
+      "congratulations song for students with name",
+      "congratulations song with name",
     ],
     metadata: {
-      title: "Custom Congratulations Song",
+      title: "Congratulations Song for Students With Name",
       description:
-        "Create a custom congratulations song for a graduation, promotion, new job, award, or big win. Add their story and preview it free.",
+        "Create a congratulations song with their name for a student, graduation, promotion, or big win. Preview a custom celebration song free.",
     },
     palette: {
       accent: "#146cc2",
@@ -930,9 +932,9 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
     },
     hero: {
       badge: "Personalized songs for hard-earned wins",
-      title: "Custom Congratulations Song",
+      title: "Congratulations Song With Their Name",
       description:
-        "Celebrate the work behind the win with a custom congratulations song. Add the late nights, setbacks, inside jokes, and proud moment, then preview a personalized celebration song for a graduation, promotion, award, or new chapter.",
+        "Celebrate the work behind the win with a custom congratulations song that uses their name. Add the late nights, setbacks, inside jokes, and proud moment, then preview a personalized celebration song for a student, graduation, promotion, award, or new chapter.",
       image: "/images/occasions/congratulations-song-hero.webp",
       imageAlt:
         "Graduate smiling with family while listening to a custom congratulations song",
@@ -1003,6 +1005,18 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
           prompt:
             "Include the school chapter, late-night study habit, closest supporters, proudest moment, and dream for what comes next.",
           icon: "award",
+        },
+        {
+          title: "Congratulations song for students with name",
+          description:
+            "Put the student's name in the chorus, then add the class, the grind, and the people who got them there.",
+          keywords: [
+            "congratulations song for students with name",
+            "student congratulations song with name",
+          ],
+          prompt:
+            "Name the student, the school or program, one late-night habit, who showed up for them, and the line you want classmates to hear.",
+          icon: "star",
         },
         {
           title: "Promotion congratulations song",
@@ -1094,6 +1108,11 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
             "A good congratulations song matches the achievement and the person. A custom song can go further by naming the work, setbacks, supporters, and future behind the win.",
         },
         {
+          question: "Can I make a congratulations song for students with their name?",
+          answer:
+            "Yes. Add the student's name, school or program, and one true detail from the year. The name can sit in the chorus while the verses carry the work behind the diploma.",
+        },
+        {
           question: "Can I make a custom graduation song?",
           answer:
             "Yes. Include the graduate's name, school chapter, favorite memories, challenges, and what you hope comes next.",
@@ -1137,9 +1156,9 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
       "AI wedding song generator",
     ],
     metadata: {
-      title: "Custom Wedding Song for First Dances",
+      title: "Custom First Dance Song | Personalized Wedding Music",
       description:
-        "Create a custom wedding song from your love story, vows, and names. Preview personalized first dance music or a one-of-a-kind wedding gift.",
+        "Create a custom first dance song from your love story, vows, and names. Preview personalized wedding music or a one-of-a-kind wedding gift.",
     },
     palette: {
       accent: "#2f6b57",
@@ -2505,9 +2524,9 @@ export function getOccasionLandingConfig(
       shortName: "Birthday",
       primaryKeyword: "personalized birthday song",
       metadata: {
-        title: "Custom Happy Birthday Song",
+        title: "Happy Birthday Song With Custom Name",
         description:
-          "Create a personalized birthday song with their name, favorite memories, and a message made just for them.",
+          "Create a personalized birthday song with their name in the chorus, favorite memories, and a message made just for them.",
       },
       hero: {
         ...configs["mothers-day"]!.hero,

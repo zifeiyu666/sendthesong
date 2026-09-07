@@ -76,7 +76,7 @@ const nextConfig = {
     ...localeAwareRedirects("/team", "/about", { keepLocale: true }),
     ...localeAwareRedirects("/support", "/about", { keepLocale: true }),
     ...localeAwareRedirects("/contact", "/about", { keepLocale: true }),
-    ...localeAwareRedirects("/gifts/song-message", "/gifts", { keepLocale: true }),
+    ...localeAwareRedirects("/prayersong", "/prayer-song"),
   ],
   images: {
     unoptimized:
