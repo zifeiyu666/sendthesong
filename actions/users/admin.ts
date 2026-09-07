@@ -7,7 +7,7 @@ import { db } from '@/lib/db';
 import { creditLogs as creditLogsSchema, session as sessionSchema, user as userSchema, userSource as userSourceSchema } from '@/lib/db/schema';
 import { getErrorMessage } from '@/lib/error-utils';
 import { grantAdminEntitlements } from '@/lib/payments/credit-manager';
-import { count, desc, eq, ilike, or } from 'drizzle-orm';
+import { and, count, desc, eq, ilike, isNull, or } from 'drizzle-orm';
 import { z } from 'zod';
 
 type UserType = typeof userSchema.$inferSelect;
@@ -46,10 +46,12 @@ export async function getUsers({
   pageIndex = 0,
   pageSize = DEFAULT_PAGE_SIZE,
   filter = "",
+  signupSite = "all",
 }: {
   pageIndex?: number;
   pageSize?: number;
   filter?: string;
+  signupSite?: "all" | "unmarked" | string;
 }): Promise<GetUsersResult> {
   if (!(await isAdmin())) {
     return actionResponse.forbidden('Admin privileges required.');
@@ -64,6 +66,11 @@ export async function getUsers({
           ilike(userSchema.name, `%${filter}%`)
         )
       );
+    }
+    if (signupSite === "unmarked") {
+      conditions.push(isNull(userSchema.signupSite));
+    } else if (signupSite && signupSite !== "all") {
+      conditions.push(eq(userSchema.signupSite, signupSite));
     }
 
     // Query users with left join to userSource for source tracking fields
@@ -82,6 +89,7 @@ export async function getUsers({
         banned: userSchema.banned,
         banReason: userSchema.banReason,
         banExpires: userSchema.banExpires,
+        signupSite: userSchema.signupSite,
         createdAt: userSchema.createdAt,
         updatedAt: userSchema.updatedAt,
         // UserSource fields
@@ -102,7 +110,7 @@ export async function getUsers({
       })
       .from(userSchema)
       .leftJoin(userSourceSchema, eq(userSchema.id, userSourceSchema.userId))
-      .where(conditions.length > 0 ? or(...conditions) : undefined)
+      .where(conditions.length > 0 ? and(...conditions) : undefined)
       .orderBy(desc(userSchema.createdAt))
       .offset(pageIndex * pageSize)
       .limit(pageSize);
@@ -110,7 +118,7 @@ export async function getUsers({
     const totalCountQuery = db
       .select({ value: count() })
       .from(userSchema)
-      .where(conditions.length > 0 ? or(...conditions) : undefined);
+      .where(conditions.length > 0 ? and(...conditions) : undefined);
 
     const [results, totalCountResult] = await Promise.all([
       usersQuery,

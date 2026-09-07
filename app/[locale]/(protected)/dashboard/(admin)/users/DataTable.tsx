@@ -15,6 +15,13 @@ import { getUsers, GetUsersResult } from "@/actions/users/admin";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
   Table,
   TableBody,
   TableCell,
@@ -22,6 +29,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { DEFAULT_SIGNUP_SITE_KEY } from "@/lib/auth/signup-site";
 import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -43,6 +51,7 @@ export function DataTable<TData, TValue>({
   const [sorting, setSorting] = useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = useState("");
   const [debouncedGlobalFilter] = useDebounce(globalFilter, 500);
+  const [signupSiteFilter, setSignupSiteFilter] = useState("all");
   const [columnPinning, setColumnPinning] = useState<ColumnPinningState>({
     left: ["user"],
     right: ["actions"],
@@ -56,15 +65,16 @@ export function DataTable<TData, TValue>({
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    if (debouncedGlobalFilter !== undefined) {
+    if (debouncedGlobalFilter !== undefined || signupSiteFilter) {
       setPagination((prev) => ({ ...prev, pageIndex: 0 }));
     }
-  }, [debouncedGlobalFilter]);
+  }, [debouncedGlobalFilter, signupSiteFilter]);
 
   useEffect(() => {
     if (
       pagination.pageIndex === 0 &&
       !debouncedGlobalFilter &&
+      signupSiteFilter === "all" &&
       data === initialData
     ) {
       return;
@@ -77,6 +87,7 @@ export function DataTable<TData, TValue>({
           pageIndex: pagination.pageIndex,
           pageSize: pagination.pageSize,
           filter: debouncedGlobalFilter,
+          signupSite: signupSiteFilter,
         });
         setData(result.data?.users as TData[]);
         setPageCount(
@@ -96,6 +107,7 @@ export function DataTable<TData, TValue>({
     fetchData();
   }, [
     debouncedGlobalFilter,
+    signupSiteFilter,
     pagination.pageIndex,
     pagination.pageSize,
     initialData,
@@ -123,13 +135,23 @@ export function DataTable<TData, TValue>({
 
   return (
     <div>
-      <div className="flex items-center py-4">
+      <div className="flex flex-wrap items-center gap-3 py-4">
         <Input
           placeholder="Search by Email, Name..."
           value={globalFilter ?? ""}
           onChange={(event) => setGlobalFilter(event.target.value)}
           className="max-w-sm"
         />
+        <Select value={signupSiteFilter} onValueChange={setSignupSiteFilter}>
+          <SelectTrigger className="w-[220px]" aria-label="Filter by signup site">
+            <SelectValue placeholder="Signup site" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All signup sites</SelectItem>
+            <SelectItem value={DEFAULT_SIGNUP_SITE_KEY}>One Custom Song</SelectItem>
+            <SelectItem value="unmarked">Unknown / unmarked</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
       <div className="relative min-h-[200px] max-h-[calc(100vh-200px)] overflow-auto rounded-md border">
         {isLoading && (

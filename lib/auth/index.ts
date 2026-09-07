@@ -12,6 +12,7 @@ import {
   TRACKING_COOKIE_NAME,
 } from "@/lib/tracking/server";
 import { isTrackingEnabled } from "@/lib/tracking/shared";
+import { SIGNUP_SITE_KEY } from "@/lib/auth/signup-site";
 import { redis } from "@/lib/upstash";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
@@ -86,6 +87,13 @@ export const auth = betterAuth({
     deleteUser: {
       enabled: true,
     },
+    additionalFields: {
+      signupSite: {
+        type: "string",
+        required: false,
+        input: false,
+      },
+    },
   },
   database: drizzleAdapter(db, {
     provider: "pg",
@@ -109,6 +117,14 @@ export const auth = betterAuth({
   databaseHooks: {
     user: {
       create: {
+        before: async (userData) => {
+          return {
+            data: {
+              ...userData,
+              signupSite: SIGNUP_SITE_KEY,
+            },
+          };
+        },
         after: async (createdUser) => {
           const cookieStore = await cookies();
 

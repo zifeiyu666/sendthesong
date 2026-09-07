@@ -77,6 +77,8 @@ Customer Support (optional):
 
 Pricing/Marketing:
 - NEXT_PUBLIC_PRICING_PATH (e.g. pricing)
+- PRICING_SITE_KEY (e.g. default; isolates pricing plans when sites share a database)
+- SIGNUP_SITE_KEY (e.g. onecustomsong; marks which site created a user)
 - NEXT_PUBLIC_DEFAULT_CURRENCY (e.g. usd)
 - NEXT_PUBLIC_DISCORD_INVITE_URL
 

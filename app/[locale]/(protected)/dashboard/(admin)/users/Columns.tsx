@@ -9,6 +9,7 @@ import {
   UserWithSource,
 } from "@/actions/users/admin";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -35,6 +36,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { DEFAULT_SIGNUP_SITE_KEY, getSignupSiteLabel } from "@/lib/auth/signup-site";
 import { ColumnDef } from "@tanstack/react-table";
 import dayjs from "dayjs";
 import { History, Loader2, MoreHorizontal, PlusCircle } from "lucide-react";
@@ -346,6 +348,23 @@ export const columns: ColumnDef<UserType>[] = [
             </span>
           </div>
         </div>
+      );
+    },
+  },
+  {
+    accessorKey: "signupSite",
+    header: "Signup site",
+    cell: ({ row }) => {
+      const signupSite = row.original.signupSite;
+      if (!signupSite) {
+        return <span className="text-sm text-muted-foreground">Unknown</span>;
+      }
+
+      const isThisSite = signupSite === DEFAULT_SIGNUP_SITE_KEY;
+      return (
+        <Badge variant={isThisSite ? "secondary" : "outline"}>
+          {getSignupSiteLabel(signupSite)}
+        </Badge>
       );
     },
   },

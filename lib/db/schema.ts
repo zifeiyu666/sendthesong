@@ -30,6 +30,8 @@ export const user = pgTable('user', {
   banned: boolean('banned'),
   banReason: text('ban_reason'),
   banExpires: timestamp('ban_expires'),
+  // Which product site created this user (shared DB across sibling sites)
+  signupSite: varchar('signup_site', { length: 100 }),
   createdAt: timestamp('created_at', { withTimezone: true })
     .defaultNow()
     .notNull(),
@@ -37,7 +39,9 @@ export const user = pgTable('user', {
     .defaultNow()
     .notNull()
     .$onUpdate(() => new Date()),
-})
+}, (table) => ({
+  signupSiteIdx: index('idx_user_signup_site').on(table.signupSite),
+}))
 
 export const session = pgTable("session", {
   id: uuid('id').primaryKey().defaultRandom(),
