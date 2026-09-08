@@ -37,7 +37,7 @@ describe("prayer song SEO landing page", () => {
   test("uses the intended metadata and English canonical", () => {
     assert.match(
       pageSource,
-      /Custom Prayer Song \| Turn Your Prayer Into a Song/,
+      /Turn Your Prayer Into a Personalized Prayer Song/,
     );
     assert.match(pageSource, /canonicalUrl: path/);
     assert.match(pageSource, /availableLocales: \["en"\]/);
@@ -68,12 +68,29 @@ describe("prayer song SEO landing page", () => {
   test("uses CTA buttons instead of a hero brief form", () => {
     assert.doesNotMatch(landingSource, /<StructuredSongBrief/);
     assert.doesNotMatch(landingSource, /Recipient name/);
+    assert.doesNotMatch(landingSource, /href="\/samples"/);
     assert.match(landingSource, /<MagneticButton/);
     assert.match(landingSource, /Create my prayer song/);
-    assert.match(landingSource, /href="\/samples"/);
-    assert.match(landingSource, /\/gifts\/song-message/);
+    assert.match(landingSource, /href="#prayer-song-examples"/);
+    assert.match(landingSource, /<OccasionShowcase/);
+    assert.match(landingSource, /Hear a Prayer Take Shape as a Song/);
     assert.match(landingSource, /\/occasions\/get-well-soon/);
     assert.match(landingSource, /\/occasions\/in-memoriam/);
+  });
+
+  test("hero sample card plays a prayer-song occasion demo", () => {
+    const heroSource = readFileSync(
+      join(process.cwd(), "components/gifts/PrayerSongHeroVisual.tsx"),
+      "utf8",
+    );
+    const cardsSource = readFileSync(
+      join(process.cwd(), "components/gifts/prayerSongOccasionCards.ts"),
+      "utf8",
+    );
+
+    assert.match(heroSource, /prayerSongHeroSample/);
+    assert.match(heroSource, /playTrack\(heroSampleTrack\)/);
+    assert.match(cardsSource, /id === "mothers-day-mom"/);
   });
 
   test("is discoverable from both header and footer navigation", () => {

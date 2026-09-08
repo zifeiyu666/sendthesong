@@ -155,4 +155,17 @@ describe("occasion showcase", () => {
     assert.ok(howItWorksIndex < showcaseIndex);
     assert.ok(showcaseIndex < useCasesIndex);
   });
+
+  test("accepts optional copy, cards, and section id overrides for other pages", () => {
+    const source = readFileSync(
+      join(process.cwd(), "components/home/OccasionShowcase.tsx"),
+      "utf8",
+    );
+
+    assert.match(source, /cards\?: OccasionCard\[\]/);
+    assert.match(source, /copy\?: OccasionShowcaseCopy/);
+    assert.match(source, /id = "occasions"/);
+    assert.match(source, /id=\{id\}/);
+    assert.match(source, /scroll-mt-24/);
+  });
 });

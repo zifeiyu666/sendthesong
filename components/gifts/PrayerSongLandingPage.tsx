@@ -1,22 +1,18 @@
 import FAQ from "@/components/home/FAQ";
+import OccasionShowcase from "@/components/home/OccasionShowcase";
 import Testimonials from "@/components/home/Testimonials";
 import HowItWorksSection from "@/components/shared/HowItWorksSection";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { Link as I18nLink } from "@/i18n/routing";
 import {
-  Church,
   Heart,
-  HeartHandshake,
-  HeartPulse,
   Music2,
   PlayCircle,
   Sparkles,
-  Sunrise,
-  Users,
 } from "lucide-react";
-import type { ReactNode } from "react";
 
 import PrayerSongHeroVisual from "./PrayerSongHeroVisual";
+import { prayerSongOccasionCards } from "./prayerSongOccasionCards";
 
 const pagePath = "/prayer-song";
 const createHref = "/create-song?occasion=just-because";
@@ -45,45 +41,6 @@ const benefits = [
     description:
       "Share a private link, play it at a gathering, or print a lyric as a keepsake they can return to.",
     icon: PlayCircle,
-  },
-];
-
-const moments = [
-  {
-    title: "For your partner",
-    description:
-      "Turn a blessing, a promise, or a quiet thank-you into a prayer song they can replay when words feel thin.",
-    icon: Heart,
-  },
-  {
-    title: "For children",
-    description:
-      "Write a covering prayer around their name, the courage you want for them, and the love that stays close.",
-    icon: Users,
-  },
-  {
-    title: "For parents",
-    description:
-      "Give thanks for the faith, meals, and ordinary care that shaped your family, then let the chorus say it back.",
-    icon: HeartHandshake,
-  },
-  {
-    title: "For healing",
-    description:
-      "Hold a hospital week, a recovery, or a hard season in a gentle custom prayer song instead of a generic get-well card.",
-    icon: HeartPulse,
-  },
-  {
-    title: "For loss",
-    description:
-      "Honor a life with specific memories, a familiar phrase, and a prayer that can be played at a gathering or kept privately.",
-    icon: Church,
-  },
-  {
-    title: "For strength",
-    description:
-      "Write toward breakthrough, courage, or a new chapter. Keep the lyric honest rather than oversized.",
-    icon: Sunrise,
   },
 ];
 
@@ -204,29 +161,9 @@ function SectionHeader({
   );
 }
 
-function IconCard({
-  icon,
-  title,
-  description,
-}: {
-  icon: ReactNode;
-  title: string;
-  description: string;
-}) {
-  return (
-    <article className="group rounded-lg border border-[#f0e3dc] bg-white p-6 transition hover:-translate-y-1 hover:shadow-[0_18px_48px_rgba(59,31,18,0.08)]">
-      <div className="bg-accent text-accent-foreground group-hover:bg-primary group-hover:text-primary-foreground mb-5 flex size-11 items-center justify-center rounded-lg transition">
-        {icon}
-      </div>
-      <h3 className="text-xl font-black leading-tight text-[#261712]">{title}</h3>
-      <p className="mt-3 text-sm leading-6 text-[#74665f]">{description}</p>
-    </article>
-  );
-}
-
 export default function PrayerSongLandingPage() {
   return (
-    <div className="w-full overflow-hidden bg-[#fffaf7] text-[#2b1914]">
+    <div className="w-full overflow-x-hidden bg-[#fffaf7] text-[#2b1914]">
       <section className="relative isolate bg-[#fffaf7] px-6 pb-12 pt-10 sm:px-8 md:pb-14 md:pt-14 lg:px-12 xl:px-16">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_14%_16%,rgba(246,190,50,0.2),transparent_30%),radial-gradient(circle_at_84%_20%,rgba(184,63,93,0.13),transparent_34%),linear-gradient(115deg,rgba(255,247,239,0.98)_0%,rgba(255,255,255,0.96)_46%,rgba(255,239,245,0.76)_100%)]" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-28 bg-gradient-to-b from-transparent to-white/72" />
@@ -254,7 +191,7 @@ export default function PrayerSongLandingPage() {
                 Create my prayer song
               </MagneticButton>
               <MagneticButton
-                href="/samples"
+                href="#prayer-song-examples"
                 prefetch={false}
                 size="sm"
                 variant="light"
@@ -264,14 +201,6 @@ export default function PrayerSongLandingPage() {
                 Listen to examples
               </MagneticButton>
             </div>
-            <p className="mt-6 text-sm font-semibold">
-              <I18nLink
-                href="/gifts/song-message"
-                className="text-[#bf3f5d] underline-offset-4 hover:underline"
-              >
-                Send a song with a message
-              </I18nLink>
-            </p>
           </div>
           <PrayerSongHeroVisual />
         </div>
@@ -308,34 +237,26 @@ export default function PrayerSongLandingPage() {
         </div>
       </section>
 
-      <section className="bg-white px-6 py-16 sm:px-8 md:py-20 lg:px-12 xl:px-16">
-        <div className="mx-auto max-w-6xl">
-          <SectionHeader
-            eyebrow="Gift a prayer song"
-            title="For a loved one, or for yourself"
-            description="The same flow works for encouragement, remembrance, healing, and everyday covering prayers."
-          />
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {moments.map((item) => {
-              const Icon = item.icon;
-              return (
-                <IconCard
-                  key={item.title}
-                  title={item.title}
-                  description={item.description}
-                  icon={<Icon className="size-5" />}
-                />
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       <HowItWorksSection
         eyebrow="How it works"
         title="From prayer to a finished song"
         description="Keep the writing natural. The creation flow turns your blessing into lyrics, music, and a gift-ready result."
         steps={steps}
+      />
+
+      <OccasionShowcase
+        id="prayer-song-examples"
+        headingId="prayer-song-examples-heading"
+        cards={prayerSongOccasionCards}
+        copy={{
+          eyebrow: "Prayer songs",
+          title: "Hear a Prayer Take Shape as a Song",
+          description:
+            "Play a sample, then start from the blessing, testimony, or hope you want someone to hear.",
+          previous: "Previous prayer song example",
+          next: "Next prayer song example",
+          carouselLabel: "Prayer song examples",
+        }}
       />
 
       <section className="bg-[#fff4f7] px-6 py-16 sm:px-8 md:py-20 lg:px-12 xl:px-16">

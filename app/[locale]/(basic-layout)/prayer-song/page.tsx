@@ -10,7 +10,7 @@ import { permanentRedirect } from "next/navigation";
 type Params = Promise<{ locale: string }>;
 
 const path = "/prayer-song";
-const title = "Custom Prayer Song | Turn Your Prayer Into a Song";
+const title = "Turn Your Prayer Into a Personalized Prayer Song";
 const description =
   "Create a custom prayer song from a blessing, testimony, or hope you want someone to hear. Preview it free, refine the lyrics, and share a personalized prayer song gift.";
 

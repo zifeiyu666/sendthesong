@@ -1,7 +1,27 @@
-import { Music2 } from "lucide-react";
+"use client";
+
+import { Pause, Play } from "lucide-react";
 import Image from "next/image";
 
+import {
+  getPrayerSongSamplePlayerTrack,
+  prayerSongHeroSample,
+} from "@/components/gifts/prayerSongOccasionCards";
+import { useGlobalMusicPlayer } from "@/lib/music-player/global-player-store";
+import { cn } from "@/lib/utils";
+
+const heroSampleTrack = getPrayerSongSamplePlayerTrack(prayerSongHeroSample);
+
 export default function PrayerSongHeroVisual() {
+  const { isPlaying, playTrack, toggle, track } = useGlobalMusicPlayer();
+  const isCurrentTrack =
+    track?.id === heroSampleTrack.id &&
+    track.audioUrl === heroSampleTrack.audioUrl;
+  const isCurrentTrackPlaying = isCurrentTrack && isPlaying;
+  const actionLabel = isCurrentTrackPlaying
+    ? `Pause sample song: ${heroSampleTrack.title}`
+    : `Play sample song: ${heroSampleTrack.title}`;
+
   return (
     <div className="relative">
       <div className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-[radial-gradient(circle_at_62%_24%,rgba(255,255,255,0.56),transparent_42%)] blur-2xl" />
@@ -18,10 +38,31 @@ export default function PrayerSongHeroVisual() {
       </div>
 
       <div className="absolute -bottom-5 left-5 right-5 md:left-auto md:w-[300px]">
-        <div className="rounded-lg border border-white/70 bg-white/88 p-3.5 shadow-[0_22px_56px_rgba(65,34,50,0.2)] backdrop-blur-md">
+        <button
+          type="button"
+          aria-label={actionLabel}
+          className="w-full rounded-lg border border-white/70 bg-white/88 p-3.5 text-left shadow-[0_22px_56px_rgba(65,34,50,0.2)] backdrop-blur-md transition hover:-translate-y-0.5 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#bf3f5d]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#fffaf7]"
+          onClick={() => {
+            if (isCurrentTrack) {
+              toggle();
+              return;
+            }
+
+            playTrack(heroSampleTrack);
+          }}
+        >
           <div className="flex items-start gap-3">
-            <span className="bg-accent text-accent-foreground flex size-9 shrink-0 items-center justify-center rounded-lg shadow-[inset_0_1px_0_rgba(255,255,255,0.65)]">
-              <Music2 className="size-4" />
+            <span
+              className={cn(
+                "flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#ffe0e7] text-[#bf3f5d] shadow-[inset_0_1px_0_rgba(255,255,255,0.65)]",
+                isCurrentTrackPlaying && "bg-[#bf3f5d] text-white",
+              )}
+            >
+              {isCurrentTrackPlaying ? (
+                <Pause className="size-4 fill-current" />
+              ) : (
+                <Play className="ml-0.5 size-4 fill-current" />
+              )}
             </span>
             <div>
               <p className="text-sm font-black text-[#261712]">
@@ -32,7 +73,7 @@ export default function PrayerSongHeroVisual() {
               </p>
             </div>
           </div>
-        </div>
+        </button>
       </div>
     </div>
   );

@@ -55,6 +55,8 @@ function MagneticButton({
   style,
   onMouseMove,
   onMouseLeave,
+  onClick,
+  prefetch,
   ...props
 }: MagneticButtonProps) {
   const ref = React.useRef<HTMLElement | null>(null);
@@ -154,15 +156,56 @@ function MagneticButton({
   );
 
   if (href) {
+    const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+      onClick?.(event);
+
+      if (event.defaultPrevented || !href.startsWith("#")) {
+        return;
+      }
+
+      const target = document.getElementById(href.slice(1));
+
+      if (!target) {
+        return;
+      }
+
+      event.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      if (window.location.hash !== href) {
+        window.history.pushState(null, "", href);
+      }
+    };
+
+    if (href.startsWith("#")) {
+      return (
+        <a
+          ref={setElementRef}
+          href={href}
+          data-slot="magnetic-button"
+          className={classes}
+          style={style}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          onClick={handleClick}
+          {...props}
+        >
+          {content}
+        </a>
+      );
+    }
+
     return (
       <Link
         ref={setElementRef}
         href={href}
+        prefetch={prefetch}
         data-slot="magnetic-button"
         className={classes}
         style={style}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
+        onClick={onClick}
         {...props}
       >
         {content}
@@ -178,6 +221,7 @@ function MagneticButton({
       style={style}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onClick={onClick}
       {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
     >
       {content}

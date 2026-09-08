@@ -51,10 +51,33 @@ const isMobileCarouselLayout = () => {
   return window.matchMedia("(max-width: 639px)").matches;
 };
 
-export default function OccasionShowcase() {
+type OccasionShowcaseCopy = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  previous?: string;
+  next?: string;
+  carouselLabel?: string;
+};
+
+type OccasionShowcaseProps = {
+  id?: string;
+  headingId?: string;
+  cards?: OccasionCard[];
+  copy?: OccasionShowcaseCopy;
+};
+
+export default function OccasionShowcase({
+  id = "occasions",
+  headingId = "occasion-showcase-heading",
+  cards,
+  copy,
+}: OccasionShowcaseProps = {}) {
   const t = useTranslations("Landing.OccasionShowcase");
   const locale = useLocale();
   const localizedCards = useMemo(() => {
+    if (cards) return cards;
+
     const translations = occasionCardTranslations[locale as "es" | "ja"];
 
     if (!translations) return occasionCards;
@@ -63,7 +86,13 @@ export default function OccasionShowcase() {
       ...card,
       ...(translations[card.id] || {}),
     }));
-  }, [locale]);
+  }, [cards, locale]);
+  const eyebrow = copy?.eyebrow ?? t("eyebrow");
+  const title = copy?.title ?? t("title");
+  const description = copy?.description ?? t("description");
+  const previousLabel = copy?.previous ?? t("previous");
+  const nextLabel = copy?.next ?? t("next");
+  const carouselLabel = copy?.carouselLabel ?? t("carouselLabel");
   const sectionRef = useRef<HTMLElement | null>(null);
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
@@ -413,9 +442,9 @@ export default function OccasionShowcase() {
   return (
     <section
       ref={sectionRef}
-      id="occasions"
-      className="home-section-deep home-warm-ambient relative isolate overflow-hidden py-16 md:py-20"
-      aria-labelledby="occasion-showcase-heading"
+      id={id}
+      className="home-section-deep home-warm-ambient relative isolate overflow-hidden scroll-mt-24 py-16 md:py-20"
+      aria-labelledby={headingId}
     >
       <div
         aria-hidden="true"
@@ -423,14 +452,14 @@ export default function OccasionShowcase() {
       />
       <div className="home-container relative">
         <div className="home-section-header">
-          <p className="home-eyebrow">{t("eyebrow")}</p>
+          <p className="home-eyebrow">{eyebrow}</p>
           <h2
-            id="occasion-showcase-heading"
+            id={headingId}
             className="home-title hero-title-warm"
           >
-            {t("title")}
+            {title}
           </h2>
-          <p className="home-description text-white/70">{t("description")}</p>
+          <p className="home-description text-white/70">{description}</p>
         </div>
       </div>
 
@@ -438,7 +467,7 @@ export default function OccasionShowcase() {
         setApi={setMobileApi}
         opts={{ align: "center", containScroll: "trimSnaps" }}
         className="sm:hidden"
-        aria-label={t("carouselLabel")}
+        aria-label={carouselLabel}
       >
         <CarouselContent className="-ml-3 px-4 pb-6">
           {localizedCards.map((occasion, index) => (
@@ -461,7 +490,7 @@ export default function OccasionShowcase() {
           onClick={() => mobileApi?.scrollPrev()}
           disabled={mobileActiveIndex === 0}
           className="rounded-full border-white/15 bg-white/8 text-white shadow-[0_12px_34px_rgba(0,0,0,0.28)] backdrop-blur hover:border-primary/50 hover:bg-white/12 disabled:opacity-40"
-          aria-label={t("previous")}
+          aria-label={previousLabel}
         >
           <ArrowLeft className="size-5" />
         </Button>
@@ -476,7 +505,7 @@ export default function OccasionShowcase() {
           onClick={() => mobileApi?.scrollNext()}
           disabled={mobileActiveIndex === localizedCards.length - 1}
           className="rounded-full border-white/15 bg-white/8 text-white shadow-[0_12px_34px_rgba(0,0,0,0.28)] backdrop-blur hover:border-primary/50 hover:bg-white/12 disabled:opacity-40"
-          aria-label={t("next")}
+          aria-label={nextLabel}
         >
           <ArrowRight className="size-5" />
         </Button>
@@ -517,7 +546,7 @@ export default function OccasionShowcase() {
           onClick={() => moveToIndex(activeIndex - 1)}
           disabled={activeIndex === 0}
           className="rounded-full border-white/15 bg-white/8 text-white shadow-[0_12px_34px_rgba(0,0,0,0.28)] backdrop-blur hover:border-primary/50 hover:bg-white/12 disabled:opacity-40"
-          aria-label={t("previous")}
+          aria-label={previousLabel}
         >
           <ArrowLeft className="size-5" />
         </Button>
@@ -531,7 +560,7 @@ export default function OccasionShowcase() {
           onClick={() => moveToIndex(activeIndex + 1)}
           disabled={activeIndex === localizedCards.length - 1}
           className="rounded-full border-white/15 bg-white/8 text-white shadow-[0_12px_34px_rgba(0,0,0,0.28)] backdrop-blur hover:border-primary/50 hover:bg-white/12 disabled:opacity-40"
-          aria-label={t("next")}
+          aria-label={nextLabel}
         >
           <ArrowRight className="size-5" />
         </Button>
