@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 export type HeaderActionTextProps = {
   children: string;
   icon?: ReactNode;
+  trailingIcon?: ReactNode;
   rollingTextClassName?: string;
 };
 
@@ -12,6 +13,7 @@ export const headerActionButtonClassName =
 export function HeaderActionText({
   children,
   icon,
+  trailingIcon,
   rollingTextClassName = "text-primary-foreground",
 }: HeaderActionTextProps) {
   return (
@@ -23,6 +25,7 @@ export function HeaderActionText({
       >
         {icon}
         {children}
+        {trailingIcon}
       </span>
       <span
         aria-hidden="true"
@@ -30,6 +33,7 @@ export function HeaderActionText({
       >
         {icon}
         {children}
+        {trailingIcon}
       </span>
     </span>
   );

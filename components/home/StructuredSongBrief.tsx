@@ -439,8 +439,11 @@ export default function StructuredSongBrief({
             type="submit"
             className="group/nav-link h-7 shrink-0 overflow-hidden rounded-full bg-primary px-3 text-[0.76rem] font-semibold text-white shadow-[0_8px_18px_rgba(224,65,50,0.28)] hover:bg-primary/90 sm:h-8 sm:text-[0.8rem]"
           >
-            <HeaderActionText icon={<Sparkles className="size-3.5" />}>
-              {submitLabel} <ArrowRight className="size-3.5" />
+            <HeaderActionText
+              icon={<Sparkles className="size-3.5" />}
+              trailingIcon={<ArrowRight className="size-3.5" />}
+            >
+              {submitLabel}
             </HeaderActionText>
           </Button>
         </div>
