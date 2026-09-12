@@ -530,7 +530,7 @@ export default function SongMessageLandingPage() {
               href="/music/personalized-gift"
               className="inline-flex h-10 items-center px-4 text-sm font-bold text-[#c23d4b] underline-offset-4 hover:underline sm:h-11"
             >
-              Explore personalized music gifts
+              Explore custom music gifts
             </I18nLink>
           </div>
         </div>
@@ -549,7 +549,7 @@ export default function SongMessageLandingPage() {
             {[
               { title: "Voice message gift ideas", description: "Record a greeting or spoken opening and fold it into a gift that still feels like you.", href: "/blog/voice-message-gift-ideas" },
               { title: "How to send a song to someone", description: "Compare text links, audio files, share pages, and gift-style song delivery.", href: "/blog/how-to-send-a-song-to-someone" },
-              { title: "Personalized music gifts", description: "Explore custom songs, music videos, lyric keepsakes, and occasion ideas.", href: "/music/personalized-gift" },
+              { title: "Custom music gifts", description: "Explore custom songs, music videos, lyric keepsakes, and occasion ideas.", href: "/music/personalized-gift" },
             ].map((article) => (
               <article key={article.href} className="rounded-lg border border-[#f0e3dc] bg-white p-6 shadow-[0_14px_38px_rgba(59,31,18,0.05)]">
                 <Gift className="size-5 text-[#c23d4b]" />

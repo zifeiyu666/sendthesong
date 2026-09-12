@@ -95,6 +95,34 @@ test("husband and our-song landings exist as dedicated pages", () => {
   assert.match(ourSong, /Our Song Personalised/);
 });
 
+test("personalized music gift page owns custom music gifts", () => {
+  const page = readFileSync(
+    join(
+      process.cwd(),
+      "app/[locale]/(basic-layout)/music/personalized-gift/page.tsx",
+    ),
+    "utf8",
+  );
+  const landing = readFileSync(
+    join(process.cwd(), "components/occasions/MusicGiftSongsPage.tsx"),
+    "utf8",
+  );
+  const nav = readFileSync(
+    join(process.cwd(), "i18n/messages/en/common.json"),
+    "utf8",
+  );
+
+  assert.match(page, /title: locale === "es"[\s\S]*: "Custom Music Gifts for Music Lovers"/);
+  assert.match(page, /custom music gifts/);
+  assert.match(page, /personalized music gifts/);
+  assert.match(landing, /<h1[\s\S]*Custom Music Gifts Written for Them/);
+  assert.match(landing, /What are custom music gifts\?/);
+  assert.match(landing, /searchTerms: \["custom music gifts"/);
+  assert.match(nav, /"name": "Custom music gifts"/);
+  assert.match(nav, /"music": "Custom music gifts"/);
+  assert.doesNotMatch(landing, /Music Personalized Gifts Written for Them/);
+});
+
 test("prayer-song landing targets the prayersong query", () => {
   const prayerSong = readFileSync(
     join(process.cwd(), "app/[locale]/(basic-layout)/prayer-song/page.tsx"),

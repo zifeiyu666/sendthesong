@@ -411,7 +411,7 @@
             "description": "Turn a blessing, testimony, or hope into a personalized prayer song gift."
           },
           {
-            "name": "Music personalized gifts",
+            "name": "Custom music gifts",
             "href": "/music/personalized-gift",
             "description": "Explore personalized songs, videos, and keepsakes for music lovers."
           },
@@ -570,7 +570,7 @@
               "href": "/prayer-song"
             },
             {
-              "name": "Music personalized gifts",
+              "name": "Custom music gifts",
               "href": "/music/personalized-gift"
             },
             {
@@ -635,7 +635,7 @@
       "prayerSongDescription": "Turn a blessing, testimony, or hope into a personalized prayer song."
     },
     "formats": {
-      "music": "Personalized music gifts",
+      "music": "Custom music gifts",
       "musicDescription": "Pair a custom song with a music video and printable keepsake.",
       "playlists": "Gift playlists",
       "playlistsDescription": "Browse occasion, recipient, and style-led playlist ideas.",

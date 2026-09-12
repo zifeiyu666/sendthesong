@@ -127,7 +127,7 @@ export default function MusicGiftHeroVisual() {
             <div className="absolute inset-0 transition-transform duration-500 ease-out [transform:translate3d(var(--hero-image-x),var(--hero-image-y),0)_scale(1.05)] will-change-transform">
               <Image
                 src="/images/occasions/music-gift-hero.webp"
-                alt="Personalized music gift setup with framed lyrics, headphones, and a cozy listening corner"
+                alt="Custom music gifts setup with framed lyrics, headphones, and a cozy listening corner"
                 fill
                 priority
                 sizes="(min-width: 1024px) 48vw, 100vw"

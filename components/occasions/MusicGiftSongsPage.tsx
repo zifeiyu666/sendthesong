@@ -137,6 +137,17 @@ const useCases: IconBlock[] = [
 
 const searchIntentSpotlights: SearchIntentSpotlight[] = [
   {
+    title: "Custom music gifts",
+    description:
+      "People searching for custom music gifts usually want a present built around one person, not another accessory. A personalized music gift works best as an original song plus a replayable keepsake, instead of merch, vinyl, or a playlist of other people's tracks.",
+    searchTerms: ["custom music gifts", "personalized music gifts"],
+    promptHint:
+      "Start with who it is for, one memory only they would recognize, the feeling you want the chorus to leave, and whether they should receive audio, a video, lyric art, or all three.",
+    icon: <Headphones className="size-5" />,
+    cardClassName:
+      "lg:col-span-2 xl:col-span-2 bg-[linear-gradient(135deg,rgba(255,248,243,0.98),rgba(255,255,255,0.9))]",
+  },
+  {
     title: "Music gifts for music lovers",
     description:
       "This search intent usually means the buyer wants something more personal than headphones, vinyl, or merch. A custom song works best when the gift reflects listening taste and emotional context together.",
@@ -144,8 +155,6 @@ const searchIntentSpotlights: SearchIntentSpotlight[] = [
     promptHint:
       "Include the genres they obsess over, where they listen most, a lyric-worthy memory, and what you want them to feel when the chorus hits.",
     icon: <Headphones className="size-5" />,
-    cardClassName:
-      "lg:col-span-2 xl:col-span-2 bg-[linear-gradient(135deg,rgba(255,248,243,0.98),rgba(255,255,255,0.9))]",
   },
   {
     title: "Music Christmas gift ideas",
@@ -238,9 +247,14 @@ const testimonials: TestimonialItem[] = [
 
 const faqs = [
   {
+    question: "What are custom music gifts?",
+    answer:
+      "Custom music gifts are personalized music gifts built around one person: an original custom song from names, memories, and favorite sounds, plus an optional music video or lyric keepsake. They are not generic merch, vinyl, or a playlist of other people's songs.",
+  },
+  {
     question: "What is a personalized music gift?",
     answer:
-      "A personalized music gift turns real details such as names, memories, favorite sounds, and your message into a custom song you can preview, refine, and share as a keepsake.",
+      "It is the same idea as a custom music gift. A personalized music gift turns real details such as names, memories, favorite sounds, and your message into a custom song you can preview, refine, and share as a keepsake.",
   },
   {
     question: "Is this a good gift for music lovers?",
@@ -336,18 +350,18 @@ export default function MusicGiftSongsPage({
               <Stars />
               <span className="font-bold text-[#261712]">Excellent</span>
               <span className="text-[#d8c6bd]">/</span>
-              <span>Personalized music gifts</span>
+              <span>Custom music gifts</span>
             </div>
 
-            <h1 className="mt-5 max-w-[12ch] text-balance font-sans text-[2.5rem] font-black leading-[0.98] tracking-normal text-[#250f0b] min-[420px]:text-[2.9rem] sm:text-[3.7rem] lg:text-[4.45rem]">
-              Music Personalized Gifts Written for Them
+            <h1 className="mt-5 max-w-[14ch] text-balance font-sans text-[2.5rem] font-black leading-[0.98] tracking-normal text-[#250f0b] min-[420px]:text-[2.9rem] sm:text-[3.7rem] lg:text-[4.45rem]">
+              Custom Music Gifts Written for Them
             </h1>
 
             <p className="mt-5 max-w-lg text-base leading-7 text-[#6c5f59] sm:text-lg">
-              Create a custom song gift for the music lover in your life, then
-              turn it into a replayable keepsake with a preview, music video,
-              and lyric wall art. It is a more personal way to give
-              personalized music for Christmas, kids, partners, family, or
+              Create custom music gifts for the music lover in your life, then
+              turn the personalized music gift into a replayable keepsake with
+              a preview, music video, and lyric wall art. It is a more personal
+              way to give music for Christmas, kids, partners, family, or
               friends.
             </p>
 
@@ -382,7 +396,7 @@ export default function MusicGiftSongsPage({
           <SectionHeader
             eyebrow="Why it works"
             title="More lasting than another generic music gift"
-            description="A personalized music gift combines story, sound, and keepsake value in one reveal. It feels specific because it is built around the person, not just the category."
+            description="Custom music gifts combine story, sound, and keepsake value in one reveal. A personalized music gift feels specific because it is built around the person, not just the category."
           />
 
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -447,7 +461,7 @@ export default function MusicGiftSongsPage({
           <SectionHeader
             eyebrow="Search intent"
             title="Music gift ideas that map to real buying intent"
-            description="This section speaks directly to the ways people search for meaningful music gifts, then connects those searches to one flexible custom-song product."
+            description="This section speaks directly to the ways people search for custom music gifts, then connects those searches to one flexible custom-song product."
           />
 
           <p className="mx-auto mt-6 max-w-4xl text-center text-sm leading-7 text-[#7a6961] md:text-base">
@@ -586,10 +600,10 @@ export default function MusicGiftSongsPage({
       )}
 
       <FAQ
-        title="Common personalized music gift questions"
+        title="Common custom music gift questions"
         description="A few honest details are enough to start, and you can refine the song before you give it."
         items={faqs}
-        ctaTitle="Ready to make a music gift?"
+        ctaTitle="Ready to make a custom music gift?"
         ctaDescription="Start with a free preview, shape the story, and turn it into a custom song, video, or lyric keepsake."
         ctaButtonLabel="Create Your Song"
         ctaHref={createMusicGiftSongHref}

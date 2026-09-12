@@ -137,7 +137,7 @@ export default function OurProducts({
                 href={productHrefs[productKey]}
                 className={ctaClassName.replace("mt-7 ", "")}
               >
-                Explore personalized music gifts
+                Explore custom music gifts
                 <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
               </Link>
               <MusicVideoStudioCta

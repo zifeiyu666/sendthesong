@@ -47,11 +47,20 @@ export async function generateMetadata({
   const { locale } = await params;
 
   return constructMetadata({
-    title: locale === "es" ? "Regalos musicales personalizados" : locale === "ja" ? "音楽好きに贈るパーソナルな音楽ギフト" : "Music Personalized Gifts for Music Lovers",
+    title: locale === "es" ? "Regalos musicales personalizados" : locale === "ja" ? "音楽好きに贈るパーソナルな音楽ギフト" : "Custom Music Gifts for Music Lovers",
     description: locale === "es"
       ? "Crea un regalo musical personalizado con una canción hecha a partir de recuerdos, un vídeo con fotos y una lámina imprimible con la letra."
       : locale === "ja" ? "思い出から作るオリジナルソング、写真入り動画、印刷できる歌詞アートを組み合わせた音楽ギフトです。"
-      : "Create music personalized gifts for music lovers, kids, Christmas, and lyric keepsakes with custom songs, music videos, and printable wall art.",
+      : "Create custom music gifts for music lovers, kids, Christmas, and lyric keepsakes with a personalized song, music video, and printable wall art.",
+    keywords:
+      locale === "en"
+        ? [
+            "custom music gifts",
+            "personalized music gifts",
+            "custom song gift",
+            "music gifts for music lovers",
+          ]
+        : undefined,
     locale: locale as Locale,
     path: "/music/personalized-gift",
     images: ["/images/occasions/music-gift-hero.webp"],
