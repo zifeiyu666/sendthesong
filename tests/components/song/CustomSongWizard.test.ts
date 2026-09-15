@@ -488,7 +488,7 @@ describe("CustomSongWizard lyric version comparison", () => {
     assert.match(storyStepSource, /\[Remember when we: \]/);
     assert.match(storyStepSource, /\[Their funny habit\/quirk: \]/);
     assert.match(storyStepSource, /\[Something they are proud of: \]/);
-    assert.match(storyStepSource, /Click words to use templates/);
+    assert.match(storyStepSource, /copy.clickTemplates/);
     assert.match(storyStepSource, /insertTemplate\(template\.text\)/);
     assert.match(storyStepSource, /underline decoration-primary/);
   });
@@ -515,6 +515,9 @@ describe("CustomSongWizard lyric version comparison", () => {
     assert.match(storyStepSource, /Voice intro ready/);
     assert.match(storyStepSource, /activeTranscriptSegmentIndex/);
     assert.match(storyStepSource, /translateY\(-\$\{activeTranscriptSegmentIndex \* 1\.9\}rem\)/);
+    assert.match(storyStepSource, /SPOKEN_INTRO_MAX_TEXT_LENGTH/);
+    assert.match(storyStepSource, /inline-flex items-center rounded-full bg-muted px-2 py-0.5/);
+    assert.match(storyStepSource, /mt-8 overflow-hidden rounded-2xl border border-border\/80/);
   });
 
   test("story helper generates a GPT story with local fallback", () => {

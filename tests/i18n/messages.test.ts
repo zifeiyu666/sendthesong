@@ -14,6 +14,7 @@ import { LOCALE_TO_HREFLANG, LOCALES } from '@/i18n/routing';
 import japaneseCommonSource from '@/i18n/messages/ja/common.json';
 import japaneseLandingSource from '@/i18n/messages/ja/Landing.json';
 import japanesePricingSource from '@/i18n/messages/ja/Pricing.json';
+import japaneseVirtualGiftsSource from '@/i18n/messages/ja/VirtualGifts.json';
 
 async function collectJsonFiles(directory: string): Promise<string[]> {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -112,11 +113,12 @@ describe('Localized i18n manifests', () => {
   test('keeps Japanese customer-facing source files complete', () => {
     const commonRequired = scalarPaths(englishMessages)
       .filter((path) => !path.startsWith('AIDemo.') && !path.startsWith('Login.AdminMenus'))
-      .filter((path) => !/^(Landing|Pricing|NotFound|Glossary|Samples|Songs|MusicVideos|Settings|CreditHistory|Overview|Users|DashboardBlogs|DashboardGlossary|Orders|R2Files|Prices)\./.test(path));
+      .filter((path) => !/^(Landing|Pricing|NotFound|Glossary|Samples|Songs|MusicVideos|Settings|CreditHistory|Overview|Users|DashboardBlogs|DashboardGlossary|Orders|R2Files|Prices|VirtualGifts)\./.test(path));
     const commonActual = new Set(scalarPaths(japaneseCommonSource));
     assert.deepEqual(commonRequired.filter((path) => !commonActual.has(path)), []);
     assert.deepEqual(scalarPaths(japaneseLandingSource).sort(), scalarPaths(englishMessages.Landing).sort());
     assert.deepEqual(scalarPaths(japanesePricingSource).sort(), scalarPaths(englishMessages.Pricing).sort());
+    assert.deepEqual(scalarPaths(japaneseVirtualGiftsSource).sort(), scalarPaths(englishMessages.VirtualGifts).sort());
   });
 
   test('preserves Japanese ICU placeholders and rich-text tags', () => {

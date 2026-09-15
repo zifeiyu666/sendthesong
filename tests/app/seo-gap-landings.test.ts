@@ -45,10 +45,32 @@ test("existing pages align title to GSC queries without new blogs", () => {
   const dad = getOccasionLandingConfig("fathers-day", "en");
   const wedding = getOccasionLandingConfig("wedding", "en");
 
-  assert.match(congratulations?.metadata.title ?? "", /students with name/i);
+  assert.match(congratulations?.metadata.title ?? "", /Custom Congratulations Song/);
+  assert.match(congratulations?.hero.title ?? "", /Custom Congratulations Song/);
+  assert.match(
+    congratulations?.topics.items[0]?.title ?? "",
+    /congratulations song for success/i,
+  );
   assert.match(mom?.metadata.title ?? "", /Personalized Song for Mom/);
   assert.match(dad?.metadata.title ?? "", /Personalized Song for Dad/);
   assert.match(wedding?.metadata.title ?? "", /First Dance/);
+  assert.match(wedding?.metadata.description ?? "", /first dance/i);
+  assert.equal(
+    wedding?.topics.items[0]?.title,
+    "Personalized first dance song",
+  );
+  assert.ok(!wedding?.keywords.includes("congratulations song for engagement"));
+
+  const proposal = getOccasionLandingConfig("proposal", "en");
+  assert.match(proposal?.metadata.title ?? "", /Custom Proposal Song/);
+  assert.match(proposal?.hero.title ?? "", /Custom Proposal Song/);
+  assert.ok(proposal?.keywords.includes("proposal songs"));
+  assert.ok(proposal?.keywords.includes("engagement songs"));
+  assert.equal(getOccasionCreateHref(proposal!), "/create-song?occasion=proposal");
+  assert.equal(
+    proposal?.topics.items[0]?.title,
+    "Custom proposal song",
+  );
 
   const birthdayPage = readFileSync(
     join(

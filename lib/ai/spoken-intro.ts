@@ -10,6 +10,14 @@ export type SpokenIntro = {
 
 const SPOKEN_INTRO_TAG = "[Spoken Intro / Narration]";
 
+export const SPOKEN_INTRO_MAX_DURATION_SECONDS = 10;
+export const SPOKEN_INTRO_MAX_TEXT_LENGTH = 50;
+export const SPOKEN_INTRO_MAX_TRANSCRIPT_LENGTH = 400;
+
+export function clipSpokenIntroText(value: string) {
+  return value.slice(0, SPOKEN_INTRO_MAX_TEXT_LENGTH);
+}
+
 export function addSpokenIntroToLyrics(
   lyrics: string,
   blessing: string,

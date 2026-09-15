@@ -148,7 +148,15 @@
       "signIn": "Sign In",
       "upgrade": "Upgrade",
       "backToBlogs": "Back to Blog List",
-      "notFound": "Article Not Found"
+      "notFound": "Article Not Found",
+      "cta": {
+        "compactButton": "Start a free preview",
+        "midTitle": "Hear a free preview of your song",
+        "midDescription": "Turn one memory into a personalized track in a few minutes.",
+        "midButton": "Create your song",
+        "endTitle": "Ready to create your own?",
+        "endButton": "Create your song"
+      }
     }
   },
   "About": {
@@ -396,6 +404,11 @@
             "description": "Turn your love story into an anniversary song they can replay."
           },
           {
+            "name": "Proposal song gifts",
+            "href": "/occasions/proposal",
+            "description": "Create a custom proposal song for the ask, then play it at the engagement party."
+          },
+          {
             "name": "Custom songs for husband",
             "href": "/occasions/custom-song-for-husband",
             "description": "Write a personal song around the details only you know about him."
@@ -429,6 +442,27 @@
             "name": "Custom Lyrics Wall Art",
             "href": "/custom-song-lyrics-wall-art",
             "description": "Turn a meaningful song into personalized, printable lyric wall decor."
+          }
+        ]
+      },
+      {
+        "name": "Gift Tools",
+        "href": "/virtual-gifts",
+        "items": [
+          {
+            "name": "Gifts and surprises",
+            "href": "/virtual-gifts",
+            "description": "Send a free virtual love letter with a message, photo, and music."
+          },
+          {
+            "name": "Love letter",
+            "href": "/virtual-gifts/love-letter",
+            "description": "Create a free virtual love letter with your message, photo, and music."
+          },
+          {
+            "name": "My gifts",
+            "href": "/mygifts",
+            "description": "Reopen and copy the gift links you have already created."
           }
         ]
       },
@@ -542,6 +576,10 @@
               "href": "/create-song"
             },
             {
+              "name": "Gifts and surprises",
+              "href": "/virtual-gifts"
+            },
+            {
               "name": "Send a Song with a Message",
               "href": "/gifts/song-message"
             },
@@ -552,6 +590,10 @@
             {
               "name": "Anniversary song gifts",
               "href": "/occasions/anniversary"
+            },
+            {
+              "name": "Proposal song gifts",
+              "href": "/occasions/proposal"
             },
             {
               "name": "Custom songs for wife",

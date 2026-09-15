@@ -16,7 +16,11 @@ import {
   LyricsLineRewriteSuggestion,
   parseLyricsText,
 } from "@/lib/ai/song-lyrics";
-import { addSpokenIntroToLyrics } from "@/lib/ai/spoken-intro";
+import {
+  addSpokenIntroToLyrics,
+  clipSpokenIntroText,
+  SPOKEN_INTRO_MAX_DURATION_SECONDS,
+} from "@/lib/ai/spoken-intro";
 import { normalizeSpokenIntroContentType } from "@/lib/audio/spoken-intro-upload";
 import { authClient } from "@/lib/auth/auth-client";
 import {
@@ -200,7 +204,7 @@ export function CustomSongWizard({
   const [pendingGenre, setPendingGenre] = useState<GenreOption | null>(null);
   const blessingRecorder = useAudioRecorder({
     fileName: "voice-blessing.webm",
-    maxDurationMs: 45000,
+    maxDurationMs: SPOKEN_INTRO_MAX_DURATION_SECONDS * 1000,
     onComplete: (file) => {
       void uploadAndTranscribeBlessing(file);
     },
@@ -369,7 +373,7 @@ export function CustomSongWizard({
           setPersonalNote(draft.personalNote);
         if (draft.spokenMode) setSpokenMode(draft.spokenMode);
         if (draft.spokenBlessing !== undefined)
-          setSpokenBlessing(draft.spokenBlessing);
+          setSpokenBlessing(clipSpokenIntroText(draft.spokenBlessing));
         if (draft.spokenIntro) setSpokenIntro(draft.spokenIntro);
         const restoredLyricsInputKey = createLyricsInputKey({
           genre: draftGenre || defaultGenre,
@@ -1263,8 +1267,10 @@ export function CustomSongWizard({
         audioKey: upload.key,
         audioUrl: upload.publicObjectUrl,
       });
-      if (transcription.durationSeconds > 45)
-        throw new Error("Please keep your blessing under 45 seconds.");
+      if (transcription.durationSeconds > SPOKEN_INTRO_MAX_DURATION_SECONDS)
+        throw new Error(
+          `Please keep your opening under ${SPOKEN_INTRO_MAX_DURATION_SECONDS} seconds.`,
+        );
       setSpokenIntro({
         audioKey: upload.key,
         audioUrl: upload.publicObjectUrl,
@@ -1272,7 +1278,7 @@ export function CustomSongWizard({
       });
       setBlessingPlaybackTime(0);
       setIsBlessingPlaying(false);
-      setSpokenBlessing(transcription.transcript);
+      setSpokenBlessing(clipSpokenIntroText(transcription.transcript));
       toast.success(localizedWizardMessage(wizardLocale, "Your voice blessing is ready."));
     } catch (error) {
       toast.error(
@@ -1310,9 +1316,10 @@ export function CustomSongWizard({
   }
 
   function updateSpokenBlessing(value: string) {
-    setSpokenBlessing(value);
+    const nextValue = clipSpokenIntroText(value);
+    setSpokenBlessing(nextValue);
     if (spokenMode === "recording" && spokenIntro) {
-      setSpokenIntro({ ...spokenIntro, transcript: value });
+      setSpokenIntro({ ...spokenIntro, transcript: nextValue });
     }
   }
 
@@ -2073,6 +2080,7 @@ const occasionBackgrounds: Record<string, string> = {
   "thank-you": "/occasion-backgrounds/avif/thank-you.avif",
   "valentines-day": "/occasion-backgrounds/avif/valentines-day.avif",
   wedding: "/occasion-backgrounds/avif/wedding.avif",
+  proposal: "/occasion-generated/avif/08-proposal.avif",
 };
 
 function getOccasionBackgroundSrc(occasion: Occasion | null) {

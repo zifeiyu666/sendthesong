@@ -2,7 +2,7 @@ import { PageHero } from "@/components/shared/PageHero";
 import { Locale, LOCALES } from "@/i18n/routing";
 import { getAllOccasionLandingConfigs } from "@/lib/occasion-landing-pages";
 import { constructMetadata } from "@/lib/metadata";
-import { ArrowUpRight, Church, Gift, Heart, MessageCircleHeart, Music2 } from "lucide-react";
+import { ArrowUpRight, Church, Gift, Heart, Mail, MessageCircleHeart, Music2 } from "lucide-react";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/routing";
@@ -32,8 +32,19 @@ export default async function GiftsPage({ params }: { params: Params }) {
     (config) => !["birthday", "anniversary"].includes(config.slug),
   );
 
+  const virtualGiftsCopy = await getTranslations({
+    locale,
+    namespace: "VirtualGifts",
+  });
+
   const coreCards = [
     { href: "/create-song", title: t("core.create"), description: t("core.createDescription"), icon: Music2 },
+    {
+      href: "/virtual-gifts",
+      title: virtualGiftsCopy("hub.virtualGift"),
+      description: virtualGiftsCopy("hub.virtualGiftDescription"),
+      icon: Mail,
+    },
     { href: "/occasions/custom-happy-birthday-song", title: t("core.birthday"), description: t("core.birthdayDescription"), icon: Gift },
     { href: "/occasions/anniversary", title: t("core.anniversary"), description: t("core.anniversaryDescription"), icon: Heart },
     { href: "/gifts/song-message", title: t("core.songMessage"), description: t("core.songMessageDescription"), icon: MessageCircleHeart },

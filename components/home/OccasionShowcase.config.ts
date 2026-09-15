@@ -222,8 +222,7 @@ export const occasionCards = [
     tagline: "Pop the Question with a Verse",
     description:
       'Ensure the perfect "Yes!" with a track that explains why she\'s your forever.',
-    href: "/music/personalized-gift",
-    cta: "Create a proposal song",
+    href: "/occasions/proposal",
     image: "/occasion-generated/avif/08-proposal.avif",
     rotate: 2.2,
     y: 26,

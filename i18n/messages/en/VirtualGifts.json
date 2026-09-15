@@ -1,0 +1,583 @@
+{
+  "picker": {
+    "title": "Choose a surprise to send",
+    "description": "Start with a free virtual love letter, or pick a coming-soon format for birthdays and bigger reveals.",
+    "trending": "Available now",
+    "comingSoon": "Coming soon",
+    "comingSoonToast": "This gift style is coming soon. Try Love letter for now.",
+    "templates": {
+      "love-letter": "Love letter",
+      "super-box": "Super box",
+      "birthday-balloons": "Birthday balloons",
+      "birthday-cake": "Birthday cake"
+    },
+    "hints": {
+      "love-letter": "Wrap a message, photo, and music in an envelope they open.",
+      "super-box": "A bigger reveal for the moments that need extra theater.",
+      "birthday-balloons": "A playful birthday surprise they can pop open on their phone.",
+      "birthday-cake": "A digital cake reveal for the birthday person who is far away."
+    }
+  },
+  "editor": {
+    "title": "Love letter",
+    "description": "Write a message, add a photo and music, then share a free virtual love letter.",
+    "backToPicker": "All gifts",
+    "chooseVibe": "Choose a motif",
+    "vibes": {
+      "hearts": "Hearts",
+      "roses": "Roses",
+      "stars": "Stars",
+      "ribbons": "Ribbons"
+    },
+    "messageLabel": "Message",
+    "messagePlaceholder": "Write your message here…",
+    "senderLabel": "Your name",
+    "senderPlaceholder": "Optional signature",
+    "photoLabel": "Photo",
+    "uploadPhoto": "Upload photo",
+    "changePhoto": "Change photo",
+    "removePhoto": "Remove",
+    "musicLabel": "Music",
+    "musicCreateTitle": "Create a custom song",
+    "musicCreateDescription": "Turn your story into music made just for them — the most personal gift.",
+    "musicCreateCta": "Create a song",
+    "musicLibraryTitle": "Use one of your songs",
+    "musicLibraryDescription": "Pick a finished song from your library.",
+    "musicLibraryCta": "Choose a song",
+    "musicLibrarySignIn": "Sign in to use your songs",
+    "musicLibraryEmpty": "No finished songs yet. Create one first.",
+    "musicUploadTitle": "Upload music",
+    "musicUploadDescription": "Add an MP3, WAV, M4A, or OGG file.",
+    "musicUploadCta": "Upload audio",
+    "musicClear": "Remove music",
+    "selectedSong": "Selected: {title}",
+    "selectedUpload": "Audio ready",
+    "preview": "Preview",
+    "previewDeviceLabel": "Preview device",
+    "previewPhone": "Phone",
+    "previewDesktop": "Desktop",
+    "previewSampleMessage": "I still smile at that Tuesday we got caught in the rain.",
+    "createGift": "Create gift",
+    "creating": "Creating…",
+    "createdTitle": "Your gift is ready",
+    "createdDescription": "Copy the link and send it to someone special.",
+    "copyLink": "Copy link",
+    "copied": "Link copied",
+    "openGift": "Open gift page",
+    "createAnother": "Create another",
+    "viewMyGifts": "View my gifts",
+    "messageRequired": "Write a short message before creating the gift.",
+    "uploadFailed": "Upload failed. Please try again.",
+    "createFailed": "Unable to create the gift. Please try again."
+  },
+  "share": {
+    "title": "A love letter for you",
+    "description": "Open the envelope to read a personal message.",
+    "tapToOpen": "Tap to open",
+    "from": "From {name}",
+    "playMusic": "Play music",
+    "pauseMusic": "Pause",
+    "ctaTitle": "Want a song that sounds like your story?",
+    "ctaDescription": "Turn a memory into a free custom song preview in a few minutes.",
+    "ctaButton": "Make a song like this"
+  },
+  "library": {
+    "meta": {
+      "title": "My Gifts",
+      "description": "Open and copy the virtual gift links you have created."
+    },
+    "hero": {
+      "badge": "Gift library",
+      "title": "Your gift links, gathered in one place",
+      "description": "Every virtual gift you create while signed in lives here so you can reopen it, copy the link, and send it again."
+    },
+    "filters": {
+      "all": "All gifts",
+      "searchPlaceholder": "Search message, sender, or gift type"
+    },
+    "card": {
+      "created": "Created {date}",
+      "from": "From {name}",
+      "copyLink": "Copy gift link",
+      "copied": "Link copied",
+      "share": "Share",
+      "shareTitle": "Share this gift",
+      "shareDescription": "Copy the private link, post it on X, or preview the shared page.",
+      "shareCopy": "Copy link",
+      "shareCopied": "Copied link",
+      "shareToX": "Share to X",
+      "sharePreview": "Preview share page",
+      "tweetText": "Open this gift: {title}"
+    },
+    "empty": {
+      "create": "Create a gift",
+      "browse": "See gift formats",
+      "noMatches": {
+        "title": "No gifts match that search",
+        "description": "Try another gift type or a shorter search term."
+      },
+      "noGifts": {
+        "title": "No saved gifts yet",
+        "description": "Create a virtual love letter while signed in, and the shareable link will appear here."
+      }
+    }
+  },
+  "hub": {
+    "virtualGift": "Gifts and surprises",
+    "virtualGiftDescription": "Send a free virtual love letter with a message, photo, and music — no shipping, no paywall."
+  },
+  "landing": {
+    "metaTitle": "Gifts and Surprises You Can Send Instantly",
+    "metaDescription": "Send gifts and surprises instantly with a free virtual love letter. Add a message, photo, and music, then share the link. Create a surprise in minutes.",
+    "keywords": [
+      "gifts and surprises",
+      "virtual gifts",
+      "send a surprise",
+      "digital gifts",
+      "virtual love letter",
+      "personalized surprises"
+    ],
+    "badge": "Free virtual gifts",
+    "heroRating": "Excellent",
+    "h1Line1": "Gifts and surprises",
+    "h1Line2": "you can send instantly",
+    "underline": "Gifts and surprises",
+    "heroDescription": "Gifts and surprises land hardest when they feel personal and arrive at the right second. Send a free virtual love letter with your message, a photo, and music—then share a link they can open on any phone. No shipping, no store run, and no account required to start.",
+    "heroCta": "Start a love letter",
+    "heroSecondaryCta": "My gifts",
+    "heroFormatsCta": "See gift formats",
+    "heroCardTitle": "A surprise they open, not unwrap",
+    "heroCardDescription": "Your words, a photo, and optional music in a private link — ready the same minute.",
+    "heroImageAlt": "Someone opening a personal digital gift on their phone",
+    "heroHighlights": [
+      "Free to create and share",
+      "Message, photo, and music",
+      "Opens on any phone"
+    ],
+    "definitionEyebrow": "What it is",
+    "definitionTitle": "Gifts and surprises that arrive as a moment, not a package",
+    "definition": "Gifts and surprises are personal moments you create for someone else: an unexpected note, a reveal, or a keepsake they did not see coming. Online, that can be a shareable page they open on any phone—your words, a photo, and music inside a virtual love letter. The surprise is the reveal.",
+    "definitionPoints": [
+      "A link they can open immediately",
+      "A reveal instead of a buried text",
+      "Optional custom music inside the gift",
+      "A keepsake they can reopen later"
+    ],
+    "definitionNote": "Gift-giving is a long-standing social ritual for marking care and relationship. A virtual surprise keeps that ritual when you cannot hand something over in person.",
+    "definitionSourceLabel": "Gift, Wikipedia",
+    "pickerEyebrow": "Start here",
+    "pickerTitle": "Choose the format for your gifts and surprises",
+    "pickerDescription": "Love letter is live today. The other formats are on the way—use them as a preview of the surprises this studio is building around your words and music.",
+    "whyEyebrow": "Why this format",
+    "whyTitle": "Why people send gifts and surprises as a link",
+    "whyDescription": "A shipped object is still wonderful when you have time. When the moment is today—a birthday morning, a long-distance night, a thank-you you do not want to bury in chat—a shareable surprise is the format that can actually arrive.",
+    "whyItems": [
+      {
+        "id": "instant",
+        "title": "The surprise can happen now",
+        "description": "There is no address form, no delivery window, and no waiting for a courier. You create the page, copy the link, and the reveal can happen during a call or first thing on their birthday."
+      },
+      {
+        "id": "personal",
+        "title": "The gift is made of your details",
+        "description": "A generic e-card is a template with a name dropped in. Here the message, photo, and optional song are the gift. That is what makes virtual gifts and surprises feel like they came from you."
+      },
+      {
+        "id": "music",
+        "title": "Music can live inside the reveal",
+        "description": "Add a custom song written around their story, pick a finished track from your library, or upload audio you have the right to use. The envelope opens, then the music starts."
+      },
+      {
+        "id": "replay",
+        "title": "They can reopen it later",
+        "description": "Texts disappear in a thread. A virtual love letter stays on its own page, so the photo, words, and song can be opened again after the first surprise fades."
+      }
+    ],
+    "occasionsEyebrow": "When to send one",
+    "occasionsTitle": "Gifts and surprises for the moments that need a reveal",
+    "occasionsDescription": "Use a virtual love letter when the words matter as much as the object. Pair it with a custom song when you want the surprise to keep playing after they close the envelope.",
+    "occasions": [
+      {
+        "id": "birthday",
+        "title": "Birthday morning",
+        "description": "Send the link before they wake up. They open an envelope, see a photo, and hear a song that uses their name—then you can still follow it with a birthday song gift."
+      },
+      {
+        "id": "anniversary",
+        "title": "Anniversary and just because",
+        "description": "Mark a date, or send a surprise on an ordinary Tuesday. A short letter plus one shared memory usually lands harder than a long speech."
+      },
+      {
+        "id": "distance",
+        "title": "Long-distance love",
+        "description": "When you cannot be in the same room, a link still creates a shared second. They open the envelope while you are on the call, and the music fills the rest."
+      },
+      {
+        "id": "thankyou",
+        "title": "Thank-you and support",
+        "description": "Gratitude gets lost in a chat stack. Put the specific thing they did in a letter, add a photo from that day, and let a song carry the feeling you could not fit in a text."
+      },
+      {
+        "id": "apology",
+        "title": "Apology and reconnection",
+        "description": "A careful message deserves a quieter reveal than a notification banner. Write the words you mean, then let optional music hold the tone after they finish reading."
+      },
+      {
+        "id": "holiday",
+        "title": "Holidays and family days",
+        "description": "Mother's Day, Father's Day, Christmas morning, or a holiday you invented together. The format stays the same: your words, a photo, and music they can replay."
+      }
+    ],
+    "howEyebrow": "How it works",
+    "howTitle": "How to send gifts and surprises in four steps",
+    "howDescription": "You do not need lyrics, design skills, or a shipping label. Most people finish a virtual love letter in a few minutes.",
+    "steps": [
+      {
+        "kicker": "01",
+        "title": "Choose a gift format",
+        "description": "Start with Love letter—the live format for gifts and surprises on this page. Other styles such as balloons and cake are listed so you can see what is coming next."
+      },
+      {
+        "kicker": "02",
+        "title": "Write the message and add a photo",
+        "description": "Say the thing you would say if they were in the room. Add an optional photo so the envelope opens onto a face, a place, or a memory you both recognize."
+      },
+      {
+        "kicker": "03",
+        "title": "Add music if you want it",
+        "description": "Create a custom song around their story, choose a finished song from your library, or upload audio you are allowed to share. Music is optional, but it is what makes the surprise linger."
+      },
+      {
+        "kicker": "04",
+        "title": "Share the private link",
+        "description": "Copy the link and send it by text, WhatsApp, email, or any chat. They open it in a browser, tap the envelope, and the gift plays on their phone."
+      }
+    ],
+    "compareEyebrow": "Choose the right format",
+    "compareTitle": "Virtual gifts and surprises vs. cards, texts, and shipped presents",
+    "compareDescription": "Each format can be meaningful. The difference is whether the surprise can arrive today, and whether your words have a place to live after the first look.",
+    "compareHeaders": {
+      "format": "Format",
+      "personal": "What feels personal",
+      "speed": "How fast it arrives",
+      "keepsake": "What remains"
+    },
+    "compareRows": [
+      {
+        "format": "Virtual love letter",
+        "personal": "Your message, photo, and optional custom song",
+        "speed": "Minutes — share a link",
+        "keepsake": "A page they can reopen",
+        "highlighted": true
+      },
+      {
+        "format": "Greeting card",
+        "personal": "Handwritten when you have time to write",
+        "speed": "Mail or in-person delivery",
+        "keepsake": "Physical card",
+        "highlighted": false
+      },
+      {
+        "format": "Text or chat",
+        "personal": "Immediate and familiar",
+        "speed": "Instant",
+        "keepsake": "A bubble that scrolls away",
+        "highlighted": false
+      },
+      {
+        "format": "Shipped gift",
+        "personal": "The object you chose",
+        "speed": "Days, plus an address",
+        "keepsake": "A physical present",
+        "highlighted": false
+      },
+      {
+        "format": "Custom song gift",
+        "personal": "Their name, memory, and story in original music",
+        "speed": "Free preview in minutes",
+        "keepsake": "A song they can replay",
+        "highlighted": false
+      }
+    ],
+    "moreEyebrow": "Keep going",
+    "moreTitle": "Pair gifts and surprises with a custom song",
+    "moreDescription": "The virtual letter is the reveal. If you want the surprise to keep playing, fold the same story into a song, a spoken opening, or a printable lyric keepsake.",
+    "moreLinks": [
+      {
+        "href": "/create-song",
+        "title": "Create a custom song",
+        "description": "Turn a memory, name, and mood into a free song preview you can place inside the surprise."
+      },
+      {
+        "href": "/gifts/song-message",
+        "title": "Send a song with a message",
+        "description": "Record a blessing or write a spoken opening, then let the custom song carry the rest."
+      },
+      {
+        "href": "/gifts",
+        "title": "Browse personalized gift ideas",
+        "description": "See birthday, anniversary, prayer, and lyric-gift formats alongside these virtual surprises."
+      },
+      {
+        "href": "/occasions/custom-happy-birthday-song",
+        "title": "Birthday song gifts",
+        "description": "Follow the virtual letter with a birthday song that uses their name and the day's feeling."
+      },
+      {
+        "href": "/occasions/anniversary",
+        "title": "Anniversary song gifts",
+        "description": "Turn a shared history into music they can keep after the envelope is opened."
+      },
+      {
+        "href": "/blog/voice-message-gift-ideas",
+        "title": "Voice message gift ideas",
+        "description": "Learn how a recorded greeting can become part of a song they will actually replay."
+      }
+    ],
+    "moreCta": "Explore this gift",
+    "faqTitle": "Questions about gifts and surprises",
+    "faqDescription": "Direct answers about sending a free virtual love letter, sharing the link, and adding music.",
+    "faqCtaTitle": "Ready to send gifts and surprises?",
+    "faqCtaDescription": "Start with a free virtual love letter, or create a custom song they can keep after the reveal.",
+    "faqCtaButton": "Create a love letter",
+    "faq": [
+      {
+        "question": "What are gifts and surprises you can send online?",
+        "answer": "Gifts and surprises you can send online are shareable digital moments—usually a link that opens a personal page. On One Custom Song, that starts as a free virtual love letter with your message, a photo, and optional music. The recipient opens it on any phone, with no app and no account."
+      },
+      {
+        "question": "Are these virtual gifts free?",
+        "answer": "Yes. Creating and sending a virtual love letter is free. You can write a message, add a photo, and share the link without a paywall. If you want original music inside the surprise, start a free custom song preview and attach it when you are ready."
+      },
+      {
+        "question": "Do I need an account to send a surprise?",
+        "answer": "No. You can create a virtual love letter without signing in. An account is only needed if you want to pull a finished song from your library. Uploading a photo or creating a new custom song follows the editor flow on the next page."
+      },
+      {
+        "question": "How do I share gifts and surprises after I create them?",
+        "answer": "You get a private link. Copy it and send it by text, WhatsApp, email, or any chat. The recipient opens the link in a browser, taps to open the envelope, and reads your message. They do not need to install an app or create an account."
+      },
+      {
+        "question": "Can I add music or a custom song to the surprise?",
+        "answer": "Yes. Create a custom song around their story, choose a finished song from your library, or upload an audio file you have the right to use. Music is optional, but it is what makes gifts and surprises feel like more than a note."
+      },
+      {
+        "question": "What occasions work for virtual gifts and surprises?",
+        "answer": "Birthdays, anniversaries, long-distance nights, thank-yous, apologies, and just-because moments all work. Use the love letter when you want an intimate reveal. For a longer musical gift, pair the surprise with a custom birthday or anniversary song."
+      },
+      {
+        "question": "Is a virtual love letter better than a text?",
+        "answer": "A text is fast, but it disappears in a thread. A virtual love letter gives the same words a reveal: they open an envelope, see a photo, and can hear music. It is still instant to send, and easier to reopen later than a chat bubble."
+      },
+      {
+        "question": "Can the recipient open the gift on a phone?",
+        "answer": "Yes. The gift page is built for phones. They open the link in a mobile browser, tap the envelope, and read the message. There is no app store step, no login, and no shipping address."
+      }
+    ],
+    "closingTitle": "Send gifts and surprises that feel like they came from you",
+    "closingDescription": "Start with a free virtual love letter. If the moment deserves a song, create a preview around their name and story, then tuck that music inside the same surprise.",
+    "closingCta": "Create a free surprise",
+    "sourcePrefix": "Source:"
+  },
+  "loveLetter": {
+    "metaTitle": "Free Virtual Love Letter Online — Template & Ideas",
+    "metaDescription": "Create a free virtual love letter online: copy a love letter template, borrow ideas for a love letter, add a photo and music, share a private link.",
+    "keywords": [
+      "letters by heart",
+      "how to start a love letter online",
+      "love letter template",
+      "ideas for a love letter"
+    ],
+    "badge": "Free virtual love letter",
+    "heroRating": "Excellent",
+    "h1": "Virtual Love Letter",
+    "heroLead": "Surprise your partner just because — a personalized e-card they can open on any phone.",
+    "heroDescription": "A virtual love letter is a shareable digital note for affection you want to send anytime, anywhere. Write a personal message, add a photo of a moment you share, optionally tuck in music, then send the private link. No shipping, no app, and no paywall to start.",
+    "heroCta": "Create a love letter",
+    "heroSecondaryCta": "My gifts",
+    "heroFormatsCta": "See gift formats",
+    "heroHowCta": "See how it works",
+    "heroCardTitle": "Built for a just-because reveal",
+    "heroCardDescription": "They tap the envelope, see your photo, and read a note written only for them.",
+    "heroImageAlt": "A personal virtual love letter being opened on a phone",
+    "heroHighlights": [
+      "Free to create and share",
+      "Message, photo, and music",
+      "Only people with the link can view it"
+    ],
+    "introEyebrow": "What it is",
+    "introTitle": "A digital love letter that feels like a reveal, not a text",
+    "intro": "Looking for something new to surprise someone you love, even on an ordinary day? A virtual love letter is a personalized e-card made for that just-because moment. They open a private page, see an envelope, and read words written for them — not a template with a name dropped in.",
+    "introHow": "Create and send one in a few clicks. Write a short note and keep the tone somewhere between romantic and funny. Upload a photo of a moment you actually share. Then share the link by text, WhatsApp, or email. If you want the letter to linger, add a custom song or audio they can hear after the envelope opens.",
+    "introNote": "Love letters have long been a way to put affection into words that can be kept and reread. A virtual version keeps that ritual when you cannot hand over paper.",
+    "introSourceLabel": "Love letter, Wikipedia",
+    "sourcePrefix": "Source:",
+    "craftEyebrow": "What you add",
+    "craftTitle": "Craft a virtual love note they will actually reopen",
+    "craftDescription": "The letter is the gift: your words, a photo, optional music, and a private link. Each piece is optional except the message — start simple if you want to send it today.",
+    "introPoints": [
+      {
+        "id": "write",
+        "title": "Write a personal message",
+        "description": "Say the thing you would say if they were in the room. A few specific details usually land harder than a long speech. Romantic, funny, or both — the balance is yours."
+      },
+      {
+        "id": "photo",
+        "title": "Upload a photo you both recognize",
+        "description": "Add a picture of a shared moment so the envelope opens onto a face, a place, or a memory — not a stock image."
+      },
+      {
+        "id": "music",
+        "title": "Add music if you want it to linger",
+        "description": "Create a custom song around their story, pick a finished track from your library, or upload audio you have the right to use. Music is optional, but it is what makes the letter more than a note."
+      },
+      {
+        "id": "share",
+        "title": "Send the virtual love letter as a link",
+        "description": "Copy the private URL and share it with your special person. They open it in a browser, tap the envelope, and read it on their phone."
+      }
+    ],
+    "howEyebrow": "How it works",
+    "howTitle": "Create and send a virtual love letter in four steps",
+    "howDescription": "You do not need design skills or a shipping label. Most people finish a digital love letter in a few minutes.",
+    "steps": [
+      {
+        "kicker": "01",
+        "title": "Write the message",
+        "description": "Start with a short, specific note. Mention a memory, a nickname, or the reason you are sending it today."
+      },
+      {
+        "kicker": "02",
+        "title": "Add a photo",
+        "description": "Upload a JPEG, PNG, or WebP of a moment you share. Skip this if you only want the words — the letter still works."
+      },
+      {
+        "kicker": "03",
+        "title": "Choose music, or skip it",
+        "description": "Create a custom song, choose one from your library, or upload audio. You can also send the letter without music and add a song later as a separate gift."
+      },
+      {
+        "kicker": "04",
+        "title": "Share the private link",
+        "description": "Copy the link and send it however you already talk. Only people with that link can view the gift."
+      }
+    ],
+    "writingEyebrow": "Writing help",
+    "writingTitle": "Letters by heart: how to start, what to write, and a template to lean on",
+    "writingDescription": "The hardest line is the first one. Borrow an opener, steal an idea, or copy the love letter template below into the editor above — then swap in the details only you two share. An online love letter lands for the same reason a paper one does: it is specific, and it is theirs.",
+    "writingStartTitle": "How to start a love letter",
+    "writingStartDescription": "Open with a moment instead of a greeting. Any of these first lines works — pick the one that sounds like you:",
+    "writingStartItems": [
+      "“I keep thinking about the day we ___ , and I never told you what it did to me.”",
+      "“No anniversary, no reason — I just wanted you to have something that is only yours.”",
+      "“I am bad at saying this out loud, so I wrote it down where I cannot rush it.”",
+      "“You always ___ , and I notice it every single time.”"
+    ],
+    "writingTemplateTitle": "Love letter template you can copy",
+    "writingTemplateDescription": "Copy this structure into the message box above, or send the whole love letter online as a link with a photo and music. Fill the blanks, then delete any line that is not true:",
+    "writingTemplateLines": [
+      "Dear ___ , I keep thinking about the moment we ___ .",
+      "I still remember how you ___ , and how it made me feel ___ .",
+      "What I love most is the way you ___ , even when ___ .",
+      "Thank you for ___ — I know it was not easy.",
+      "Next, I want us to ___ . Keep this letter until we do.",
+      "Yours, ___"
+    ],
+    "writingIdeasTitle": "Ideas for a love letter when the page stays blank",
+    "writingIdeasDescription": "Six things worth writing about, in any order. One true detail beats ten adjectives — in an online letter or on paper:",
+    "writingIdeasItems": [
+      "A memory only the two of you share: the trip that went wrong, the song from that summer.",
+      "One small habit of theirs you have never thanked them for.",
+      "What changed in your life after they arrived, in one before-and-after sentence.",
+      "A promise for the next year, small enough to keep.",
+      "The thing you were too shy to say on the day it happened.",
+      "Why today, of all days, they are getting a letter."
+    ],
+    "writingNote": "Paper or screen, the ritual is the same. An online letter only adds the reveal: they tap an envelope, see your photo, and hear the music you chose.",
+    "editorEyebrow": "Make yours",
+    "editorTitle": "Create your virtual love letter",
+    "editorDescription": "Write the message below, add an optional photo and music, then create the gift and copy the link.",
+    "moreEyebrow": "Keep going",
+    "moreTitle": "Pair the letter with a song, or find it later",
+    "moreDescription": "The virtual love letter is the reveal. Saved gifts live in your library. If you want the feeling to keep playing, fold the same story into a custom song.",
+    "moreCta": "Open this page",
+    "moreLinks": [
+      {
+        "href": "/mygifts",
+        "title": "Your gifts feed",
+        "description": "Gifts you create while signed in are saved here so you can reopen them and copy the link again."
+      },
+      {
+        "href": "/create-song",
+        "title": "Create a custom song",
+        "description": "Turn a memory, name, and mood into a free song preview you can place inside the letter."
+      },
+      {
+        "href": "/virtual-gifts",
+        "title": "More gifts and surprises",
+        "description": "See the other virtual gift formats on the way, and how a love letter fits beside them."
+      },
+      {
+        "href": "/gifts",
+        "title": "Personalized gift ideas",
+        "description": "Browse birthday, anniversary, and lyric-gift formats alongside this digital love letter."
+      },
+      {
+        "href": "/gifts/song-message",
+        "title": "Send a song with a message",
+        "description": "Record a blessing or write a spoken opening, then let a custom song carry the rest."
+      },
+      {
+        "href": "/occasions/anniversary",
+        "title": "Anniversary song gifts",
+        "description": "Follow the letter with music built around a date you both remember."
+      }
+    ],
+    "faqTitle": "Questions about virtual love letters",
+    "faqDescription": "Who can see the gift, how long it is kept, where to find it later, and how to share the link.",
+    "faqCtaTitle": "Ready to send a virtual love letter?",
+    "faqCtaDescription": "Write a short message, add a photo if you have one, and share the private link in a few clicks.",
+    "faqCtaButton": "Create a love letter",
+    "faq": [
+      {
+        "question": "Who can see my virtual love letter?",
+        "answer": "Only people you send the gift link to can view it. There is no public gallery. If they do not have the URL, they cannot open the letter."
+      },
+      {
+        "question": "How long are virtual love letters kept?",
+        "answer": "Gifts stay available so they can be reopened later. Treat the link like a private keepsake: share it with the person it is for, and keep a copy in My Gifts if you are signed in."
+      },
+      {
+        "question": "Where can I find all my gifts?",
+        "answer": "Gifts you create while signed in are saved to your personal gifts feed at My Gifts. Open that page to copy a link again, preview the shared page, or send it a second time."
+      },
+      {
+        "question": "Do I need an account to send a virtual love letter?",
+        "answer": "No. You can write a message, add a photo, and share the link without signing in. An account is only needed if you want to pull a finished song from your library or keep the gift in My Gifts."
+      },
+      {
+        "question": "Is the virtual love letter free?",
+        "answer": "Yes. Creating and sending a digital love letter is free. There is no ad-removal paywall on the letter itself. If you want original music inside it, start a free custom song preview and attach it when you are ready."
+      },
+      {
+        "question": "Can I add a custom song to the love letter?",
+        "answer": "Yes. Create a custom song around their story, choose a finished song from your library, or upload an audio file you have the right to use. Music is optional."
+      },
+      {
+        "question": "How do I send the virtual love letter?",
+        "answer": "After you create the gift, you get a private link. Copy it and send it by text, WhatsApp, email, or any chat. The recipient opens it in a browser and taps the envelope. They do not need an app or an account."
+      },
+      {
+        "question": "Can they open it on a phone?",
+        "answer": "Yes. The gift page is built for phones. They open the link in a mobile browser, tap to open the envelope, and read your message. There is no app store step."
+      },
+      {
+        "question": "How to start a love letter when you do not know what to write?",
+        "answer": "Start with one specific memory instead of a greeting: the day, the place, the small thing they did that stayed with you. The writing help section on this page lists ready-to-use openers, ideas for a love letter, and a fill-in-the-blank love letter template you can copy into the editor. Ten honest minutes beats a perfect paragraph."
+      }
+    ],
+    "closingTitle": "Send a virtual love letter they can keep",
+    "closingDescription": "Write the note, add a photo if you have one, optionally tuck in music, and share the link. The surprise is the reveal — and they can open it again later.",
+    "closingCta": "Create a free love letter"
+  }
+}

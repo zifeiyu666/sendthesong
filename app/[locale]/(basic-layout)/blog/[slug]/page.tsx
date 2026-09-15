@@ -14,6 +14,7 @@ import { TableOfContents } from "@/components/tiptap/TableOfContents";
 import { Button } from "@/components/ui/button";
 import { Link as I18nLink, Locale, LOCALES } from "@/i18n/routing";
 import { blogCms } from "@/lib/cms";
+import { getBlogCreateHref, splitArticleHtmlForMidCta } from "@/lib/cms/blog-cta";
 import { renderPostMarkdown } from "@/lib/cms/render-markdown";
 import { constructMetadata } from "@/lib/metadata";
 import { PostBase } from "@/types/cms";
@@ -25,6 +26,9 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 export const dynamicParams = true;
+
+const BLOG_ARTICLE_CLASS_NAME =
+  "prose dark:prose-invert mx-auto max-w-[68ch] prose-p:my-5 prose-p:leading-8 prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-3xl prose-h2:mt-12 prose-h2:text-3xl prose-h3:text-2xl prose-li:my-1 prose-blockquote:not-italic prose-blockquote:font-normal prose-blockquote:text-muted-foreground prose-blockquote:border-l-4 prose-blockquote:border-primary/50 prose-table:my-10 prose-table:block prose-table:w-full prose-table:min-w-full prose-table:overflow-x-auto prose-table:border-separate prose-table:border-spacing-0 prose-table:text-sm prose-thead:bg-[#f8f4f0] prose-th:min-w-44 prose-th:border-b prose-th:border-[#d8d2cc] prose-th:px-5 prose-th:py-4 prose-th:text-left prose-th:text-sm prose-th:font-semibold prose-th:leading-6 prose-th:text-[#1f2937] prose-td:min-w-44 prose-td:border-b prose-td:border-[#e6e1dc] prose-td:px-5 prose-td:py-4 prose-td:align-top prose-td:leading-7 prose-td:text-[#374151] [&_blockquote_p]:before:content-none [&_blockquote_p]:after:content-none [&_table]:rounded-xl [&_table]:border [&_table]:border-[#e6e1dc] [&_tbody_tr:nth-child(even)]:bg-[#fbfaf8] [&_tbody_tr:last-child_td]:border-b-0 [&_td_p]:my-0 [&_th:first-child]:rounded-tl-xl [&_th:last-child]:rounded-tr-xl [&_th_p]:my-0 [&_thead+tbody_tr:first-child_td]:border-t-0 lg:prose-lg lg:prose-p:leading-9";
 
 type Params = Promise<{
   locale: string;
@@ -181,6 +185,13 @@ export default async function BlogPage({ params }: { params: Params }) {
     !showRestrictionMessageInsteadOfContent && post.content
       ? await renderPostMarkdown(post.content)
       : "";
+  const articleHtmlParts = contentHtml
+    ? splitArticleHtmlForMidCta(contentHtml)
+    : null;
+  const createHref = getBlogCreateHref({
+    slug,
+    tags: post.tags,
+  });
 
   return (
     <div className="w-full">
@@ -244,11 +255,16 @@ export default async function BlogPage({ params }: { params: Params }) {
             )}
           </div>
 
-          <div className="flex lg:justify-end">
+          <div className="flex flex-col items-start gap-3 lg:items-end">
             <div className="inline-flex items-center rounded-full border border-white/80 bg-white px-4 py-2 text-sm font-semibold text-[#2b1038] shadow-[0_12px_30px_rgba(58,37,24,0.08)]">
               <CalendarIcon className="mr-2 h-4 w-4 text-[#7a647f]" />
               {dayjs(post.publishedAt).format("MMMM D, YYYY")}
             </div>
+            <BlogPostCTA
+              variant="compact"
+              href={createHref}
+              buttonLabel={t("BlogDetail.cta.compactButton")}
+            />
           </div>
         </div>
       </header>
@@ -297,17 +313,42 @@ export default async function BlogPage({ params }: { params: Params }) {
           />
         ) : contentHtml ? (
           <>
-            <article
-              className="prose dark:prose-invert mx-auto max-w-[68ch] prose-p:my-5 prose-p:leading-8 prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-3xl prose-h2:mt-12 prose-h2:text-3xl prose-h3:text-2xl prose-li:my-1 prose-blockquote:not-italic prose-blockquote:font-normal prose-blockquote:text-muted-foreground prose-blockquote:border-l-4 prose-blockquote:border-primary/50 prose-table:my-10 prose-table:block prose-table:w-full prose-table:min-w-full prose-table:overflow-x-auto prose-table:border-separate prose-table:border-spacing-0 prose-table:text-sm prose-thead:bg-[#f8f4f0] prose-th:min-w-44 prose-th:border-b prose-th:border-[#d8d2cc] prose-th:px-5 prose-th:py-4 prose-th:text-left prose-th:text-sm prose-th:font-semibold prose-th:leading-6 prose-th:text-[#1f2937] prose-td:min-w-44 prose-td:border-b prose-td:border-[#e6e1dc] prose-td:px-5 prose-td:py-4 prose-td:align-top prose-td:leading-7 prose-td:text-[#374151] [&_blockquote_p]:before:content-none [&_blockquote_p]:after:content-none [&_table]:rounded-xl [&_table]:border [&_table]:border-[#e6e1dc] [&_tbody_tr:nth-child(even)]:bg-[#fbfaf8] [&_tbody_tr:last-child_td]:border-b-0 [&_td_p]:my-0 [&_th:first-child]:rounded-tl-xl [&_th:last-child]:rounded-tr-xl [&_th_p]:my-0 [&_thead+tbody_tr:first-child_td]:border-t-0 lg:prose-lg lg:prose-p:leading-9"
-              dangerouslySetInnerHTML={{ __html: contentHtml }}
-            />
+            {articleHtmlParts ? (
+              <article className={BLOG_ARTICLE_CLASS_NAME}>
+                <div
+                  dangerouslySetInnerHTML={{ __html: articleHtmlParts.before }}
+                />
+                <div className="not-prose">
+                  <BlogPostCTA
+                    variant="mid"
+                    href={createHref}
+                    title={t("BlogDetail.cta.midTitle")}
+                    description={t("BlogDetail.cta.midDescription")}
+                    buttonLabel={t("BlogDetail.cta.midButton")}
+                  />
+                </div>
+                <div
+                  dangerouslySetInnerHTML={{ __html: articleHtmlParts.after }}
+                />
+              </article>
+            ) : (
+              <article
+                className={BLOG_ARTICLE_CLASS_NAME}
+                dangerouslySetInnerHTML={{ __html: contentHtml }}
+              />
+            )}
             {isWallArtStudioPost ? (
               <BlogWallArtStudioCTA
                 isAuthenticated={Boolean(session?.user)}
                 songOptions={wallArtSongOptions}
               />
             ) : null}
-            <BlogPostCTA />
+            <BlogPostCTA
+              variant="end"
+              href={createHref}
+              title={t("BlogDetail.cta.endTitle")}
+              buttonLabel={t("BlogDetail.cta.endButton")}
+            />
           </>
         ) : null}
 

@@ -83,7 +83,7 @@ export default function MobileMenu({
                 <DropdownMenuSubTrigger className="px-2 py-1.5">
                   {link.name}
                 </DropdownMenuSubTrigger>
-                <DropdownMenuSubContent className="w-72 max-w-[calc(100vw-2rem)]">
+                <DropdownMenuSubContent className="w-72 max-w-[calc(100vw-2rem)] max-h-[min(24rem,calc(100dvh-8rem))] overflow-y-auto overscroll-contain">
                   {link.items.map((child) => (
                     <DropdownMenuItem key={child.href} asChild>
                       <I18nLink

@@ -3,7 +3,10 @@ import { describe, test } from "node:test";
 
 import {
   addSpokenIntroToLyrics,
+  clipSpokenIntroText,
   mergeSpokenIntroTimeline,
+  SPOKEN_INTRO_MAX_DURATION_SECONDS,
+  SPOKEN_INTRO_MAX_TEXT_LENGTH,
 } from "../../../lib/ai/spoken-intro";
 import {
   DEFAULT_REPLICATE_WHISPER_MODEL,
@@ -12,6 +15,15 @@ import {
 } from "../../../lib/ai/spoken-intro-transcription";
 
 describe("spoken intro timeline", () => {
+  test("clips typed openings to a short intro length", () => {
+    assert.equal(SPOKEN_INTRO_MAX_TEXT_LENGTH, 50);
+    assert.equal(SPOKEN_INTRO_MAX_DURATION_SECONDS, 10);
+    assert.equal(
+      clipSpokenIntroText("a".repeat(80)),
+      "a".repeat(SPOKEN_INTRO_MAX_TEXT_LENGTH),
+    );
+  });
+
   test("prefixes a text blessing once for Suno narration", () => {
     const lyrics = addSpokenIntroToLyrics("[Verse 1]\nHello", "Happy birthday");
     assert.match(lyrics, /^\[Spoken Intro \/ Narration\]\nHappy birthday/);

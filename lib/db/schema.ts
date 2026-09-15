@@ -445,6 +445,60 @@ export const songs = pgTable(
   }
 )
 
+export const virtualGiftVibeEnum = pgEnum('virtual_gift_vibe', [
+  'hearts',
+  'roses',
+  'stars',
+  'ribbons',
+])
+export type VirtualGiftVibe = (typeof virtualGiftVibeEnum.enumValues)[number]
+
+export const virtualGiftAudioSourceEnum = pgEnum('virtual_gift_audio_source', [
+  'none',
+  'song',
+  'upload',
+])
+export type VirtualGiftAudioSource =
+  (typeof virtualGiftAudioSourceEnum.enumValues)[number]
+
+export const virtualGifts = pgTable(
+  'virtual_gifts',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    userId: uuid('user_id').references(() => user.id, { onDelete: 'set null' }),
+    templateId: text('template_id').notNull(),
+    vibe: virtualGiftVibeEnum('vibe').default('hearts').notNull(),
+    senderName: text('sender_name'),
+    message: text('message').notNull(),
+    imageUrl: text('image_url'),
+    imageKey: text('image_key'),
+    audioSource: virtualGiftAudioSourceEnum('audio_source')
+      .default('none')
+      .notNull(),
+    songId: uuid('song_id').references(() => songs.id, { onDelete: 'set null' }),
+    audioUrl: text('audio_url'),
+    audioKey: text('audio_key'),
+    shareToken: text('share_token').notNull().unique(),
+    createdAt: timestamp('created_at', { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+    updatedAt: timestamp('updated_at', { withTimezone: true })
+      .defaultNow()
+      .notNull()
+      .$onUpdate(() => new Date()),
+  },
+  (table) => {
+    return {
+      shareTokenIdx: index('idx_virtual_gifts_share_token').on(table.shareToken),
+      userIdx: index('idx_virtual_gifts_user_id').on(table.userId),
+      createdAtIdx: index('idx_virtual_gifts_created_at').on(table.createdAt),
+    }
+  },
+)
+
+export type VirtualGift = typeof virtualGifts.$inferSelect
+export type NewVirtualGift = typeof virtualGifts.$inferInsert
+
 export const musicVideoStatusEnum = pgEnum('music_video_status', [
   'queued',
   'rendering',

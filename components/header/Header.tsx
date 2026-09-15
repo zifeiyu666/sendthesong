@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Link as I18nLink } from "@/i18n/routing";
 import { getSession } from "@/lib/auth/server";
 import { getHeaderNavigationLinks } from "@/lib/cms/article-navigation";
+import { withVisibleHeaderLinks } from "@/lib/cms/article-navigation-utils";
 import { user as userSchema } from "@/lib/db/schema";
 import { Music2 } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
@@ -25,6 +26,10 @@ const Header = async () => {
     getHeaderNavigationLinks(locale),
   ]);
   const user = session?.user;
+  const visibleHeaderLinks = withVisibleHeaderLinks(
+    headerLinks,
+    Boolean(user)
+  );
 
   return (
     <HeaderShell>
@@ -46,7 +51,7 @@ const Header = async () => {
             />
           </I18nLink>
 
-          <HeaderLinks links={headerLinks} variant="adaptive" />
+          <HeaderLinks links={visibleHeaderLinks} variant="adaptive" />
         </div>
 
         <div className="flex items-center gap-x-2 flex-1 justify-end">
@@ -68,7 +73,7 @@ const Header = async () => {
           {/* Mobile */}
           <div className="flex lg:hidden items-center gap-x-2">
             <MobileMenu
-              links={headerLinks}
+              links={visibleHeaderLinks}
               user={user as User}
               variant="adaptive"
             />

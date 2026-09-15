@@ -17,6 +17,7 @@ type OccasionHeroVisualProps = {
   imageAlt: string;
   cardTitle?: string;
   cardDescription?: string;
+  cardIcon?: ReactNode;
   overlay?: ReactNode;
   accent: string;
 };
@@ -26,6 +27,7 @@ export default function OccasionHeroVisual({
   imageAlt,
   cardTitle,
   cardDescription,
+  cardIcon,
   overlay,
   accent,
 }: OccasionHeroVisualProps) {
@@ -118,7 +120,7 @@ export default function OccasionHeroVisual({
               <div className="rounded-lg border border-white/70 bg-white/90 p-4 shadow-[0_22px_56px_rgba(43,25,20,0.2)] backdrop-blur-md">
                 <div className="flex items-start gap-3">
                   <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[var(--hero-accent)] text-white">
-                    <Music2 className="size-4" />
+                    {cardIcon ?? <Music2 className="size-4" />}
                   </span>
                   <div>
                     <p className="text-sm font-black text-[#261712]">

@@ -1,7 +1,7 @@
 "use client";
 
 import CopyButton from "@/components/shared/CopyButton";
-import { TwitterX } from "@/components/social-icons/icons";
+import { ShareLinkDialog } from "@/components/shared/ShareLinkDialog";
 import { MusicVideoEditorDrawer } from "@/components/song/MusicVideoEditorDrawer";
 import {
   InfoPill,
@@ -29,9 +29,7 @@ import { cn } from "@/lib/utils";
 import {
   ArrowRight,
   Cake,
-  Check,
   Clapperboard,
-  Copy,
   Disc3,
   Download,
   ExternalLink,
@@ -569,21 +567,8 @@ function SharePanel({
   shareUrl: string;
   title: string;
 }) {
-  const [copied, setCopied] = useState(false);
-  const tweetUrl = `https://twitter.com/intent/tweet?${new URLSearchParams({
-    text: `Listen to "${title}"`,
-    url: shareUrl,
-  }).toString()}`;
   const glassButtonClassName =
     "rounded-full border-0 bg-white/38 text-foreground shadow-[0_10px_30px_rgba(45,31,24,0.08),inset_0_1px_0_rgba(255,255,255,0.72),inset_0_-1px_0_rgba(255,255,255,0.2)] backdrop-blur-xl hover:bg-white/52 hover:text-foreground";
-  const glassDialogButtonClassName =
-    "h-11 justify-start rounded-xl border-0 bg-white/48 text-foreground shadow-[0_10px_28px_rgba(45,31,24,0.07),inset_0_1px_0_rgba(255,255,255,0.78),inset_0_-1px_0_rgba(255,255,255,0.2)] backdrop-blur-xl hover:bg-white/62 hover:text-foreground";
-
-  async function copyShareUrl() {
-    await navigator.clipboard.writeText(shareUrl);
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1800);
-  }
 
   return (
     <div className="overflow-hidden rounded-2xl bg-card shadow-[0_18px_54px_rgba(255,120,150,0.11)]">
@@ -642,8 +627,12 @@ function SharePanel({
               </div>
             </DialogContent>
           </Dialog>
-          <Dialog>
-            <DialogTrigger asChild>
+          <ShareLinkDialog
+            description="Copy the private link, post it on X, or preview the shared page."
+            shareUrl={shareUrl}
+            title="Share this song"
+            tweetText={`Listen to "${title}"`}
+            trigger={
               <Button
                 className={cn(
                   glassButtonClassName,
@@ -654,52 +643,8 @@ function SharePanel({
                 <Share2 className="size-4" />
                 Share
               </Button>
-            </DialogTrigger>
-            <DialogContent className="max-h-[min(720px,calc(100svh-2rem))] overflow-hidden border-black/10 bg-[#fffaf4] p-0 sm:max-w-2xl">
-              <div className="border-b border-black/10 bg-white/75 px-6 py-5">
-                <DialogHeader>
-                  <DialogTitle>Share this song</DialogTitle>
-                  <DialogDescription>
-                    Copy the private link, post it on X, or preview the shared
-                    page.
-                  </DialogDescription>
-                </DialogHeader>
-              </div>
-              <div className="min-w-0 space-y-4 overflow-y-auto px-6 pb-6">
-                <div className="min-w-0 rounded-2xl border border-black/10 bg-white/80 p-3 shadow-inner">
-                  <p className="break-all text-sm font-semibold leading-6 text-stone-700 sm:truncate sm:break-normal">
-                    {shareUrl}
-                  </p>
-                </div>
-                <div className="grid gap-2">
-                  <Button
-                    className="h-11 justify-start rounded-xl border-0 bg-stone-950/88 text-white shadow-[0_12px_30px_rgba(45,31,24,0.16),inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur-xl hover:bg-stone-950"
-                    type="button"
-                    onClick={copyShareUrl}
-                  >
-                    {copied ? (
-                      <Check className="size-4" />
-                    ) : (
-                      <Copy className="size-4" />
-                    )}
-                    {copied ? "Copied link" : "Copy link"}
-                  </Button>
-                  <Button asChild className={glassDialogButtonClassName}>
-                    <a href={tweetUrl} rel="noreferrer" target="_blank">
-                      <TwitterX className="size-4" />
-                      Share to X
-                    </a>
-                  </Button>
-                  <Button asChild className={glassDialogButtonClassName}>
-                    <a href={shareUrl} rel="noreferrer" target="_blank">
-                      <ExternalLink className="size-4" />
-                      Preview share page
-                    </a>
-                  </Button>
-                </div>
-              </div>
-            </DialogContent>
-          </Dialog>
+            }
+          />
         </div>
       </div>
       <div className="flex items-center gap-2 border-t border-border/70 bg-muted/55 px-4 py-3 sm:px-5">

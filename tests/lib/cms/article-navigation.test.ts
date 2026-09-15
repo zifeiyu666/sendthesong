@@ -3,7 +3,10 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, test } from "node:test";
 
-import { isArticlesFooterGroup } from "@/lib/cms/article-navigation-utils";
+import {
+  isArticlesFooterGroup,
+  withVisibleHeaderLinks,
+} from "@/lib/cms/article-navigation-utils";
 
 type MessageShape = {
   Header: { links: Array<{ href: string; items?: Array<{ href: string }> }> };
@@ -51,6 +54,59 @@ describe("localized article navigation", () => {
       assert.deepEqual(footerPaths(localized), footerPaths(english));
       assert.deepEqual(headerPaths(localized), headerPaths(english));
     }
+  });
+
+  test("includes Gift Tools with virtual gifts in the header", () => {
+    const english = messages("en");
+    const giftTools = english.Header.links.find(
+      (link) => link.href === "/virtual-gifts",
+    );
+
+    assert.ok(giftTools);
+    assert.deepEqual(giftTools?.items?.map((item) => item.href), [
+      "/virtual-gifts",
+      "/virtual-gifts/love-letter",
+      "/mygifts",
+    ]);
+  });
+
+  test("hides account header links when the visitor is not signed in", () => {
+    const links = [
+      { name: "My Songs", href: "/songs" },
+      { name: "My Samples", href: "/samples" },
+      { name: "My Voices", href: "/voices" },
+      { name: "Gift Ideas", href: "/music/personalized-gift" },
+      {
+        name: "Gift Tools",
+        href: "/virtual-gifts",
+        items: [
+          { name: "Gifts and surprises", href: "/virtual-gifts" },
+          { name: "Love letter", href: "/virtual-gifts/love-letter" },
+          { name: "My gifts", href: "/mygifts" },
+        ],
+      },
+    ];
+
+    assert.deepEqual(
+      withVisibleHeaderLinks(links, false).map((link) => link.href),
+      ["/music/personalized-gift", "/virtual-gifts"],
+    );
+    assert.deepEqual(
+      withVisibleHeaderLinks(links, false).find(
+        (link) => link.href === "/virtual-gifts",
+      )?.items?.map((item) => item.href),
+      ["/virtual-gifts", "/virtual-gifts/love-letter"],
+    );
+    assert.deepEqual(
+      withVisibleHeaderLinks(links, true).map((link) => link.href),
+      [
+        "/songs",
+        "/samples",
+        "/voices",
+        "/music/personalized-gift",
+        "/virtual-gifts",
+      ],
+    );
   });
 
   test("recognizes the articles footer group independently of its title", () => {

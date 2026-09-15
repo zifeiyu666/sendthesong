@@ -1,0 +1,583 @@
+{
+  "picker": {
+    "title": "Elige una sorpresa para enviar",
+    "description": "Empieza con una carta de amor virtual gratis, o elige un formato que llegará pronto para cumpleaños y revelaciones más grandes.",
+    "trending": "Disponible ahora",
+    "comingSoon": "Próximamente",
+    "comingSoonToast": "Este estilo de regalo llegará pronto. Prueba Love letter por ahora.",
+    "templates": {
+      "love-letter": "Carta de amor",
+      "super-box": "Super box",
+      "birthday-balloons": "Globos de cumpleaños",
+      "birthday-cake": "Pastel de cumpleaños"
+    },
+    "hints": {
+      "love-letter": "Envuelve un mensaje, una foto y música en un sobre que ellas o ellos abren.",
+      "super-box": "Una revelación más grande para los momentos que necesitan teatro extra.",
+      "birthday-balloons": "Una sorpresa de cumpleaños que pueden abrir en el teléfono.",
+      "birthday-cake": "Un pastel digital para quien cumple años lejos."
+    }
+  },
+  "editor": {
+    "title": "Carta de amor",
+    "description": "Escribe un mensaje, añade una foto y música, y comparte una carta de amor virtual gratis.",
+    "backToPicker": "Todos los regalos",
+    "chooseVibe": "Elige la forma",
+    "vibes": {
+      "hearts": "Corazones",
+      "roses": "Rosas",
+      "stars": "Estrellas",
+      "ribbons": "Cintas"
+    },
+    "messageLabel": "Mensaje",
+    "messagePlaceholder": "Escribe tu mensaje aquí…",
+    "senderLabel": "Tu nombre",
+    "senderPlaceholder": "Firma opcional",
+    "photoLabel": "Foto",
+    "uploadPhoto": "Subir foto",
+    "changePhoto": "Cambiar foto",
+    "removePhoto": "Quitar",
+    "musicLabel": "Música",
+    "musicCreateTitle": "Crea una canción personalizada",
+    "musicCreateDescription": "Convierte tu historia en música hecha para ellos — el regalo más personal.",
+    "musicCreateCta": "Crear una canción",
+    "musicLibraryTitle": "Usa una de tus canciones",
+    "musicLibraryDescription": "Elige una canción terminada de tu biblioteca.",
+    "musicLibraryCta": "Elegir una canción",
+    "musicLibrarySignIn": "Inicia sesión para usar tus canciones",
+    "musicLibraryEmpty": "Aún no hay canciones terminadas. Crea una primero.",
+    "musicUploadTitle": "Subir música",
+    "musicUploadDescription": "Añade un archivo MP3, WAV, M4A u OGG.",
+    "musicUploadCta": "Subir audio",
+    "musicClear": "Quitar música",
+    "selectedSong": "Seleccionada: {title}",
+    "selectedUpload": "Audio listo",
+    "preview": "Vista previa",
+    "previewDeviceLabel": "Dispositivo de vista previa",
+    "previewPhone": "Teléfono",
+    "previewDesktop": "Ordenador",
+    "previewSampleMessage": "Todavía sonrío al pensar en ese martes bajo la lluvia.",
+    "createGift": "Crear regalo",
+    "creating": "Creando…",
+    "createdTitle": "Tu regalo está listo",
+    "createdDescription": "Copia el enlace y envíalo a alguien especial.",
+    "copyLink": "Copiar enlace",
+    "copied": "Enlace copiado",
+    "openGift": "Abrir página del regalo",
+    "createAnother": "Crear otro",
+    "viewMyGifts": "Ver mis regalos",
+    "messageRequired": "Escribe un mensaje corto antes de crear el regalo.",
+    "uploadFailed": "Error al subir. Inténtalo de nuevo.",
+    "createFailed": "No se pudo crear el regalo. Inténtalo de nuevo."
+  },
+  "share": {
+    "title": "Una carta de amor para ti",
+    "description": "Abre el sobre para leer un mensaje personal.",
+    "tapToOpen": "Toca para abrir",
+    "from": "De {name}",
+    "playMusic": "Reproducir música",
+    "pauseMusic": "Pausar",
+    "ctaTitle": "¿Quieres una canción que suene como tu historia?",
+    "ctaDescription": "Convierte un recuerdo en una vista previa gratuita de canción personalizada en minutos.",
+    "ctaButton": "Haz una canción así"
+  },
+  "library": {
+    "meta": {
+      "title": "Mis regalos",
+      "description": "Abre y copia los enlaces de los regalos virtuales que has creado."
+    },
+    "hero": {
+      "badge": "Biblioteca de regalos",
+      "title": "Tus enlaces de regalo, en un solo lugar",
+      "description": "Cada regalo virtual que creas con la sesión iniciada queda aquí para reabrirlo, copiar el enlace y enviarlo de nuevo."
+    },
+    "filters": {
+      "all": "Todos los regalos",
+      "searchPlaceholder": "Buscar mensaje, remitente o tipo de regalo"
+    },
+    "card": {
+      "created": "Creado el {date}",
+      "from": "De {name}",
+      "copyLink": "Copiar enlace del regalo",
+      "copied": "Enlace copiado",
+      "share": "Compartir",
+      "shareTitle": "Compartir este regalo",
+      "shareDescription": "Copia el enlace privado, publícalo en X o previsualiza la página compartida.",
+      "shareCopy": "Copiar enlace",
+      "shareCopied": "Enlace copiado",
+      "shareToX": "Compartir en X",
+      "sharePreview": "Ver página compartida",
+      "tweetText": "Abre este regalo: {title}"
+    },
+    "empty": {
+      "create": "Crear un regalo",
+      "browse": "Ver formatos de regalo",
+      "noMatches": {
+        "title": "Ningún regalo coincide con la búsqueda",
+        "description": "Prueba con otro tipo de regalo o una búsqueda más corta."
+      },
+      "noGifts": {
+        "title": "Aún no tienes regalos guardados",
+        "description": "Crea una carta de amor virtual con la sesión iniciada y el enlace para compartir aparecerá aquí."
+      }
+    }
+  },
+  "hub": {
+    "virtualGift": "Regalos y sorpresas",
+    "virtualGiftDescription": "Envía una carta de amor virtual gratis con un mensaje, una foto y música — sin envío ni paywall."
+  },
+  "landing": {
+    "metaTitle": "Regalos y sorpresas que puedes enviar ya",
+    "metaDescription": "Envía regalos y sorpresas al instante con una carta de amor virtual gratis. Añade un mensaje, una foto y música, y comparte el enlace. Crea una sorpresa en minutos.",
+    "keywords": [
+      "regalos y sorpresas",
+      "regalos virtuales",
+      "enviar una sorpresa",
+      "regalos digitales",
+      "carta de amor virtual",
+      "sorpresas personalizadas"
+    ],
+    "badge": "Regalos virtuales gratis",
+    "heroRating": "Excelente",
+    "h1Line1": "Regalos y sorpresas",
+    "h1Line2": "que puedes enviar al instante",
+    "underline": "Regalos y sorpresas",
+    "heroDescription": "Los regalos y sorpresas llegan mejor cuando se sienten personales y aparecen en el segundo justo. Envía una carta de amor virtual gratis con tu mensaje, una foto y música, y comparte un enlace que pueden abrir en cualquier teléfono. Sin envío, sin tienda y sin cuenta para empezar.",
+    "heroCta": "Empezar una carta de amor",
+    "heroSecondaryCta": "Mis regalos",
+    "heroFormatsCta": "Ver formatos de regalo",
+    "heroCardTitle": "Una sorpresa que se abre, no se desembala",
+    "heroCardDescription": "Tus palabras, una foto y música opcional en un enlace privado — listo en el mismo minuto.",
+    "heroImageAlt": "Alguien abriendo un regalo digital personal en el teléfono",
+    "heroHighlights": [
+      "Gratis para crear y compartir",
+      "Mensaje, foto y música",
+      "Se abre en cualquier teléfono"
+    ],
+    "definitionEyebrow": "Qué es",
+    "definitionTitle": "Regalos y sorpresas que llegan como un momento, no como un paquete",
+    "definition": "Los regalos y sorpresas son momentos personales que creas para otra persona: una nota inesperada, una revelación o un recuerdo que no veían venir. En internet, eso puede ser una página para compartir que abren en cualquier teléfono: tus palabras, una foto y música dentro de una carta de amor virtual. La sorpresa es la revelación.",
+    "definitionPoints": [
+      "Un enlace que pueden abrir de inmediato",
+      "Una revelación en lugar de un texto enterrado",
+      "Música personalizada opcional dentro del regalo",
+      "Un recuerdo que pueden volver a abrir"
+    ],
+    "definitionNote": "Regalar es un rito social antiguo para marcar cuidado y relación. Una sorpresa virtual mantiene ese rito cuando no puedes entregar algo en persona.",
+    "definitionSourceLabel": "Gift, Wikipedia",
+    "pickerEyebrow": "Empieza aquí",
+    "pickerTitle": "Elige el formato de tus regalos y sorpresas",
+    "pickerDescription": "Love letter ya está disponible. Los demás formatos están en camino: úsalos como adelanto de las sorpresas que este estudio está construyendo alrededor de tus palabras y tu música.",
+    "whyEyebrow": "Por qué este formato",
+    "whyTitle": "Por qué la gente envía regalos y sorpresas como un enlace",
+    "whyDescription": "Un objeto enviado sigue siendo maravilloso cuando tienes tiempo. Cuando el momento es hoy —una mañana de cumpleaños, una noche a distancia, un gracias que no quieres perder en el chat— una sorpresa para compartir es el formato que de verdad puede llegar.",
+    "whyItems": [
+      {
+        "id": "instant",
+        "title": "La sorpresa puede ocurrir ahora",
+        "description": "No hay formulario de dirección, ni ventana de entrega, ni espera de un mensajero. Creas la página, copias el enlace y la revelación puede pasar durante una llamada o a primera hora de su cumpleaños."
+      },
+      {
+        "id": "personal",
+        "title": "El regalo está hecho de tus detalles",
+        "description": "Una e-card genérica es una plantilla con un nombre. Aquí el mensaje, la foto y la canción opcional son el regalo. Eso es lo que hace que los regalos y sorpresas virtuales se sientan tuyos."
+      },
+      {
+        "id": "music",
+        "title": "La música puede vivir dentro de la revelación",
+        "description": "Añade una canción personalizada alrededor de su historia, elige un tema terminado de tu biblioteca o sube un audio que tienes derecho a usar. El sobre se abre y entonces empieza la música."
+      },
+      {
+        "id": "replay",
+        "title": "Pueden volver a abrirlo después",
+        "description": "Los textos desaparecen en un hilo. Una carta de amor virtual se queda en su propia página, para que la foto, las palabras y la canción se puedan abrir otra vez cuando pase la primera sorpresa."
+      }
+    ],
+    "occasionsEyebrow": "Cuándo enviarlo",
+    "occasionsTitle": "Regalos y sorpresas para los momentos que necesitan una revelación",
+    "occasionsDescription": "Usa una carta de amor virtual cuando las palabras importan tanto como el objeto. Combínala con una canción personalizada cuando quieras que la sorpresa siga sonando después de cerrar el sobre.",
+    "occasions": [
+      {
+        "id": "birthday",
+        "title": "Mañana de cumpleaños",
+        "description": "Envía el enlace antes de que despierten. Abren un sobre, ven una foto y escuchan una canción con su nombre; después todavía puedes seguir con un regalo de canción de cumpleaños."
+      },
+      {
+        "id": "anniversary",
+        "title": "Aniversario y porque sí",
+        "description": "Marca una fecha, o envía una sorpresa un martes cualquiera. Una carta corta más un recuerdo compartido suele llegar más lejos que un discurso largo."
+      },
+      {
+        "id": "distance",
+        "title": "Amor a distancia",
+        "description": "Cuando no podéis estar en la misma habitación, un enlace sigue creando un segundo compartido. Abren el sobre mientras estáis en llamada y la música llena el resto."
+      },
+      {
+        "id": "thankyou",
+        "title": "Agradecimiento y apoyo",
+        "description": "El agradecimiento se pierde en un chat. Pon en una carta lo concreto que hicieron, añade una foto de ese día y deja que una canción lleve lo que no cabía en un texto."
+      },
+      {
+        "id": "apology",
+        "title": "Disculpa y reconexión",
+        "description": "Un mensaje cuidado merece una revelación más quieta que un aviso. Escribe las palabras que quieres decir y deja que la música opcional sostenga el tono después de leer."
+      },
+      {
+        "id": "holiday",
+        "title": "Festivos y días en familia",
+        "description": "Día de la Madre, Día del Padre, la mañana de Navidad o un día que inventasteis juntos. El formato es el mismo: tus palabras, una foto y música que pueden repetir."
+      }
+    ],
+    "howEyebrow": "Cómo funciona",
+    "howTitle": "Cómo enviar regalos y sorpresas en cuatro pasos",
+    "howDescription": "No necesitas letras, diseño ni una etiqueta de envío. La mayoría termina una carta de amor virtual en pocos minutos.",
+    "steps": [
+      {
+        "kicker": "01",
+        "title": "Elige un formato de regalo",
+        "description": "Empieza con Love letter, el formato disponible hoy para regalos y sorpresas. Los otros estilos, como globos y pastel, están listados para que veas lo que viene después."
+      },
+      {
+        "kicker": "02",
+        "title": "Escribe el mensaje y añade una foto",
+        "description": "Di lo que dirías si estuvieran en la habitación. Añade una foto opcional para que el sobre se abra a una cara, un lugar o un recuerdo que los dos reconozcáis."
+      },
+      {
+        "kicker": "03",
+        "title": "Añade música si la quieres",
+        "description": "Crea una canción personalizada alrededor de su historia, elige una canción terminada de tu biblioteca o sube un audio que puedes compartir. La música es opcional, pero es lo que hace que la sorpresa dure."
+      },
+      {
+        "kicker": "04",
+        "title": "Comparte el enlace privado",
+        "description": "Copia el enlace y envíalo por texto, WhatsApp, correo o cualquier chat. Lo abren en el navegador, tocan el sobre y el regalo se reproduce en su teléfono."
+      }
+    ],
+    "compareEyebrow": "Elige el formato adecuado",
+    "compareTitle": "Regalos y sorpresas virtuales frente a tarjetas, textos y envíos",
+    "compareDescription": "Cada formato puede ser significativo. La diferencia es si la sorpresa puede llegar hoy y si tus palabras tienen un lugar donde vivir después de la primera mirada.",
+    "compareHeaders": {
+      "format": "Formato",
+      "personal": "Qué se siente personal",
+      "speed": "Qué tan rápido llega",
+      "keepsake": "Qué queda"
+    },
+    "compareRows": [
+      {
+        "format": "Carta de amor virtual",
+        "personal": "Tu mensaje, foto y canción personalizada opcional",
+        "speed": "Minutos — comparte un enlace",
+        "keepsake": "Una página que pueden volver a abrir",
+        "highlighted": true
+      },
+      {
+        "format": "Tarjeta de felicitación",
+        "personal": "Manuscrita cuando tienes tiempo de escribir",
+        "speed": "Correo o entrega en persona",
+        "keepsake": "Tarjeta física",
+        "highlighted": false
+      },
+      {
+        "format": "Texto o chat",
+        "personal": "Inmediato y familiar",
+        "speed": "Al instante",
+        "keepsake": "Una burbuja que se pierde al desplazarse",
+        "highlighted": false
+      },
+      {
+        "format": "Regalo enviado",
+        "personal": "El objeto que elegiste",
+        "speed": "Días, más una dirección",
+        "keepsake": "Un presente físico",
+        "highlighted": false
+      },
+      {
+        "format": "Canción personalizada",
+        "personal": "Su nombre, recuerdo e historia en música original",
+        "speed": "Vista previa gratis en minutos",
+        "keepsake": "Una canción que pueden repetir",
+        "highlighted": false
+      }
+    ],
+    "moreEyebrow": "Sigue explorando",
+    "moreTitle": "Combina regalos y sorpresas con una canción personalizada",
+    "moreDescription": "La carta virtual es la revelación. Si quieres que la sorpresa siga sonando, lleva la misma historia a una canción, una introducción hablada o un recuerdo impreso de la letra.",
+    "moreLinks": [
+      {
+        "href": "/create-song",
+        "title": "Crear una canción personalizada",
+        "description": "Convierte un recuerdo, un nombre y un estado de ánimo en una vista previa gratis que puedes poner dentro de la sorpresa."
+      },
+      {
+        "href": "/gifts/song-message",
+        "title": "Enviar una canción con un mensaje",
+        "description": "Graba una bendición o escribe una apertura hablada, y deja que la canción personalizada lleve el resto."
+      },
+      {
+        "href": "/gifts",
+        "title": "Ver ideas de regalos personalizados",
+        "description": "Explora cumpleaños, aniversarios, oración y regalos de letra junto a estas sorpresas virtuales."
+      },
+      {
+        "href": "/occasions/custom-happy-birthday-song",
+        "title": "Canciones de cumpleaños",
+        "description": "Sigue la carta virtual con una canción de cumpleaños que usa su nombre y el sentimiento del día."
+      },
+      {
+        "href": "/occasions/anniversary",
+        "title": "Canciones de aniversario",
+        "description": "Convierte una historia compartida en música que pueden guardar después de abrir el sobre."
+      },
+      {
+        "href": "/blog/voice-message-gift-ideas",
+        "title": "Ideas de regalos con mensaje de voz",
+        "description": "Aprende cómo un saludo grabado puede formar parte de una canción que de verdad van a repetir."
+      }
+    ],
+    "moreCta": "Explorar este regalo",
+    "faqTitle": "Preguntas sobre regalos y sorpresas",
+    "faqDescription": "Respuestas directas sobre enviar una carta de amor virtual gratis, compartir el enlace y añadir música.",
+    "faqCtaTitle": "¿Listo para enviar regalos y sorpresas?",
+    "faqCtaDescription": "Empieza con una carta de amor virtual gratis, o crea una canción personalizada que puedan guardar después de la revelación.",
+    "faqCtaButton": "Crear una carta de amor",
+    "faq": [
+      {
+        "question": "¿Qué son los regalos y sorpresas que puedes enviar en internet?",
+        "answer": "Los regalos y sorpresas que puedes enviar en internet son momentos digitales para compartir: normalmente un enlace que abre una página personal. En One Custom Song empieza como una carta de amor virtual gratis con tu mensaje, una foto y música opcional. La persona destinataria la abre en cualquier teléfono, sin app ni cuenta."
+      },
+      {
+        "question": "¿Estos regalos virtuales son gratis?",
+        "answer": "Sí. Crear y enviar una carta de amor virtual es gratis. Puedes escribir un mensaje, añadir una foto y compartir el enlace sin paywall. Si quieres música original dentro de la sorpresa, empieza una vista previa gratis de canción personalizada y adjúntala cuando esté lista."
+      },
+      {
+        "question": "¿Necesito una cuenta para enviar una sorpresa?",
+        "answer": "No. Puedes crear una carta de amor virtual sin iniciar sesión. Solo hace falta una cuenta si quieres usar una canción terminada de tu biblioteca. Subir una foto o crear una canción nueva sigue el flujo del editor en la página siguiente."
+      },
+      {
+        "question": "¿Cómo comparto los regalos y sorpresas después de crearlos?",
+        "answer": "Recibes un enlace privado. Cópialo y envíalo por texto, WhatsApp, correo o cualquier chat. La persona destinataria abre el enlace en el navegador, toca para abrir el sobre y lee tu mensaje. No necesita instalar una app ni crear una cuenta."
+      },
+      {
+        "question": "¿Puedo añadir música o una canción personalizada a la sorpresa?",
+        "answer": "Sí. Crea una canción personalizada alrededor de su historia, elige una canción terminada de tu biblioteca o sube un audio que tienes derecho a usar. La música es opcional, pero es lo que hace que los regalos y sorpresas se sientan más que una nota."
+      },
+      {
+        "question": "¿Para qué ocasiones sirven los regalos y sorpresas virtuales?",
+        "answer": "Cumpleaños, aniversarios, noches a distancia, agradecimientos, disculpas y momentos porque sí. Usa la carta de amor cuando quieras una revelación íntima. Para un regalo musical más largo, combina la sorpresa con una canción de cumpleaños o aniversario."
+      },
+      {
+        "question": "¿Una carta de amor virtual es mejor que un texto?",
+        "answer": "Un texto es rápido, pero desaparece en un hilo. Una carta de amor virtual da a las mismas palabras una revelación: abren un sobre, ven una foto y pueden oír música. Sigue siendo instantánea de enviar, y más fácil de reabrir después que una burbuja de chat."
+      },
+      {
+        "question": "¿Pueden abrir el regalo en un teléfono?",
+        "answer": "Sí. La página del regalo está hecha para teléfonos. Abren el enlace en el navegador móvil, tocan el sobre y leen el mensaje. No hay paso por una tienda de apps, ni inicio de sesión, ni dirección de envío."
+      }
+    ],
+    "closingTitle": "Envía regalos y sorpresas que se sientan tuyos",
+    "closingDescription": "Empieza con una carta de amor virtual gratis. Si el momento merece una canción, crea una vista previa alrededor de su nombre e historia, y mete esa música dentro de la misma sorpresa.",
+    "closingCta": "Crear una sorpresa gratis",
+    "sourcePrefix": "Fuente:"
+  },
+  "loveLetter": {
+    "metaTitle": "Carta de Amor Virtual Gratis Online — Plantilla e Ideas",
+    "metaDescription": "Crea gratis una carta de amor en línea: copia una plantilla de carta de amor, añade ideas, foto y música, y comparte un enlace privado.",
+    "keywords": [
+      "cartas del corazón",
+      "cómo empezar una carta de amor",
+      "plantilla de carta de amor",
+      "carta online"
+    ],
+    "badge": "Carta de amor virtual gratis",
+    "heroRating": "Excelente",
+    "h1": "Carta de amor virtual",
+    "heroLead": "Sorprende a tu pareja sin motivo — una e-card personalizada que pueden abrir en cualquier teléfono.",
+    "heroDescription": "Una carta de amor virtual es una nota digital para el cariño que quieres enviar en cualquier momento y lugar. Escribe un mensaje personal, añade una foto de un momento que compartís, opcionalmente incluye música y envía el enlace privado. Sin envío, sin app y sin muro de pago para empezar.",
+    "heroCta": "Crear una carta de amor",
+    "heroSecondaryCta": "Mis regalos",
+    "heroFormatsCta": "Ver formatos",
+    "heroHowCta": "Ver cómo funciona",
+    "heroCardTitle": "Hecha para una revelación sin motivo",
+    "heroCardDescription": "Abren el sobre, ven vuestra foto y leen una nota escrita solo para ellos.",
+    "heroImageAlt": "Una carta de amor virtual personal abriéndose en un teléfono",
+    "heroHighlights": [
+      "Gratis para crear y compartir",
+      "Mensaje, foto y música",
+      "Solo quien tiene el enlace puede verla"
+    ],
+    "introEyebrow": "Qué es",
+    "introTitle": "Una carta de amor digital que se siente como una revelación, no como un texto",
+    "intro": "¿Buscas algo nuevo para sorprender a alguien que quieres, incluso en un día cualquiera? Una carta de amor virtual es una e-card personalizada para ese momento sin motivo. Abren una página privada, ven un sobre y leen palabras escritas para ellos — no una plantilla con un nombre metido a última hora.",
+    "introHow": "Crea y envía una en unos clics. Escribe una nota corta y equilibra lo romántico y lo divertido. Sube una foto de un momento que realmente compartís. Luego comparte el enlace por mensaje, WhatsApp o correo. Si quieres que la carta dure, añade una canción personalizada o audio que puedan oír al abrir el sobre.",
+    "introNote": "Las cartas de amor llevan mucho tiempo siendo una forma de poner el cariño en palabras que se pueden guardar y releer. Una versión virtual mantiene ese ritual cuando no puedes entregar el papel en mano.",
+    "introSourceLabel": "Love letter, Wikipedia",
+    "sourcePrefix": "Fuente:",
+    "craftEyebrow": "Qué añades",
+    "craftTitle": "Escribe una nota virtual que sí van a reabrir",
+    "craftDescription": "La carta es el regalo: tus palabras, una foto, música opcional y un enlace privado. Todo es opcional excepto el mensaje — empieza simple si quieres enviarla hoy.",
+    "introPoints": [
+      {
+        "id": "write",
+        "title": "Escribe un mensaje personal",
+        "description": "Di lo que dirías si estuvieran en la habitación. Unos pocos detalles concretos suelen pesar más que un discurso largo. Romántico, gracioso o ambos — el equilibrio es tuyo."
+      },
+      {
+        "id": "photo",
+        "title": "Sube una foto que ambos reconozcan",
+        "description": "Añade una imagen de un momento compartido para que el sobre se abra a una cara, un lugar o un recuerdo — no a una foto de stock."
+      },
+      {
+        "id": "music",
+        "title": "Añade música si quieres que dure",
+        "description": "Crea una canción personalizada alrededor de su historia, elige un tema de tu biblioteca o sube audio que tengas derecho a usar. La música es opcional, pero es lo que hace que la carta sea más que una nota."
+      },
+      {
+        "id": "share",
+        "title": "Envía la carta de amor virtual como enlace",
+        "description": "Copia la URL privada y compártela con tu persona especial. La abren en el navegador, tocan el sobre y la leen en el teléfono."
+      }
+    ],
+    "howEyebrow": "Cómo funciona",
+    "howTitle": "Crea y envía una carta de amor virtual en cuatro pasos",
+    "howDescription": "No necesitas diseño ni una etiqueta de envío. La mayoría termina una carta digital en unos minutos.",
+    "steps": [
+      {
+        "kicker": "01",
+        "title": "Escribe el mensaje",
+        "description": "Empieza con una nota corta y concreta. Menciona un recuerdo, un apodo o la razón por la que la envías hoy."
+      },
+      {
+        "kicker": "02",
+        "title": "Añade una foto",
+        "description": "Sube un JPEG, PNG o WebP de un momento que compartís. Si solo quieres las palabras, omítela: la carta sigue funcionando."
+      },
+      {
+        "kicker": "03",
+        "title": "Elige música, o sáltala",
+        "description": "Crea una canción personalizada, elige una de tu biblioteca o sube audio. También puedes enviar la carta sin música."
+      },
+      {
+        "kicker": "04",
+        "title": "Comparte el enlace privado",
+        "description": "Copia el enlace y envíalo por donde ya habláis. Solo las personas con ese enlace pueden ver el regalo."
+      }
+    ],
+    "writingEyebrow": "Ayuda de escritura",
+    "writingTitle": "Cartas del corazón: cómo empezar, qué escribir y una plantilla de apoyo",
+    "writingDescription": "La línea más difícil es la primera. Toma prestado un comienzo, roba una idea o copia la plantilla de carta de amor de abajo en el editor de arriba; luego cambia los detalles que solo ustedes comparten. Una carta de amor online funciona por lo mismo que una de papel: es específica y es suya.",
+    "writingStartTitle": "Cómo empezar una carta de amor",
+    "writingStartDescription": "Abre con un momento, no con un saludo. Cualquiera de estas primeras líneas funciona; elige la que suene a ti:",
+    "writingStartItems": [
+      "“Sigo pensando en el día en que ___ , y nunca te dije lo que provocó en mí.”",
+      "“Sin aniversario, sin motivo: solo quería que tuvieras algo que sea solo tuyo.”",
+      "“Me cuesta decir esto en voz alta, así que lo escribí donde no puedo apresurarlo.”",
+      "“Siempre ___ , y me doy cuenta cada vez.”"
+    ],
+    "writingTemplateTitle": "Plantilla de carta de amor para copiar",
+    "writingTemplateDescription": "Copia esta estructura en el cuadro de mensaje de arriba, o envía toda tu carta de amor en línea como enlace con foto y música. Llena los espacios y borra cualquier línea que no sea cierta:",
+    "writingTemplateLines": [
+      "Querida/o ___ : sigo pensando en el momento en que ___ .",
+      "Aún recuerdo cómo ___ , y cómo me hizo sentir ___ .",
+      "Lo que más amo es la forma en que ___ , incluso cuando ___ .",
+      "Gracias por ___ ; sé que no fue fácil.",
+      "La próxima quiero que ___ . Guarda esta carta hasta entonces.",
+      "Tuya/o, ___"
+    ],
+    "writingIdeasTitle": "Ideas para una carta de amor cuando la página sigue en blanco",
+    "writingIdeasDescription": "Seis cosas que vale la pena escribir, en cualquier orden. Un detalle verdadero vale más que diez adjetivos, en una carta online o en papel:",
+    "writingIdeasItems": [
+      "Un recuerdo que solo ustedes comparten: el viaje que salió mal, la canción de ese verano.",
+      "Un pequeño hábito suyo por el que nunca le has dado las gracias.",
+      "Qué cambió en tu vida después de que llegara, en una frase de antes y después.",
+      "Una promesa para el próximo año, lo bastante pequeña para cumplirla.",
+      "Algo que te dio vergüenza decir el día que pasó.",
+      "Por qué hoy, entre todos los días, recibe una carta."
+    ],
+    "writingNote": "En papel o en pantalla, el ritual es el mismo. Una carta en línea solo añade la revelación: tocan el sobre, ven tu foto y escuchan la música que elegiste.",
+    "editorEyebrow": "Haz la tuya",
+    "editorTitle": "Crea tu carta de amor virtual",
+    "editorDescription": "Escribe el mensaje abajo, añade una foto y música opcionales, crea el regalo y copia el enlace.",
+    "moreEyebrow": "Sigue",
+    "moreTitle": "Acompaña la carta con una canción, o encuéntrala después",
+    "moreDescription": "La carta de amor virtual es la revelación. Los regalos guardados viven en tu biblioteca. Si quieres que el sentimiento siga sonando, convierte la misma historia en una canción personalizada.",
+    "moreCta": "Abrir esta página",
+    "moreLinks": [
+      {
+        "href": "/mygifts",
+        "title": "Tu feed de regalos",
+        "description": "Los regalos que creas con sesión iniciada se guardan aquí para reabrirlos y copiar el enlace otra vez."
+      },
+      {
+        "href": "/create-song",
+        "title": "Crear una canción personalizada",
+        "description": "Convierte un recuerdo, un nombre y un ánimo en una vista previa gratis que puedes meter en la carta."
+      },
+      {
+        "href": "/virtual-gifts",
+        "title": "Más regalos y sorpresas",
+        "description": "Mira los otros formatos de regalo virtual que vienen, y cómo encaja una carta de amor junto a ellos."
+      },
+      {
+        "href": "/gifts",
+        "title": "Ideas de regalos personalizados",
+        "description": "Explora formatos de cumpleaños, aniversario y letras junto a esta carta de amor digital."
+      },
+      {
+        "href": "/gifts/song-message",
+        "title": "Enviar una canción con un mensaje",
+        "description": "Graba una bendición o escribe una intro hablada, y deja que la canción lleve el resto."
+      },
+      {
+        "href": "/occasions/anniversary",
+        "title": "Canciones de aniversario",
+        "description": "Sigue la carta con música construida alrededor de una fecha que ambos recuerdan."
+      }
+    ],
+    "faqTitle": "Preguntas sobre cartas de amor virtuales",
+    "faqDescription": "Quién puede ver el regalo, cuánto se guarda, dónde encontrarlo después y cómo compartir el enlace.",
+    "faqCtaTitle": "¿Listo para enviar una carta de amor virtual?",
+    "faqCtaDescription": "Escribe un mensaje corto, añade una foto si tienes una y comparte el enlace privado en unos clics.",
+    "faqCtaButton": "Crear una carta de amor",
+    "faq": [
+      {
+        "question": "¿Quién puede ver mi carta de amor virtual?",
+        "answer": "Solo las personas a las que envías el enlace del regalo pueden verla. No hay una galería pública. Si no tienen la URL, no pueden abrir la carta."
+      },
+      {
+        "question": "¿Cuánto tiempo se guardan las cartas de amor virtuales?",
+        "answer": "Los regalos siguen disponibles para reabrirlos después. Trata el enlace como un recuerdo privado: compártelo con la persona a la que va dirigido y guarda una copia en Mis regalos si has iniciado sesión."
+      },
+      {
+        "question": "¿Dónde puedo encontrar todos mis regalos?",
+        "answer": "Los regalos que creas con sesión iniciada se guardan en tu feed personal de Mis regalos. Abre esa página para copiar un enlace otra vez, previsualizar la página compartida o enviarlo de nuevo."
+      },
+      {
+        "question": "¿Necesito una cuenta para enviar una carta de amor virtual?",
+        "answer": "No. Puedes escribir un mensaje, añadir una foto y compartir el enlace sin iniciar sesión. La cuenta solo hace falta si quieres usar una canción de tu biblioteca o guardar el regalo en Mis regalos."
+      },
+      {
+        "question": "¿La carta de amor virtual es gratis?",
+        "answer": "Sí. Crear y enviar una carta de amor digital es gratis. No hay un muro de pago para quitar anuncios en la carta. Si quieres música original dentro, empieza una vista previa gratis de canción personalizada y adjúntala cuando quieras."
+      },
+      {
+        "question": "¿Puedo añadir una canción personalizada a la carta?",
+        "answer": "Sí. Crea una canción alrededor de su historia, elige una canción terminada de tu biblioteca o sube un archivo de audio que tengas derecho a usar. La música es opcional."
+      },
+      {
+        "question": "¿Cómo envío la carta de amor virtual?",
+        "answer": "Después de crear el regalo, recibes un enlace privado. Cópialo y envíalo por mensaje, WhatsApp, correo o cualquier chat. Quien lo recibe lo abre en el navegador y toca el sobre. No necesita app ni cuenta."
+      },
+      {
+        "question": "¿Se puede abrir en el teléfono?",
+        "answer": "Sí. La página del regalo está hecha para móviles. Abren el enlace en el navegador, tocan para abrir el sobre y leen tu mensaje. No hay paso por la tienda de apps."
+      },
+      {
+        "question": "¿Cómo empezar una carta de amor cuando no sabes qué escribir?",
+        "answer": "Empieza con un recuerdo específico en lugar de un saludo: el día, el lugar, ese detalle pequeño que se quedó contigo. La sección de ayuda de escritura de esta página incluye comienzos listos para usar, ideas para una carta de amor y una plantilla de carta de amor con espacios para copiar en el editor. Diez minutos honestos valen más que un párrafo perfecto."
+      }
+    ],
+    "closingTitle": "Envía una carta de amor virtual que puedan guardar",
+    "closingDescription": "Escribe la nota, añade una foto si tienes una, mete música si quieres y comparte el enlace. La sorpresa es la revelación — y pueden abrirla otra vez después.",
+    "closingCta": "Crear una carta de amor gratis"
+  }
+}

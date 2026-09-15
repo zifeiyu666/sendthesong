@@ -64,6 +64,7 @@ describe("occasion landing localization", () => {
     assert.ok(OCCASION_LANDING_SLUGS.includes("birthday"));
     assert.ok(OCCASION_LANDING_SLUGS.includes("love-song"));
     assert.ok(OCCASION_LANDING_SLUGS.includes("loved-one"));
+    assert.ok(OCCASION_LANDING_SLUGS.includes("proposal"));
 
     const english = getAllOccasionLandingConfigs("en");
     for (const locale of ["es", "ja"]) {

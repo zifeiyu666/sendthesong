@@ -8,6 +8,7 @@ export const OCCASION_LANDING_SLUGS = [
   "valentines-day",
   "congratulations",
   "wedding",
+  "proposal",
   "in-memoriam",
   "thank-you",
   "get-well-soon",
@@ -805,7 +806,7 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
         {
           title: "Proposal song",
           description:
-            "A custom proposal song can lead naturally from your origin story to the question.",
+            "If Valentine's Day is when you ask, start here. For a song built around the question itself, use the dedicated proposal song page.",
           keywords: ["custom proposal song", "personalized proposal song"],
           prompt:
             "Describe the first meeting, the moment you knew, the life you want together, and the exact emotional landing before you propose.",
@@ -881,7 +882,7 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
         {
           question: "Can I use the song for a proposal?",
           answer:
-            "Yes. Explain the relationship arc and tell the song maker where the proposal should land emotionally. You can preview the song before planning the final reveal.",
+            "Yes. If Valentine's Day is when you ask, start here. For a song built around the question itself, use the dedicated proposal song page so the lyrics can land on the yes.",
         },
         {
           question: "Can the song be playful instead of a slow ballad?",
@@ -911,6 +912,7 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
       "custom congratulations song",
       "personalized celebration song",
       "congratulations song",
+      "congratulations song for success",
       "graduation song",
       "achievement song",
       "promotion gift",
@@ -919,9 +921,9 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
       "congratulations song with name",
     ],
     metadata: {
-      title: "Congratulations Song for Students With Name",
+      title: "Custom Congratulations Song | Personalized Celebration Music",
       description:
-        "Create a congratulations song with their name for a student, graduation, promotion, or big win. Preview a custom celebration song free.",
+        "Create a custom congratulations song with their name for graduation, a promotion, or another hard-earned success. Preview a personalized celebration song free.",
     },
     palette: {
       accent: "#146cc2",
@@ -932,12 +934,12 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
     },
     hero: {
       badge: "Personalized songs for hard-earned wins",
-      title: "Congratulations Song With Their Name",
+      title: "Custom Congratulations Song",
       description:
-        "Celebrate the work behind the win with a custom congratulations song that uses their name. Add the late nights, setbacks, inside jokes, and proud moment, then preview a personalized celebration song for a student, graduation, promotion, award, or new chapter.",
+        "Celebrate the work behind the win with a custom congratulations song that uses their name. Add the late nights, setbacks, inside jokes, and proud moment, then preview a personalized song for graduation, a promotion, an award, or another big success.",
       image: "/images/occasions/congratulations-song-hero.webp",
       imageAlt:
-        "Graduate smiling with family while listening to a custom congratulations song",
+        "Someone celebrating a hard-earned win while listening to a custom congratulations song",
       cardTitle: "Celebrate the work, not only the result",
       cardDescription:
         "Name the challenge, the breakthrough, the people who helped, and the future opening up next.",
@@ -952,8 +954,14 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
     moments: {
       title: "A personalized celebration song for every kind of win",
       description:
-        "Use one song flow for academic milestones, career moves, personal breakthroughs, awards, and the brave first step into something new.",
+        "Use one song flow for academic milestones, career moves, personal breakthroughs, awards, and the brave first step into something new. For an engagement or proposal celebration, use the proposal song page instead.",
       items: [
+        {
+          title: "A big success",
+          description:
+            "Mark a hard-earned result with a congratulations song for success that names the grind, the turning point, and the people who stayed.",
+          icon: "star",
+        },
         {
           title: "Graduation",
           description:
@@ -995,8 +1003,20 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
     topics: {
       title: "Congratulations songs for the milestones people search most",
       description:
-        "Searchers often want a familiar celebration playlist. A custom song offers a stronger alternative by naming the achievement and the effort behind it.",
+        "Searchers often want a familiar celebration playlist. A custom congratulations song is stronger when it names the achievement, the effort, and the person.",
       items: [
+        {
+          title: "Congratulations song for success",
+          description:
+            "Use this when the search is simply 'you did it': a launch, a recovery, a personal goal, or another result that took longer than it looked.",
+          keywords: [
+            "congratulations song for success",
+            "song to celebrate success",
+          ],
+          prompt:
+            "Name the goal, why it was hard, the moment it became real, and the proud line you want them to replay.",
+          icon: "celebration",
+        },
         {
           title: "Custom graduation song",
           description:
@@ -1026,15 +1046,6 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
           prompt:
             "Mention the first role, a challenge they solved, the team they helped, and why the promotion fits who they have become.",
           icon: "star",
-        },
-        {
-          title: "Achievement song",
-          description:
-            "A flexible angle for awards, races, certifications, creative launches, and personal milestones.",
-          keywords: ["achievement song", "song to celebrate an accomplishment"],
-          prompt:
-            "Name the goal, the obstacle, the moment it finally clicked, and the person or habit that kept them moving.",
-          icon: "celebration",
         },
         {
           title: "New job celebration song",
@@ -1108,6 +1119,11 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
             "A good congratulations song matches the achievement and the person. A custom song can go further by naming the work, setbacks, supporters, and future behind the win.",
         },
         {
+          question: "Can I make a congratulations song for success?",
+          answer:
+            "Yes. Describe the result, what it took, and who should feel proud. The same custom congratulations song flow works for a career win, personal goal, award, or another hard-earned success.",
+        },
+        {
           question: "Can I make a congratulations song for students with their name?",
           answer:
             "Yes. Add the student's name, school or program, and one true detail from the year. The name can sit in the chorus while the verses carry the work behind the diploma.",
@@ -1121,6 +1137,11 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
           question: "Can the song celebrate a promotion or new job?",
           answer:
             "Yes. Explain the career story, the accomplishment that led to the opportunity, and whether the tone should feel polished, funny, triumphant, or emotional.",
+        },
+        {
+          question: "What if I need a song for an engagement or wedding?",
+          answer:
+            "Use the proposal song page for the ask or the engagement party, and the wedding song page for a first dance or ceremony. This congratulations page is for academic, career, and personal achievements.",
         },
         {
           question: "Is this an AI congratulations song generator?",
@@ -1158,7 +1179,7 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
     metadata: {
       title: "Custom First Dance Song | Personalized Wedding Music",
       description:
-        "Create a custom first dance song from your love story, vows, and names. Preview personalized wedding music or a one-of-a-kind wedding gift.",
+        "Create a custom first dance, ceremony track, or wedding gift song from your love story and names. Preview personalized wedding music free.",
     },
     palette: {
       accent: "#2f6b57",
@@ -1168,10 +1189,10 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
       ink: "#173027",
     },
     hero: {
-      badge: "Personalized music for the wedding day",
+      badge: "Personalized music from the yes to the first dance",
       title: "Custom Wedding Song",
       description:
-        "Turn the first meeting, proposal, vows, and future promises into a custom wedding song. Create a personalized first dance, ceremony soundtrack, or wedding gift that belongs to one couple and one story.",
+        "Turn the first meeting, vows, and future promises into a custom wedding song. Create a personalized first dance, ceremony soundtrack, or wedding gift that belongs to one couple and one story.",
       image: "/images/occasions/wedding-song-hero.webp",
       imageAlt:
         "Newlyweds sharing headphones while listening to their custom wedding song at sunset",
@@ -1232,7 +1253,7 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
     topics: {
       title: "Custom wedding song ideas for dances, vows, and gifts",
       description:
-        "Wedding searches split by moment. The page answers each one while keeping the couple's story at the center.",
+        "Wedding searches split by moment, from the first dance to vows and gifts. The page answers each one while keeping the couple's story at the center.",
       items: [
         {
           title: "Personalized first dance song",
@@ -1293,11 +1314,6 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
           title: "From the wedding party",
           text: "Create an upbeat soul wedding song for Maya and Chris from their friends. Include the lake-house weekend, their rescue dog, how they host everyone, and the phrase 'the room gets warmer when you arrive'.",
         },
-        {
-          label: "Country style",
-          title: "Backroad first dance",
-          text: "Make a country wedding song for Jess and Cole. Mention the high-school parking lot, his old truck, her grandfather's porch, and a love that grew slowly and stayed steady.",
-        },
       ],
     },
     testimonials: {
@@ -1305,6 +1321,12 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
       description:
         "When the lyrics contain the couple's real timeline, the room hears the difference.",
       items: [
+        {
+          quote:
+            "Our ceremony entrance used the same story as the first dance. Guests recognized the names and the bookstore line immediately.",
+          author: "Sam R.",
+          badge: "Ceremony",
+        },
         {
           quote:
             "Our first dance song mentioned the bookstore and the yellow kitchen light. Guests assumed a songwriter had known us for years.",
@@ -1334,6 +1356,11 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
         "Share the timeline, vows, and mood, then preview a song created for this couple alone.",
       items: [
         {
+          question: "Should I use this page for a proposal or engagement party?",
+          answer:
+            "Use the proposal song page for the ask, the engagement party, or an announcement video. This wedding song flow is for the first dance, ceremony, and gifts after you are engaged. You can keep the same story across both songs if you want one chapter from the yes to the aisle.",
+        },
+        {
           question: "Can I create a custom first dance song?",
           answer:
             "Yes. Choose the style and tempo, then add your names, story, key memories, and the feeling you want for the dance.",
@@ -1362,6 +1389,258 @@ const configs: Partial<Record<OccasionLandingSlug, OccasionLandingConfig>> = {
           question: "How can we use the final wedding song?",
           answer:
             "Use it for the first dance, ceremony entrance, reception reveal, wedding video, private gift, vow renewal, or printable lyric keepsake.",
+        },
+      ],
+    },
+  }),
+
+  proposal: createConfig({
+    slug: "proposal",
+    occasion: "proposal",
+    shortName: "Proposal",
+    primaryKeyword: "custom proposal song",
+    keywords: [
+      "custom proposal song",
+      "proposal songs",
+      "proposal song",
+      "personalized proposal song",
+      "engagement songs",
+      "engagement proposal songs",
+      "songs for an engagement",
+      "marriage proposal songs",
+      "wedding proposal songs",
+      "best proposal songs",
+      "propose song",
+    ],
+    metadata: {
+      title: "Custom Proposal Song | Personalized Engagement Music",
+      description:
+        "Create a custom proposal song from your love story for the ask, then play it at the engagement party or announcement. Preview personalized proposal and engagement music free.",
+    },
+    palette: {
+      accent: "#b4536a",
+      accentDark: "#8a3148",
+      soft: "#fff1f4",
+      muted: "#f6eee9",
+      ink: "#2a141a",
+    },
+    hero: {
+      badge: "A song for the question, not a playlist of proposal songs",
+      title: "Custom Proposal Song",
+      description:
+        "Turn how you met, the moment you knew, and the future you want to choose into a custom proposal song. Preview it before the ask, then use the same story for engagement songs at the party, the announcement video, or an Instagram story.",
+      image: "/occasion-generated/avif/08-proposal.avif",
+      imageAlt:
+        "Someone proposing with a custom proposal song playing while their partner hears the question",
+      cardTitle: "Lead the room to the yes",
+      cardDescription:
+        "Names, the first meeting, the turning point, and the exact emotional landing before you ask.",
+      cta: "Create a Proposal Song",
+    },
+    storyDetails:
+      "Add both names, how you met, the moment you knew, a private ritual, and the line you want them to hear right before you propose.",
+    styleOptions:
+      "romantic ballad, acoustic, cinematic pop, R&B, jazz, or a quiet folk arrangement",
+    deliveryIdeas:
+      "Play it at dinner, hide it in a video, start it as you kneel, or share it at the engagement party after they say yes.",
+    moments: {
+      title: "Proposal songs and engagement songs for the same love story",
+      description:
+        "Use one custom song for the ask, then replay it as engagement music for the party, the announcement, or a story you post the next morning.",
+      items: [
+        {
+          title: "The proposal",
+          description:
+            "Build verses around your origin story and land the chorus on the question, so the song and the ring arrive together.",
+          icon: "rings",
+        },
+        {
+          title: "A private dinner",
+          description:
+            "Keep the arrangement intimate enough for a table for two, with lyrics only the two of you would recognize.",
+          icon: "heart",
+        },
+        {
+          title: "Engagement party",
+          description:
+            "After the yes, play the same proposal song as an engagement song guests can shout back.",
+          icon: "celebration",
+        },
+        {
+          title: "Announcement video",
+          description:
+            "Use the track under photos of the ask, the ring, and the first calls home.",
+          icon: "sparkles",
+        },
+        {
+          title: "Instagram story",
+          description:
+            "A short chorus with both names works as engagement music for a story, Reel, or caption video.",
+          icon: "sun",
+        },
+        {
+          title: "A gift from friends",
+          description:
+            "Friends and family can write a marriage proposal song that surprises the couple at the party.",
+          icon: "gift",
+        },
+      ],
+    },
+    topics: {
+      title: "Custom proposal songs, engagement songs, and the ask itself",
+      description:
+        "People search playlists of proposal songs. A custom track still answers that intent by naming the couple, the question, and how you want the room to feel.",
+      items: [
+        {
+          title: "Custom proposal song",
+          description:
+            "Write toward the question with both names, the turning point, and the future you want to choose together.",
+          keywords: ["custom proposal song", "personalized proposal song"],
+          prompt:
+            "Describe the first meeting, the moment you knew, the life you want together, and the exact emotional landing before you propose.",
+          icon: "rings",
+        },
+        {
+          title: "Proposal songs for the ask",
+          description:
+            "If you searched proposal songs or a propose song, start with a custom track you can preview in private before the moment.",
+          keywords: ["proposal songs", "proposal song", "propose song"],
+          prompt:
+            "Say where the proposal will happen, how public or private it should feel, and the one line they should never forget.",
+          icon: "music",
+        },
+        {
+          title: "Engagement songs after the yes",
+          description:
+            "Engagement proposal songs and songs for an engagement work as a party opener, a toast, or the first dance of the new chapter.",
+          keywords: [
+            "engagement songs",
+            "engagement proposal songs",
+            "songs for an engagement",
+          ],
+          prompt:
+            "Include both names, how the proposal happened, who heard the news first, and a chorus guests can sing back.",
+          icon: "sparkles",
+        },
+        {
+          title: "Marriage and wedding proposal songs",
+          description:
+            "Marriage proposal songs and wedding proposal songs should sound like the two of you, not a movie soundtrack or a business-pitch joke.",
+          keywords: [
+            "marriage proposal songs",
+            "wedding proposal songs",
+            "song wedding proposal",
+          ],
+          prompt:
+            "Add the place you will ask, a memory from the relationship, and whether the tone should feel cinematic, playful, or quiet.",
+          icon: "star",
+        },
+        {
+          title: "Best proposal songs, made for one couple",
+          description:
+            "Best proposal songs lists are a starting point. A personalized track is stronger when the lyrics could only belong to this ask.",
+          keywords: ["best proposal songs", "great engagement songs"],
+          prompt:
+            "Name the details a generic playlist would miss: a nickname, a city, a private joke, and the promise inside the question.",
+          icon: "heart",
+        },
+      ],
+    },
+    examples: {
+      title: "Start the proposal song with the moment you will ask",
+      description:
+        "A few precise scenes give the lyrics an arc from the first meeting to the question.",
+      items: [
+        {
+          label: "The ask",
+          title: "Rooftop yes",
+          text: "Write a custom proposal song for Priya and Sam. Mention the rainy bookstore meeting, the rooftop lights, her shaking hands, and a chorus that lands on 'will you marry me'.",
+        },
+        {
+          label: "Engagement party",
+          title: "She said yes",
+          text: "Create engagement songs for Maya and Chris to play at the party. Include the park proposal, the call to her parents, and a chorus guests can shout back.",
+        },
+        {
+          label: "Private dinner",
+          title: "Just us two",
+          text: "Write a quiet acoustic proposal song for Nora and Eli. Mention Sunday coffee, the tiny first apartment, and the line 'I already chose you' before the question.",
+        },
+      ],
+    },
+    testimonials: {
+      title: "Proposal songs made for one question",
+      description:
+        "When the lyrics contain the real timeline, the person you ask hears the difference.",
+      items: [
+        {
+          quote:
+            "I played the preview on one earbud, then the full chorus as I knelt. She said the names in the second verse made it real.",
+          author: "Sam R.",
+          badge: "Proposal",
+        },
+        {
+          quote:
+            "We used the same custom proposal song at the engagement party. People kept asking who wrote it.",
+          author: "Priya S.",
+          badge: "Engagement",
+        },
+        {
+          quote:
+            "The announcement video needed music that was ours, not a movie soundtrack. This was the track under the ring shot.",
+          author: "Eli N.",
+          badge: "Announcement",
+        },
+        {
+          quote:
+            "Friends surprised us with a marriage proposal song at dinner. It named the dog, the city, and the question.",
+          author: "Maya C.",
+          badge: "From friends",
+        },
+      ],
+    },
+    faq: {
+      title: "Custom proposal song questions",
+      description:
+        "Plan personalized proposal songs and engagement music for the ask, the party, and the announcement.",
+      ctaTitle: "Ready to give the question its own song?",
+      ctaDescription:
+        "Share the story, the setting, and the line you want them to hear, then preview a song made for this proposal.",
+      items: [
+        {
+          question: "Can I create a custom proposal song before I ask?",
+          answer:
+            "Yes. Write the story privately, preview the track, and time it to the moment you kneel, play it at dinner, or start it in a video. You can keep the lyrics from revealing the question if you want the ring to do that work.",
+        },
+        {
+          question: "Are these proposal songs the same as a playlist of existing tracks?",
+          answer:
+            "No. Searches for proposal songs often return playlists. This page creates an original song from your names and story, so the music belongs to this ask instead of a generic list.",
+        },
+        {
+          question: "Can I use the song as engagement music after they say yes?",
+          answer:
+            "Yes. The same custom proposal song works as engagement songs for the party, an announcement video, or an Instagram story. If you later need a first dance, use the wedding song page and keep the same story.",
+        },
+        {
+          question: "Is this for a movie soundtrack or a business proposal?",
+          answer:
+            "No. This is for a marriage proposal and engagement celebration. It is not The Proposal film soundtrack, and it is not music for a business pitch.",
+        },
+        {
+          question: "What should I include in a marriage proposal song?",
+          answer:
+            "Both names, how you met, the moment you knew, where you will ask, and the feeling you want in the last line. Private details beat generic romantic adjectives.",
+        },
+        {
+          question: "Is this an AI proposal song generator?",
+          answer:
+            "Yes. It creates original lyrics, music, and vocals from your details. Preview the result and refine it before the moment.",
+        },
+        {
+          question: "How should I play the song during the proposal?",
+          answer:
+            "Play it from a phone at dinner, hide a speaker nearby, start it in a video, or have a friend press play. Preview first so the timing and volume feel right.",
         },
       ],
     },
@@ -2542,9 +2821,9 @@ export function getOccasionLandingConfig(
 export function getAllOccasionLandingConfigs(
   locale = "en",
 ): OccasionLandingConfig[] {
-  return OCCASION_LANDING_SLUGS.map(
-    (slug) => getOccasionLandingConfig(slug, locale)!,
-  );
+  return OCCASION_LANDING_SLUGS.map((slug) =>
+    getOccasionLandingConfig(slug, locale),
+  ).filter((config): config is OccasionLandingConfig => Boolean(config));
 }
 
 export function getOccasionCreateHref(config: OccasionLandingConfig): string {

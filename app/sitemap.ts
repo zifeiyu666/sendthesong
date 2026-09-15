@@ -50,6 +50,18 @@ const staticPages: {
     priority: 0.9,
   },
   {
+    path: '/virtual-gifts',
+    lastModified: '2026-09-14',
+    changeFrequency: 'weekly',
+    priority: 0.85,
+  },
+  {
+    path: '/virtual-gifts/love-letter',
+    lastModified: '2026-09-14',
+    changeFrequency: 'weekly',
+    priority: 0.85,
+  },
+  {
     path: '/voice-clone',
     lastModified: '2026-07-30',
     changeFrequency: 'weekly',

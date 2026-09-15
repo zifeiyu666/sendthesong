@@ -100,13 +100,26 @@ const spanish: Record<OccasionLandingSlug, OccasionLocaleData> = {
     keyword: "canción personalizada de boda",
     heroTitle: "Canción personalizada para una boda",
     heroDescription:
-      "Convierte la historia de la pareja, sus votos y el futuro que imaginan en una canción original para la ceremonia o el primer baile.",
+      "Convierte la historia de la pareja, sus votos y el futuro que imaginan en una canción original para celebrar el compromiso, la ceremonia o el primer baile.",
     story:
       "Añade cómo se conocieron, el momento en que supieron que era para siempre, una promesa y un detalle que los invitados reconocerán.",
     styles: "balada romántica, clásica, acústica, R&B o pop",
     delivery:
       "Úsala para la entrada, el primer baile, un vídeo sorpresa o un momento privado antes de la ceremonia.",
     audience: "tu pareja, los novios o una pareja a la que quieres homenajear",
+  },
+  proposal: {
+    name: "Propuesta",
+    keyword: "canción personalizada para una propuesta",
+    heroTitle: "Canción personalizada para una propuesta de matrimonio",
+    heroDescription:
+      "Convierte vuestra historia, el momento en que lo supiste y la pregunta que quieres hacer en una canción original para la propuesta o la fiesta de compromiso.",
+    story:
+      "Añade los dos nombres, cómo os conocisteis, el instante en que lo supiste, un detalle privado y la frase que quieres que suene justo antes de pedir matrimonio.",
+    styles: "balada romántica, acústico, pop cinematográfico, R&B o folk suave",
+    delivery:
+      "Ponla durante la cena, al arrodillarte, en un vídeo o en la fiesta de compromiso después del sí.",
+    audience: "tu pareja o la persona a la que quieres pedir matrimonio",
   },
   "in-memoriam": {
     name: "En memoria",
@@ -261,13 +274,27 @@ const japanese: Record<OccasionLandingSlug, OccasionLocaleData> = {
     keyword: "結婚式のオリジナルソング",
     heroTitle: "結婚式のオリジナルソング",
     heroDescription:
-      "二人の物語、誓い、思い描く未来を、式やファーストダンスで使える一曲にします。",
+      "二人の物語、誓い、思い描く未来を、婚約のお祝い、式、ファーストダンスで使える一曲にします。",
     story:
       "出会い、共に歩むと決めた瞬間、約束、ゲストにも伝わる二人らしい情報を入れます。",
     styles: "ロマンチックバラード、クラシック、アコースティック、R&B、ポップ",
     delivery:
       "入場、ファーストダンス、サプライズ動画、式前の二人だけの時間に使えます。",
     audience: "パートナー、新郎新婦、大切なカップル",
+  },
+  proposal: {
+    name: "プロポーズ",
+    keyword: "プロポーズのオリジナルソング",
+    heroTitle: "プロポーズのためのオリジナルソング",
+    heroDescription:
+      "出会い、覚悟が決まった瞬間、これから聞きたい言葉を、指輪を渡す瞬間や婚約のお祝いで流せる一曲にします。",
+    story:
+      "ふたりの名前、出会い、そう思った瞬間、二人だけの習慣、プロポーズ直前に聴かせたい一言を入れます。",
+    styles:
+      "ロマンチックバラード、アコースティック、シネマティックポップ、R&B、静かなフォーク",
+    delivery:
+      "夕食、ひざまずく瞬間、動画、あるいは承諾のあとの婚約パーティーで流せます。",
+    audience: "プロポーズしたい相手、大切なパートナー",
   },
   "in-memoriam": {
     name: "追悼",

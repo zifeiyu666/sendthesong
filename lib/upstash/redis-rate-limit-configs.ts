@@ -21,4 +21,14 @@ export const REDIS_RATE_LIMIT_CONFIGS = {
     maxRequests: 10,
     window: "1 d",
   },
+  virtualGiftCreate: {
+    prefix: `${LOWER_CASE_SITE_NAME}:rl:virtual-gift-create`,
+    maxRequests: 10,
+    window: "1 d",
+  },
+  virtualGiftUpload: {
+    prefix: `${LOWER_CASE_SITE_NAME}:rl:virtual-gift-upload`,
+    maxRequests: 20,
+    window: "1 d",
+  },
 };

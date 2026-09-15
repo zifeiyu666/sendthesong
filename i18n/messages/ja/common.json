@@ -102,7 +102,15 @@
       "signIn": "ログイン",
       "upgrade": "プランを変更",
       "backToBlogs": "記事一覧へ戻る",
-      "notFound": "記事が見つかりません"
+      "notFound": "記事が見つかりません",
+      "cta": {
+        "compactButton": "無料プレビューをはじめる",
+        "midTitle": "まずプレビューを聴いてみませんか",
+        "midDescription": "思い出を、数分であなただけの曲にできます。",
+        "midButton": "曲をつくる",
+        "endTitle": "あなたもつくってみませんか",
+        "endButton": "曲をつくる"
+      }
     }
   },
   "About": {
@@ -185,6 +193,11 @@
         "href": "/music/personalized-gift",
         "items": [
           {
+            "name": "AIボイスクローン",
+            "href": "/voice-clone",
+            "description": "所有または使用権限のある録音から、検証済みのボイスクローンを作成します。"
+          },
+          {
             "name": "オリジナルソングを作る",
             "href": "/create-song",
             "description": "物語から無料サンプルを作り、完成版を購入する前に試聴できます。"
@@ -203,6 +216,11 @@
             "name": "記念日ソング",
             "href": "/occasions/anniversary",
             "description": "二人の物語を、何度でも聴ける記念日の曲に。"
+          },
+          {
+            "name": "プロポーズソング",
+            "href": "/occasions/proposal",
+            "description": "プロポーズの瞬間と婚約のお祝いに使えるオリジナルソングを作れます。"
           },
           {
             "name": "夫のためのオリジナルソング",
@@ -224,21 +242,42 @@
             "href": "/music/personalized-gift",
             "description": "オリジナルソング、動画、歌詞アートを組み合わせた贈り物。"
           },
-        {
-          "name": "オリジナル歌詞ギフト",
-          "href": "/free-custom-song-lyric-gifts",
-          "description": "オリジナル歌詞を印刷できるアートや記念品に。"
-        },
-        {
-          "name": "歌詞ポスターメーカー",
-          "href": "/lyric-poster-maker",
-          "description": "歌詞、フォント、レイアウトを編集してポスターを作れます。"
-        },
-        {
-          "name": "オリジナル歌詞ウォールアート",
-          "href": "/custom-song-lyrics-wall-art",
-          "description": "大切な曲を、印刷できる歌詞アートに。"
-        }
+          {
+            "name": "オリジナル歌詞ギフト",
+            "href": "/free-custom-song-lyric-gifts",
+            "description": "オリジナル歌詞を印刷できるアートや記念品に。"
+          },
+          {
+            "name": "歌詞ポスターメーカー",
+            "href": "/lyric-poster-maker",
+            "description": "歌詞、フォント、レイアウトを編集してポスターを作れます。"
+          },
+          {
+            "name": "オリジナル歌詞ウォールアート",
+            "href": "/custom-song-lyrics-wall-art",
+            "description": "大切な曲を、印刷できる歌詞アートに。"
+          }
+        ]
+      },
+      {
+        "name": "ギフトツール",
+        "href": "/virtual-gifts",
+        "items": [
+          {
+            "name": "ギフトとサプライズ",
+            "href": "/virtual-gifts",
+            "description": "メッセージ・写真・音楽を入れた無料のバーチャルラブレターを送ります。"
+          },
+          {
+            "name": "ラブレター",
+            "href": "/virtual-gifts/love-letter",
+            "description": "メッセージ・写真・音楽で無料のバーチャルラブレターを作成します。"
+          },
+          {
+            "name": "マイギフト",
+            "href": "/mygifts",
+            "description": "作成済みのギフトリンクを開き直したりコピーしたりできます。"
+          }
         ]
       },
       { "id": "pricing", "name": "料金", "href": "/pricing" }
@@ -291,6 +330,7 @@
             { "id": "pricing", "href": "/pricing", "name": "料金" },
             { "href": "/songs", "name": "マイソング" },
             { "href": "/voices", "name": "マイボイス" },
+            { "href": "/voice-clone", "name": "AIボイスクローン" },
             { "href": "/samples", "name": "サンプル" },
             { "isSubTitle": true, "name": "資料" },
             { "href": "/blog", "name": "すべての記事" },
@@ -304,12 +344,14 @@
           "title": "ギフトアイデア",
           "links": [
             { "name": "曲を作る", "href": "/create-song" },
+            { "name": "ギフトとサプライズ", "href": "/virtual-gifts" },
             { "name": "メッセージを添えて曲を贈る", "href": "/gifts/song-message" },
             {
               "name": "誕生日ソング",
               "href": "/occasions/custom-happy-birthday-song"
             },
             { "name": "記念日ソング", "href": "/occasions/anniversary" },
+            { "name": "プロポーズソング", "href": "/occasions/proposal" },
             {
               "name": "妻のためのオリジナルソング",
               "href": "/occasions/custom-song-for-wife"

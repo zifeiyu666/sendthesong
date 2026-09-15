@@ -917,8 +917,107 @@
   }
 }
 
+@keyframes vg-heart-float-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  28% {
+    transform: translate3d(var(--vg-fx), calc(var(--vg-fy) * -1), 0)
+      rotate(var(--vg-fr));
+  }
+  62% {
+    transform: translate3d(
+        calc(var(--vg-fx) * -0.72),
+        calc(var(--vg-fy) * -0.16),
+        0
+      )
+      rotate(calc(var(--vg-fr) * -0.7));
+  }
+}
+
+@keyframes vg-heart-float-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  22% {
+    transform: translate3d(
+        calc(var(--vg-fx) * -1),
+        calc(var(--vg-fy) * -0.52),
+        0
+      )
+      rotate(calc(var(--vg-fr) * -1));
+  }
+  54% {
+    transform: translate3d(var(--vg-fx), calc(var(--vg-fy) * -1.08), 0)
+      rotate(var(--vg-fr));
+  }
+  78% {
+    transform: translate3d(
+        calc(var(--vg-fx) * 0.28),
+        calc(var(--vg-fy) * -0.28),
+        0
+      )
+      rotate(calc(var(--vg-fr) * 0.25));
+  }
+}
+
+@keyframes vg-heart-float-c {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  38% {
+    transform: translate3d(
+        calc(var(--vg-fx) * 0.42),
+        calc(var(--vg-fy) * -1.18),
+        0
+      )
+      rotate(calc(var(--vg-fr) * 0.55));
+  }
+  71% {
+    transform: translate3d(
+        calc(var(--vg-fx) * -0.88),
+        calc(var(--vg-fy) * -0.36),
+        0
+      )
+      rotate(calc(var(--vg-fr) * -0.85));
+  }
+}
+
+.vg-heart-float {
+  --vg-fx: 16px;
+  --vg-fy: 24px;
+  --vg-fr: 6deg;
+  --vg-fd: 6s;
+  --vg-fdelay: 0s;
+  will-change: transform;
+  animation-duration: var(--vg-fd);
+  animation-timing-function: ease-in-out;
+  animation-delay: var(--vg-fdelay);
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+.vg-heart-float-a {
+  animation-name: vg-heart-float-a;
+}
+
+.vg-heart-float-b {
+  animation-name: vg-heart-float-b;
+}
+
+.vg-heart-float-c {
+  animation-name: vg-heart-float-c;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .song-cover-visualizer.is-playing .song-cover-visualizer-line {
+    animation: none;
+  }
+
+  .vg-heart-float {
     animation: none;
   }
 }

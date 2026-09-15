@@ -12,6 +12,7 @@ import {
   HandHeart,
   Headphones,
   Heart,
+  HeartHandshake,
   HeartPulse,
   Keyboard,
   Leaf,
@@ -252,6 +253,7 @@ export const recommendedGenresByOccasion: Record<string, string[]> = {
   ],
   anniversary: ["Romantic Ballad", "R&B", "Acoustic", "Jazz", "Pop"],
   wedding: ["Romantic Ballad", "Classical", "Acoustic", "R&B", "Pop"],
+  proposal: ["Romantic Ballad", "Acoustic", "R&B", "Jazz", "Pop"],
   "valentines-day": ["Romantic Ballad", "R&B", "Jazz", "Acoustic", "Pop"],
   "thank-you": ["Acoustic", "Folk Pop", "Country", "Pop", "Romantic Ballad"],
   congratulations: [
@@ -396,6 +398,17 @@ export const occasions: OccasionOption[] = [
     },
   },
   {
+    value: "proposal",
+    icon: <HeartHandshake className="size-6" />,
+    title: "Proposal",
+    subtitle: "A song for the question and the yes.",
+    art: {
+      src: "/occasion-generated/avif/08-proposal.avif",
+      alt: "Proposal song keepsake illustration",
+      className: "-rotate-2",
+    },
+  },
+  {
     value: "fathers-day",
     icon: <ShieldCheck className="size-6" />,
     title: "Father's Day",
@@ -501,6 +514,8 @@ export const storyPlaceholders: Record<string, string> = {
     "e.g., My mom sings while cooking Sunday dinner. She taught me to be brave, always texts me before big days, and still calls me her sunshine...",
   wedding:
     "e.g., Our first dance is for Maya and Theo. They met at a bookstore, got engaged in Lisbon, and love dancing in the kitchen after midnight...",
+  proposal:
+    "e.g., I am proposing to Priya on the rooftop where we had our first date. Mention the rainy bookstore, her laugh, and land the chorus on will you marry me...",
   birthday:
     "e.g., Jamie and I became friends in college. We survived terrible karaoke nights, a road trip with no AC, and still laugh about the pizza incident...",
 };

@@ -55,7 +55,7 @@ const HeaderLinks = ({ links, variant = "default" }: HeaderLinksProps) => {
                     {link.name}
                   </RollingNavText>
                 </NavigationMenuTrigger>
-                <NavigationMenuContent>
+                <NavigationMenuContent className="max-h-[calc(100dvh-5.5rem)] overflow-y-auto overscroll-contain">
                   <ul className="w-[320px] max-w-[calc(100vw-2rem)] gap-1">
                     {link.items.map((child) => (
                       <li key={child.href}>

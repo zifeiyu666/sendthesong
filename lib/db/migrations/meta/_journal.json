@@ -218,6 +218,20 @@
       "when": 1788767190818,
       "tag": "0030_dear_jean_grey",
       "breakpoints": true
+    },
+    {
+      "idx": 31,
+      "version": "7",
+      "when": 1789379161855,
+      "tag": "0031_smiling_toad_men",
+      "breakpoints": true
+    },
+    {
+      "idx": 32,
+      "version": "7",
+      "when": 1789440475076,
+      "tag": "0032_secret_pestilence",
+      "breakpoints": true
     }
   ]
 }

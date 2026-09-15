@@ -67,7 +67,15 @@
       "featured": "Artículo destacado", "viewCount": "{count} visualizaciones", "accessRestricted": "Acceso restringido",
       "unauthorized": "Este artículo solo está disponible para usuarios con sesión iniciada", "premium": "Contenido premium",
       "premiumContent": "Este artículo es exclusivo para suscriptores", "signIn": "Iniciar sesión", "upgrade": "Mejorar plan",
-      "backToBlogs": "Volver a los artículos", "notFound": "Artículo no encontrado"
+      "backToBlogs": "Volver a los artículos", "notFound": "Artículo no encontrado",
+      "cta": {
+        "compactButton": "Empieza con una vista previa gratis",
+        "midTitle": "Escucha una vista previa de tu canción",
+        "midDescription": "Convierte un recuerdo en una canción personalizada en unos minutos.",
+        "midButton": "Crea tu canción",
+        "endTitle": "¿Listo para crear la tuya?",
+        "endButton": "Crea tu canción"
+      }
     }
   },
   "About": {"title": "Sobre nosotros", "description": "Conoce One Custom Song"},
@@ -101,10 +109,12 @@
       {"name": "Mis muestras", "href": "/samples"},
       {"name": "Mis voces", "href": "/voices"},
       {"name": "Ideas de regalo", "href": "/music/personalized-gift", "items": [
+        {"name": "Clonación de voz con IA", "href": "/voice-clone", "description": "Crea una clonación de voz verificada a partir de una grabación que posees o estás autorizado a usar."},
         {"name": "Crear una canción", "href": "/create-song", "description": "Convierte una historia en una muestra gratuita antes de desbloquear la canción completa."},
         {"name": "Envía una canción con un mensaje", "href": "/gifts/song-message", "description": "Añade una bendición hablada o un saludo a una canción hecha para ellos."},
         {"name": "Canciones de cumpleaños", "href": "/occasions/custom-happy-birthday-song", "description": "Crea una canción de cumpleaños con nombres, historias y recuerdos."},
         {"name": "Canciones de aniversario", "href": "/occasions/anniversary", "description": "Convierte vuestra historia en una canción de aniversario para escuchar una y otra vez."},
+        {"name": "Canciones para una propuesta", "href": "/occasions/proposal", "description": "Crea una canción para la propuesta y vuelve a usarla en la fiesta de compromiso."},
         {"name": "Canciones para esposo", "href": "/occasions/custom-song-for-husband", "description": "Escribe una canción con los detalles que solo tú conoces de él."},
         {"name": "Nuestra canción personalizada", "href": "/our-song", "description": "Crea una canción especial para los dos, escucha una muestra y consérvala."},
         {"name": "Canción de oración personalizada", "href": "/prayer-song", "description": "Convierte una bendición, un testimonio o una esperanza en una canción de oración."},
@@ -113,6 +123,27 @@
         {"name": "Creador de pósters de letras", "href": "/lyric-poster-maker", "description": "Diseña un póster estético con la letra de la canción, tipografía y layouts editables."},
         {"name": "Láminas con letras personalizadas", "href": "/custom-song-lyrics-wall-art", "description": "Convierte una canción especial en decoración imprimible con la letra."}
       ]},
+      {
+        "name": "Herramientas de regalo",
+        "href": "/virtual-gifts",
+        "items": [
+          {
+            "name": "Regalos y sorpresas",
+            "href": "/virtual-gifts",
+            "description": "Envía una carta de amor virtual gratis con un mensaje, una foto y música."
+          },
+          {
+            "name": "Carta de amor",
+            "href": "/virtual-gifts/love-letter",
+            "description": "Crea una carta de amor virtual gratis con tu mensaje, foto y música."
+          },
+          {
+            "name": "Mis regalos",
+            "href": "/mygifts",
+            "description": "Vuelve a abrir y copia los enlaces de los regalos que ya has creado."
+          }
+        ]
+      },
       {"id": "pricing", "name": "Precios", "href": "/pricing"}
     ]
   },
@@ -134,6 +165,7 @@
             {"id": "pricing", "href": "/pricing", "name": "Precios"},
             {"href": "/songs", "name": "Mis canciones"},
             {"href": "/voices", "name": "Mis voces"},
+            {"href": "/voice-clone", "name": "Clonación de voz con IA"},
             {"href": "/samples", "name": "Mis muestras"},
             {"isSubTitle": true, "name": "Recursos"},
             {"href": "/blog", "name": "Todos los artículos"},
@@ -147,9 +179,11 @@
           "title": "Ideas de regalo",
           "links": [
             {"name": "Crear una canción", "href": "/create-song"},
+            {"name": "Regalos y sorpresas", "href": "/virtual-gifts"},
             {"name": "Envía una canción con un mensaje", "href": "/gifts/song-message"},
             {"name": "Canciones de cumpleaños", "href": "/occasions/custom-happy-birthday-song"},
             {"name": "Canciones de aniversario", "href": "/occasions/anniversary"},
+            {"name": "Canciones para una propuesta", "href": "/occasions/proposal"},
             {"name": "Canciones personalizadas para esposa", "href": "/occasions/custom-song-for-wife"},
             {"name": "Canciones para esposo", "href": "/occasions/custom-song-for-husband"},
             {"name": "Nuestra canción personalizada", "href": "/our-song"},

@@ -1,4 +1,8 @@
 import { createSongGeneration } from "@/lib/ai/song";
+import {
+  SPOKEN_INTRO_MAX_DURATION_SECONDS,
+  SPOKEN_INTRO_MAX_TRANSCRIPT_LENGTH,
+} from "@/lib/ai/spoken-intro";
 import { apiResponse } from "@/lib/api-response";
 import { getSession } from "@/lib/auth/server";
 import { db } from "@/lib/db";
@@ -41,8 +45,15 @@ const generateSchema = z.object({
         .max(500),
       audioKey: z.string().startsWith("songs/spoken-intros/").max(300),
       audioUrl: z.string().url(),
-      durationSeconds: z.number().positive().max(90),
-      transcript: z.string().trim().min(1).max(1000),
+      durationSeconds: z
+        .number()
+        .positive()
+        .max(SPOKEN_INTRO_MAX_DURATION_SECONDS + 1),
+      transcript: z
+        .string()
+        .trim()
+        .min(1)
+        .max(SPOKEN_INTRO_MAX_TRANSCRIPT_LENGTH),
     })
     .optional(),
 });

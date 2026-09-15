@@ -17,6 +17,7 @@ import notFound from './messages/en/NotFound.json';
 import pricing from './messages/en/Pricing.json';
 import samples from './messages/en/Samples.json';
 import songs from './messages/en/Songs.json';
+import virtualGifts from './messages/en/VirtualGifts.json';
 import spanishCommon from './messages/es/common.json';
 import spanishLanding from './messages/es/Landing.json';
 import spanishMusicVideos from './messages/es/MusicVideos.json';
@@ -24,6 +25,7 @@ import spanishNotFound from './messages/es/NotFound.json';
 import spanishPricing from './messages/es/Pricing.json';
 import spanishSamples from './messages/es/Samples.json';
 import spanishSongs from './messages/es/Songs.json';
+import spanishVirtualGifts from './messages/es/VirtualGifts.json';
 import spanishCreditHistory from './messages/es/Dashboard/User/CreditHistory.json';
 import spanishSettings from './messages/es/Dashboard/User/Settings.json';
 import spanishGlossary from './messages/es/Glossary.json';
@@ -37,6 +39,7 @@ import japaneseNotFound from './messages/ja/NotFound.json';
 import japaneseSettings from './messages/ja/Dashboard/User/Settings.json';
 import japaneseCreditHistory from './messages/ja/Dashboard/User/CreditHistory.json';
 import japaneseGlossary from './messages/ja/Glossary.json';
+import japaneseVirtualGifts from './messages/ja/VirtualGifts.json';
 
 /**
  * Every English JSON file must be registered here. The i18n checker compares
@@ -61,6 +64,7 @@ export const englishMessageFiles = {
   'Pricing.json': pricing,
   'Samples.json': samples,
   'Songs.json': songs,
+  'VirtualGifts.json': virtualGifts,
   'common.json': common,
 } as const;
 
@@ -77,6 +81,7 @@ export const englishMessageNamespaces = {
   Glossary: glossary,
   Samples: samples,
   Songs: songs,
+  VirtualGifts: virtualGifts,
   Settings: settings,
   CreditHistory: creditHistory,
   Overview: overview,
@@ -127,6 +132,7 @@ export const spanishMessages = mergeMessages(englishMessages, {
   NotFound: spanishNotFound,
   Samples: spanishSamples,
   Songs: spanishSongs,
+  VirtualGifts: spanishVirtualGifts,
   Settings: spanishSettings,
   CreditHistory: spanishCreditHistory,
   Glossary: spanishGlossary,
@@ -139,6 +145,7 @@ export const japaneseMessages = mergeMessages(englishMessages, {
   Songs: japaneseSongs,
   Samples: japaneseSamples,
   MusicVideos: japaneseMusicVideos,
+  VirtualGifts: japaneseVirtualGifts,
   NotFound: japaneseNotFound,
   Settings: japaneseSettings,
   CreditHistory: japaneseCreditHistory,

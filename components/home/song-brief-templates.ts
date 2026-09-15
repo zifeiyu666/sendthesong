@@ -4,6 +4,7 @@ import {
   occasions,
 } from "@/components/song/custom-song-wizard/constants";
 import type { StoredDraft } from "@/components/song/custom-song-wizard/types";
+import { clipSpokenIntroText } from "@/lib/ai/spoken-intro";
 
 export type SongBriefTemplate = {
   name: string;
@@ -201,7 +202,7 @@ export function createSongBriefDraft({
     recipientNames: [trimmedName],
     recipientRelationships: [trimmedRelationship],
     story: story.trim(),
-    spokenBlessing: trimmedMessage,
+    spokenBlessing: clipSpokenIntroText(trimmedMessage),
     spokenMode: trimmedMessage ? "text" : "recording",
     spokenIntro: undefined,
     generatedLyrics: undefined,
