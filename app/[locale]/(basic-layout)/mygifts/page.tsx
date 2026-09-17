@@ -21,7 +21,10 @@ import {
   buildVirtualGiftShareUrl,
   getVirtualGiftsForOwner,
 } from "@/lib/virtual-gifts/store";
-import { normalizeLoveLetterVibe } from "@/lib/virtual-gifts/templates";
+import {
+  normalizeLoveLetterVibe,
+  VIRTUAL_GIFT_PICKER_ITEMS,
+} from "@/lib/virtual-gifts/templates";
 import { Gift, Search } from "lucide-react";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
@@ -80,7 +83,12 @@ export default async function MyGiftsPage({
     "all",
     ...Array.from(new Set(gifts.map((gift) => gift.templateId))),
   ];
-  const templateNames = pickerT.raw("templates") as Record<string, string>;
+  const templateNames = Object.fromEntries(
+    VIRTUAL_GIFT_PICKER_ITEMS.map((item) => [
+      item.id,
+      pickerT(`templates.${item.id}` as Parameters<typeof pickerT>[0]),
+    ]),
+  );
   const formAction = locale === "en" ? "/mygifts" : `/${locale}/mygifts`;
 
   return (
