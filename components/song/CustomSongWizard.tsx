@@ -70,6 +70,7 @@ import {
   useFocusCustomOccasionInput,
   useStopSpeechRecognitionOnUnmount,
 } from "@/components/song/custom-song-wizard/hooks";
+import { getSongStatusPollDelayMs } from "@/components/song/custom-song-wizard/song-status-poll";
 import {
   PaywallModal,
   StepFrame,
@@ -821,16 +822,30 @@ export function CustomSongWizard({
   }, [requestSongGeneration, songError, songStage, songTaskId, step]);
 
   useEffect(() => {
+    if (step !== 5 || songStage !== "loading") return;
+
+    const timer = window.setInterval(() => {
+      setProgress((current) => Math.min(90, current + 1));
+    }, 4000);
+
+    return () => window.clearInterval(timer);
+  }, [songStage, step]);
+
+  useEffect(() => {
     if (!songTaskId || songStage !== "loading") return;
 
     let cancelled = false;
+    let timer: ReturnType<typeof window.setTimeout> | null = null;
+
+    const schedulePoll = (delayMs: number) => {
+      timer = window.setTimeout(poll, delayMs);
+    };
+
     const poll = async () => {
       try {
         const data = await getSongGenerationStatus(songTaskId);
         if (cancelled) return;
         setIsMockMode(data.mockMode);
-
-        setProgress((current) => Math.min(92, current + 12));
 
         if (data.status === "succeeded") {
           const versions = data.versions || [];
@@ -861,17 +876,30 @@ export function CustomSongWizard({
         setSongError(
           error instanceof Error ? error.message : "Unable to generate song.",
         );
+        return;
       }
+
+      if (cancelled) return;
+      schedulePoll(
+        getSongStatusPollDelayMs({
+          isFirstPoll: false,
+          mockMode: isMockMode,
+        }),
+      );
     };
 
-    poll();
-    const timer = window.setInterval(poll, 6000);
+    schedulePoll(
+      getSongStatusPollDelayMs({
+        isFirstPoll: true,
+        mockMode: isMockMode,
+      }),
+    );
 
     return () => {
       cancelled = true;
-      window.clearInterval(timer);
+      if (timer) window.clearTimeout(timer);
     };
-  }, [router, session?.user, songStage, songTaskId, wizardLocale]);
+  }, [isMockMode, session?.user, songStage, songTaskId, wizardLocale]);
 
   useAudioPreview({
     audioRef,

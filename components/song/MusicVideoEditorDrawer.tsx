@@ -266,8 +266,8 @@ const MIN_EDITOR_WIDTH = 380;
 const MAX_EDITOR_WIDTH = 760;
 const MAX_EDITOR_VIEWPORT_RATIO = 0.44;
 const MAX_MEDIA_BYTES = 80 * 1024 * 1024;
+const MV_RENDER_POLL_INITIAL_DELAY_MS = 30_000;
 const MV_RENDER_POLL_INTERVAL_MS = 4000;
-const MV_RENDER_TEMP_URL_POLL_INTERVAL_MS = 2500;
 const TRANSITION_PREVIEW_SECONDS = 1;
 const TRANSITION_PREVIEW_TAIL_SECONDS = 1;
 const wallArtFontFaceCss = wallArtFontFiles
@@ -3489,7 +3489,7 @@ export function MusicVideoStudio({
   }
 
   function scheduleRenderRefresh(videoId: string) {
-    scheduleRenderRefreshWithDelay(videoId, MV_RENDER_POLL_INTERVAL_MS);
+    scheduleRenderRefreshWithDelay(videoId, MV_RENDER_POLL_INITIAL_DELAY_MS);
   }
 
   function scheduleRenderRefreshWithDelay(videoId: string, delayMs: number) {
@@ -3522,12 +3522,7 @@ export function MusicVideoStudio({
           return;
         }
 
-        scheduleRenderRefreshWithDelay(
-          videoId,
-          data.video?.temporaryVideoUrl
-            ? MV_RENDER_TEMP_URL_POLL_INTERVAL_MS
-            : MV_RENDER_POLL_INTERVAL_MS,
-        );
+        scheduleRenderRefreshWithDelay(videoId, MV_RENDER_POLL_INTERVAL_MS);
       } catch (error) {
         setRenderStatus("failed");
         const message =

@@ -588,4 +588,23 @@ describe("MusicVideoEditorDrawer", () => {
     );
     assert.match(source, /console\.error\("\[MusicVideoEditorDrawer\] Failed to start render"/);
   });
+
+  test("delays the first MV render status poll by 30s then refreshes every 4s", () => {
+    const source = readFileSync(
+      join(process.cwd(), "components/song/MusicVideoEditorDrawer.tsx"),
+      "utf8",
+    );
+
+    assert.match(source, /const MV_RENDER_POLL_INITIAL_DELAY_MS = 30_000/);
+    assert.match(source, /const MV_RENDER_POLL_INTERVAL_MS = 4000/);
+    assert.doesNotMatch(source, /MV_RENDER_TEMP_URL_POLL_INTERVAL_MS/);
+    assert.match(
+      source,
+      /scheduleRenderRefreshWithDelay\(videoId, MV_RENDER_POLL_INITIAL_DELAY_MS\)/,
+    );
+    assert.match(
+      source,
+      /scheduleRenderRefreshWithDelay\(videoId, MV_RENDER_POLL_INTERVAL_MS\)/,
+    );
+  });
 });
