@@ -835,10 +835,10 @@ export function CustomSongWizard({
     if (!songTaskId || songStage !== "loading") return;
 
     let cancelled = false;
-    let timer: ReturnType<typeof window.setTimeout> | null = null;
+    let timer: ReturnType<typeof setTimeout> | null = null;
 
     const schedulePoll = (delayMs: number) => {
-      timer = window.setTimeout(poll, delayMs);
+      timer = setTimeout(poll, delayMs);
     };
 
     const poll = async () => {
@@ -897,7 +897,7 @@ export function CustomSongWizard({
 
     return () => {
       cancelled = true;
-      if (timer) window.clearTimeout(timer);
+      if (timer) clearTimeout(timer);
     };
   }, [isMockMode, session?.user, songStage, songTaskId, wizardLocale]);
 
