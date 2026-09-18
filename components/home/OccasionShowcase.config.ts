@@ -223,6 +223,7 @@ export const occasionCards = [
     description:
       'Ensure the perfect "Yes!" with a track that explains why she\'s your forever.',
     href: "/occasions/proposal",
+    cta: "Create a proposal song",
     image: "/occasion-generated/avif/08-proposal.avif",
     rotate: 2.2,
     y: 26,
