@@ -80,7 +80,15 @@ export async function POST(req: Request) {
       status: result.status,
       error: result.error,
     });
-    await recordUserIssueSignal({ userId: session.user.id, feature: "song", action: "finalize", error: result.error, resourceType: "song_task", resourceId: input.songId, durationMs: Date.now() - startedAt });
+    await recordUserIssueSignal({
+      userId: session.user.id,
+      feature: "song",
+      action: result.error === "Insufficient song balance." ? "finalize(buy)" : "finalize",
+      error: result.error,
+      resourceType: "song_task",
+      resourceId: input.songId,
+      durationMs: Date.now() - startedAt,
+    });
     return apiResponse.error(result.error, result.status);
   }
 
