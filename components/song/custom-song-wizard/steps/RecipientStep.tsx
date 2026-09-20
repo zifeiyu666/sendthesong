@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { PartyPopper, Plus, Trash2, UserRound } from "lucide-react";
-import type { RefObject } from "react";
+import { useRef, type RefObject } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,6 +18,7 @@ import {
   MagneticChoiceCard,
   RelationshipCreatableSelect,
 } from "../components/wizard-ui";
+import { useFocusOnMount } from "../hooks";
 import {
   localizedOccasionLabel,
   useWizardCopy,
@@ -55,11 +56,13 @@ export function RecipientStep({
 }: RecipientStepProps) {
   const copy = useWizardCopy();
   const locale = useWizardLocale();
+  const nameInputRef = useRef<HTMLInputElement>(null);
+  useFocusOnMount(nameInputRef);
   return (
     <div className="mx-auto mt-8 max-w-5xl space-y-8">
       <div>
         <div className="mb-4 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2 text-sm font-bold text-foreground">
+          <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
             <UserRound className="size-5 text-primary" />
             {copy.recipientLabel}
           </div>
@@ -72,6 +75,7 @@ export function RecipientStep({
             <div key={index} className="flex gap-3">
               <div className="grid flex-1 gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)]">
                 <Input
+                  ref={index === 0 ? nameInputRef : undefined}
                   className="h-12 rounded-xl border-border bg-card px-4 text-base text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:border-primary/50 focus-visible:ring-primary/20"
                   placeholder={
                     index === 0 ? copy.recipientName : copy.anotherName
@@ -125,7 +129,7 @@ export function RecipientStep({
 
       <div>
         <div className="mb-4 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2 text-sm font-bold text-foreground">
+          <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
             <PartyPopper className="size-5 text-primary" />
             {copy.occasion}
           </div>
@@ -172,7 +176,7 @@ export function RecipientStep({
                     <button
                       key={item}
                       className={cn(
-                        "cursor-pointer rounded-full border px-3 py-2 text-xs font-bold transition hover:-translate-y-0.5 hover:shadow-sm",
+                        "cursor-pointer rounded-full border px-3 py-2 text-xs font-medium transition hover:-translate-y-0.5 hover:shadow-sm",
                         selectedCustomOccasion
                           ? "border-primary bg-primary text-primary-foreground"
                           : "border-border bg-card text-foreground hover:border-primary/40 hover:bg-primary/10 hover:text-primary",

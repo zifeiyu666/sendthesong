@@ -60,6 +60,13 @@ export function useAudioPreview({
   ]);
 }
 
+export function useFocusOnMount(targetRef: RefObject<HTMLElement | null>) {
+  useEffect(() => {
+    const id = window.setTimeout(() => targetRef.current?.focus(), 320);
+    return () => window.clearTimeout(id);
+  }, [targetRef]);
+}
+
 export function useFocusCustomOccasionInput({
   inputRef,
   shouldFocus,

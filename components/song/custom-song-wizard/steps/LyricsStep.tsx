@@ -79,7 +79,7 @@ export function LyricsStep({
           <p className="font-bold text-foreground">{copy.lyricsFailed}</p>
           <p className="mt-1 leading-6">{lyricsError}</p>
           <Button
-            className="mt-3 h-9 rounded-full bg-primary px-4 text-xs font-bold text-primary-foreground hover:bg-primary/90"
+            className="mt-3 h-9 rounded-full bg-primary px-4 text-xs font-semibold text-primary-foreground hover:bg-primary/90"
             type="button"
             onClick={onRewriteLyrics}
           >

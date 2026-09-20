@@ -1,10 +1,4 @@
-import {
-  defaultGenre,
-  defaultLanguage,
-  fallbackRecommendedGenres,
-  recommendedGenresByOccasion,
-} from "./constants";
-import { isCustomOccasion } from "./constants";
+import { defaultGenre, defaultLanguage } from "./constants";
 import type { Occasion, RecipientInput, StoredDraft } from "./types";
 
 export function createLyricsInputKey({
@@ -89,15 +83,4 @@ export function cleanRecipients(recipients: RecipientInput[]) {
       relationship: recipient.relationship.trim(),
     }))
     .filter((recipient) => recipient.name);
-}
-
-export function getRecommendedGenresForOccasion(occasion: Occasion | null) {
-  const occasionGenres =
-    occasion && !isCustomOccasion(occasion)
-      ? recommendedGenresByOccasion[occasion]
-      : null;
-
-  return Array.from(
-    new Set([defaultGenre, ...(occasionGenres || fallbackRecommendedGenres)]),
-  );
 }

@@ -16,6 +16,8 @@ import {
 import type { RefObject } from "react";
 import { useMemo, useState } from "react";
 
+import { useFocusOnMount } from "../hooks";
+
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { LiveRecordingPanel } from "@/components/voice/LiveRecordingPanel";
@@ -93,9 +95,8 @@ export function StoryStep({
 }: StoryStepProps) {
   const copy = useWizardCopy();
   const locale = useWizardLocale();
-  const [isIntroOpen, setIsIntroOpen] = useState(
-    () => Boolean(spokenBlessing.trim() || spokenIntro),
-  );
+  const [isIntroOpen, setIsIntroOpen] = useState(false);
+  useFocusOnMount(storyTextareaRef);
   const spokenIntroPreview = useMemo(() => {
     if (!spokenIntro?.transcript.trim()) return "";
 
@@ -163,17 +164,17 @@ export function StoryStep({
   return (
     <div className="mx-auto mt-16 max-w-5xl">
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-        <div className="flex items-center gap-3 text-lg font-black text-foreground">
+        <div className="flex items-center gap-3 text-lg font-semibold text-foreground">
           <Edit3 className="size-5 text-primary" />
           {copy.storyHeading}
         </div>
-        <span className="text-sm font-semibold text-muted-foreground">
+        <span className="text-sm font-medium text-muted-foreground">
           100-200 {copy.words}
         </span>
       </div>
       <div className="mb-2 flex flex-wrap items-center gap-2 sm:gap-3">
         <Button
-          className="shrink-0 whitespace-nowrap rounded-full bg-card px-3 py-2 text-sm font-bold text-foreground shadow-sm hover:bg-primary/10 hover:text-primary sm:px-4"
+          className="shrink-0 whitespace-nowrap rounded-full bg-card px-3 py-2 text-sm font-medium text-foreground shadow-sm hover:bg-primary/10 hover:text-primary sm:px-4"
           type="button"
           variant="ghost"
           onClick={onOpenHelper}
@@ -183,7 +184,7 @@ export function StoryStep({
         </Button>
         <Button
           className={cn(
-            "shrink-0 whitespace-nowrap rounded-full px-3 text-sm font-bold shadow-sm sm:px-4",
+            "shrink-0 whitespace-nowrap rounded-full px-3 text-sm font-medium shadow-sm sm:px-4",
             isRecording
               ? "bg-primary/10 text-primary hover:bg-primary/15"
               : "bg-card text-foreground hover:bg-primary/10 hover:text-primary",
@@ -200,12 +201,12 @@ export function StoryStep({
           {isRecording ? copy.stop : copy.record}
         </Button>
         {isRecording && (
-          <span className="hidden text-sm font-semibold text-primary/70 sm:inline">
+          <span className="hidden text-sm font-medium text-primary/70 sm:inline">
             Listening...
           </span>
         )}
         <Button
-          className="shrink-0 whitespace-nowrap rounded-full bg-primary/10 px-3 py-2 text-sm font-bold text-primary shadow-sm hover:bg-primary/15 sm:ml-auto sm:px-4"
+          className="shrink-0 whitespace-nowrap rounded-full bg-primary/10 px-3 py-2 text-sm font-medium text-primary shadow-sm hover:bg-primary/15 sm:ml-auto sm:px-4"
           disabled={isPolishingStory || story.trim().length < 10}
           type="button"
           variant="ghost"
@@ -237,12 +238,12 @@ export function StoryStep({
         <Lightbulb className="mt-1 size-5 shrink-0 text-primary" />
         <div className="text-base leading-7">
           <p>
-            <span className="font-black text-foreground">{copy.tip}</span>{" "}
+            <span className="font-semibold text-foreground">{copy.tip}</span>{" "}
             {copy.tipIntro}{" "}
             {detailTemplates.map((template, index) => (
               <span key={template.label}>
                 <button
-                  className="font-black text-foreground underline decoration-primary decoration-2 underline-offset-4 transition hover:text-primary"
+                  className="font-medium text-foreground underline decoration-primary decoration-2 underline-offset-4 transition hover:text-primary"
                   type="button"
                   onClick={() => insertTemplate(template.text)}
                 >
@@ -257,7 +258,7 @@ export function StoryStep({
             ))}{" "}
             {copy.tipOutro}
           </p>
-          <p className="mt-1 text-sm font-semibold text-muted-foreground/85">
+          <p className="mt-1 text-sm font-medium text-muted-foreground/85">
             {copy.clickTemplates}
           </p>
         </div>
@@ -270,10 +271,10 @@ export function StoryStep({
           onClick={() => setIsIntroOpen((current) => !current)}
         >
           <Mic2 className="size-4 shrink-0 text-primary" />
-          <span className="text-sm font-black text-foreground">
+          <span className="text-sm font-semibold text-foreground">
             {copy.openingBlessing}
           </span>
-          <span className="inline-flex items-center rounded-full bg-muted px-2 py-0.5 text-[10px] font-black uppercase tracking-[0.14em] text-muted-foreground">
+          <span className="inline-flex items-center rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
             {copy.optional}
           </span>
           <ChevronDown
@@ -299,7 +300,7 @@ export function StoryStep({
                   type="button"
                   onClick={() => onSpokenModeChange(mode)}
                   className={cn(
-                    "rounded-md px-3 py-1.5 text-sm font-bold transition",
+                    "rounded-md px-3 py-1.5 text-sm font-medium transition",
                     spokenMode === mode
                       ? "bg-background text-foreground shadow-sm"
                       : "text-muted-foreground hover:text-foreground",
@@ -321,7 +322,7 @@ export function StoryStep({
                       onSpokenBlessingChange(event.target.value)
                     }
                   />
-                  <div className="mt-2 flex justify-end text-xs font-semibold text-muted-foreground">
+                  <div className="mt-2 flex justify-end text-xs font-medium text-muted-foreground">
                     {spokenBlessing.length}/{SPOKEN_INTRO_MAX_TEXT_LENGTH}{" "}
                     {copy.characters}
                   </div>
@@ -333,7 +334,7 @@ export function StoryStep({
                       <Button
                         type="button"
                         variant="outline"
-                        className="shrink-0 rounded-full font-bold"
+                        className="shrink-0 rounded-full font-medium"
                         onClick={onToggleBlessingRecording}
                         disabled={isUploadingBlessing}
                       >
@@ -343,7 +344,7 @@ export function StoryStep({
                     )}
                     <label
                       className={cn(
-                        "inline-flex cursor-pointer items-center justify-center gap-2 rounded-full px-3 py-2 text-sm font-bold text-muted-foreground transition hover:bg-muted hover:text-foreground",
+                        "inline-flex cursor-pointer items-center justify-center gap-2 rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition hover:bg-muted hover:text-foreground",
                         isRecordingBlessing &&
                           "pointer-events-none opacity-50",
                       )}
@@ -362,12 +363,12 @@ export function StoryStep({
                       />
                     </label>
                     {isUploadingBlessing ? (
-                      <span className="text-sm font-semibold text-primary">
+                      <span className="text-sm font-medium text-primary">
                         {copy.transcribing}
                       </span>
                     ) : null}
                     {spokenIntro ? (
-                      <div className="flex min-w-0 flex-1 items-center gap-3 rounded-2xl border border-primary/15 bg-primary/[0.03] px-3 py-3 text-sm font-semibold text-foreground sm:ml-auto">
+                      <div className="flex min-w-0 flex-1 items-center gap-3 rounded-2xl border border-primary/15 bg-primary/[0.03] px-3 py-3 text-sm font-medium text-foreground sm:ml-auto">
                         <Button
                           type="button"
                           size="icon"
@@ -406,7 +407,7 @@ export function StoryStep({
                                 />
                               ))}
                             </div>
-                            <span className="truncate text-xs font-semibold uppercase tracking-[0.12em] text-primary/70">
+                            <span className="truncate text-xs font-medium uppercase tracking-[0.12em] text-primary/70">
                               {isBlessingPlaying
                                 ? "Playing your intro"
                                 : "Voice intro ready"}
@@ -426,7 +427,7 @@ export function StoryStep({
                                     className={cn(
                                       "h-[1.9rem] truncate text-sm leading-[1.9rem] text-muted-foreground transition-all duration-300",
                                       index === activeTranscriptSegmentIndex
-                                        ? "font-bold text-foreground"
+                                        ? "font-medium text-foreground"
                                         : "opacity-55",
                                     )}
                                   >

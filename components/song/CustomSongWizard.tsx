@@ -24,7 +24,6 @@ import {
 import { normalizeSpokenIntroContentType } from "@/lib/audio/spoken-intro-upload";
 import { authClient } from "@/lib/auth/auth-client";
 import {
-  GenreWarningDialog,
   LyricsVersionComparisonDialog,
   NewLyricsVersionDialog,
 } from "@/components/song/custom-song-wizard/components/dialogs";
@@ -50,7 +49,6 @@ import {
   defaultVocalGender,
   draftStorageKey,
   fallbackLyrics,
-  genres,
   isCustomOccasion,
   lyricGenerationSteps,
   occasions,
@@ -61,7 +59,6 @@ import {
 import {
   cleanRecipients,
   createLyricsInputKey,
-  getRecommendedGenresForOccasion,
   isLegacyEmptyStyleDraft,
   normalizeRecipientsFromDraft,
 } from "@/components/song/custom-song-wizard/draft";
@@ -87,7 +84,6 @@ import { cn } from "@/lib/utils";
 import type { SongCoverArtDirection } from "@/types/song-cover";
 import type {
   CaptureLeadResponse,
-  GenreOption,
   LyricsStage,
   LyricsVersionComparison,
   Occasion,
@@ -202,7 +198,6 @@ export function CustomSongWizard({
   const [isCreatingStory, setIsCreatingStory] = useState(false);
   const [isPolishingStory, setIsPolishingStory] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
-  const [pendingGenre, setPendingGenre] = useState<GenreOption | null>(null);
   const blessingRecorder = useAudioRecorder({
     fileName: "voice-blessing.webm",
     maxDurationMs: SPOKEN_INTRO_MAX_DURATION_SECONDS * 1000,
@@ -285,36 +280,6 @@ export function CustomSongWizard({
     selectedOccasion?.title || "For someone special";
   const selectedOccasionShortTitle =
     selectedOccasionTitle.split("/")[0].trim() || "recipient";
-  const recommendedGenreValues = useMemo(
-    () => getRecommendedGenresForOccasion(occasion),
-    [occasion],
-  );
-  const recommendedGenreSet = useMemo(
-    () => new Set(recommendedGenreValues),
-    [recommendedGenreValues],
-  );
-  const sortedGenres = useMemo(() => {
-    const order = new Map(
-      recommendedGenreValues.map((value, index) => [value, index]),
-    );
-
-    return [...genres].sort((a, b) => {
-      const aRecommended = recommendedGenreSet.has(a.value);
-      const bRecommended = recommendedGenreSet.has(b.value);
-
-      if (aRecommended && bRecommended) {
-        return (order.get(a.value) ?? 999) - (order.get(b.value) ?? 999);
-      }
-
-      if (aRecommended !== bRecommended) return aRecommended ? -1 : 1;
-      return (
-        genres.findIndex((item) => item.value === a.value) -
-        genres.findIndex((item) => item.value === b.value)
-      );
-    });
-  }, [recommendedGenreSet, recommendedGenreValues]);
-  const selectedGenreIsNotRecommended =
-    Boolean(genre) && !recommendedGenreSet.has(genre);
   const currentLyricsInputKey = createLyricsInputKey({
     genre,
     language,
@@ -531,6 +496,11 @@ export function CustomSongWizard({
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
+
+  useEffect(() => {
+    if (!isHydrated) return;
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [isHydrated, step]);
 
   const resetCoverGeneration = useCallback(() => {
     setCoverImageUrl("");
@@ -1377,20 +1347,6 @@ export function CustomSongWizard({
     setOccasion(value.trim() || customOccasionValue);
   }
 
-  function selectGenreOption(item: GenreOption) {
-    if (recommendedGenreSet.has(item.value)) {
-      setGenre(item.value);
-      return;
-    }
-
-    setPendingGenre(item);
-  }
-
-  function confirmPendingGenre() {
-    if (pendingGenre) setGenre(pendingGenre.value);
-    setPendingGenre(null);
-  }
-
   function addRecipientName() {
     setRecipients((current) =>
       current.length >= 3
@@ -1589,6 +1545,14 @@ export function CustomSongWizard({
     }
 
     setStep(nextStep);
+    const resetScroll = () => {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    };
+    resetScroll();
+    window.requestAnimationFrame(resetScroll);
+    window.setTimeout(resetScroll, 320);
   }
 
   function goBack() {
@@ -1800,7 +1764,7 @@ export function CustomSongWizard({
   const isSongResultStep = step === 5 && songStage === "player";
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-[#fff9f5] pb-36 text-foreground">
+    <section className="relative min-h-screen w-full overflow-hidden bg-[#faf7f4] pb-36 text-foreground">
       <CreateSongBackground occasion={step === 5 ? null : occasion} />
 
       <div
@@ -1813,7 +1777,6 @@ export function CustomSongWizard({
           <StepProgress currentStep={step} />
         )}
 
-        <AnimatePresence mode="wait">
           {step === 1 && (
             <StepFrame key="recipient">
               <StepHeading
@@ -1844,15 +1807,10 @@ export function CustomSongWizard({
               <StyleStep
                 genre={genre}
                 language={language}
-                occasion={occasion}
-                recommendedGenreSet={recommendedGenreSet}
-                selectedGenreIsNotRecommended={selectedGenreIsNotRecommended}
-                selectedOccasionTitle={selectedOccasionTitle}
                 showAllLanguages={showAllLanguages}
-                sortedGenres={sortedGenres}
                 vocalGender={vocalGender}
                 customVoiceId={customVoiceId}
-                onGenreSelect={selectGenreOption}
+                onGenreSelect={(item) => setGenre(item.value)}
                 onLanguageChange={setLanguage}
                 onShowAllLanguagesChange={setShowAllLanguages}
                 onVocalGenderChange={setVocalGender}
@@ -1977,14 +1935,13 @@ export function CustomSongWizard({
               />
             </StepFrame>
           )}
-        </AnimatePresence>
       </div>
 
       {step < 5 && !(step === 4 && lyricsStage === "loading") && (
         <div className="fixed inset-x-0 bottom-0 z-40 border-t border-white/60 bg-white/80 px-4 py-4 shadow-xl shadow-primary/5 backdrop-blur-xl sm:px-8">
           <div className="mx-auto flex max-w-5xl gap-3">
             <Button
-              className="h-12 w-32 rounded-full bg-muted text-sm font-bold text-muted-foreground hover:bg-muted disabled:text-muted-foreground"
+              className="h-12 w-32 rounded-full bg-muted text-sm font-medium text-muted-foreground hover:bg-muted disabled:text-muted-foreground"
               disabled={step === 1}
               type="button"
               variant="ghost"
@@ -1994,7 +1951,7 @@ export function CustomSongWizard({
               {copy.back}
             </Button>
             <Button
-              className="h-12 flex-1 rounded-full bg-primary text-sm font-bold text-primary-foreground shadow-xl shadow-primary/20 hover:bg-primary/90 disabled:bg-primary/30"
+              className="h-12 flex-1 rounded-full bg-primary text-sm font-medium text-primary-foreground shadow-xl shadow-primary/20 hover:bg-primary/90 disabled:bg-primary/30"
               disabled={!canContinue || (isSessionPending && !initialIsAuthenticated)}
               type="button"
               onClick={goForward}
@@ -2031,14 +1988,6 @@ export function CustomSongWizard({
           />
         )}
       </AnimatePresence>
-
-      <GenreWarningDialog
-        pendingGenre={pendingGenre}
-        onConfirm={confirmPendingGenre}
-        onOpenChange={(open) => {
-          if (!open) setPendingGenre(null);
-        }}
-      />
 
       <NewLyricsVersionDialog
         instruction={newLyricsVersionInstruction}
@@ -2157,7 +2106,7 @@ function CreateSongBackground({ occasion }: { occasion: Occasion | null }) {
 
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,228,218,0.76)_0%,rgba(255,246,239,0.58)_34%,rgba(255,252,248,0.94)_74%,rgba(255,255,255,0.98)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,240,232,0.5)_0%,rgba(250,247,244,0.72)_42%,rgba(250,247,244,0.96)_100%)]" />
       {occasionBackgroundSrc && (
         <div className="absolute -left-4 top-0 h-[min(82vh,820px)] w-[min(60vw,760px)] min-w-[500px] opacity-80 sm:-left-6">
           <img
@@ -2174,15 +2123,15 @@ function CreateSongBackground({ occasion }: { occasion: Occasion | null }) {
               WebkitMaskComposite: "source-in",
             }}
           />
-          <div className="absolute -inset-y-10 -left-10 w-[130vw] bg-[linear-gradient(115deg,rgba(255,255,255,0.62)_0%,rgba(255,255,255,0.24)_18%,rgba(255,255,255,0.72)_46%,rgba(255,255,255,0.94)_72%,rgba(255,255,255,0)_100%)]" />
-          <div className="absolute -left-8 -top-8 h-52 w-64 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.98)_0%,rgba(255,255,255,0.82)_42%,rgba(255,255,255,0)_76%)] blur-xl" />
+          <div className="absolute -inset-y-10 -left-10 w-[130vw] bg-[linear-gradient(115deg,rgba(250,247,244,0.55)_0%,rgba(250,247,244,0.2)_18%,rgba(250,247,244,0.7)_46%,rgba(250,247,244,0.92)_72%,rgba(250,247,244,0)_100%)]" />
+          <div className="absolute -left-8 -top-8 h-52 w-64 bg-[radial-gradient(circle_at_top_left,rgba(250,247,244,0.95)_0%,rgba(250,247,244,0.7)_42%,rgba(250,247,244,0)_76%)] blur-xl" />
         </div>
       )}
       <div className="absolute -left-[14%] -top-[18%] h-[470px] w-[45vw] min-w-[360px] rounded-full bg-[radial-gradient(circle,rgba(236,125,105,0.28)_0%,rgba(255,204,190,0.18)_42%,rgba(255,255,255,0)_72%)] blur-3xl" />
       <div className="absolute -right-[14%] -top-[18%] h-[500px] w-[48vw] min-w-[380px] rounded-full bg-[radial-gradient(circle,rgba(223,93,76,0.24)_0%,rgba(255,205,192,0.16)_46%,rgba(255,255,255,0)_74%)] blur-3xl" />
-      <div className="absolute left-1/2 top-[16%] h-[520px] w-[58vw] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.82)_0%,rgba(255,250,246,0.58)_48%,rgba(255,255,255,0)_74%)] blur-2xl" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(255,255,255,0.92)_0%,rgba(255,255,255,0.55)_28%,rgba(255,255,255,0)_62%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(255,255,255,0.55)_0%,rgba(255,255,255,0)_24%),radial-gradient(circle_at_82%_18%,rgba(255,255,255,0.48)_0%,rgba(255,255,255,0)_26%)]" />
+      <div className="absolute left-1/2 top-[16%] h-[520px] w-[58vw] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,252,249,0.55)_0%,rgba(250,247,244,0.32)_48%,rgba(250,247,244,0)_74%)] blur-2xl" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(255,252,249,0.45)_0%,rgba(250,247,244,0.18)_28%,rgba(250,247,244,0)_62%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(255,252,249,0.32)_0%,rgba(250,247,244,0)_24%),radial-gradient(circle_at_82%_18%,rgba(255,252,249,0.26)_0%,rgba(250,247,244,0)_26%)]" />
 
       {decorations.map((item, index) => (
         <span

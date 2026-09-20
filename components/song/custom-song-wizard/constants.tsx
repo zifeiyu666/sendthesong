@@ -12,20 +12,18 @@ import {
   HandHeart,
   Headphones,
   Heart,
-  HeartHandshake,
   HeartPulse,
   Keyboard,
   Leaf,
   Mic2,
   MoonStar,
   Music2,
-  PartyPopper,
   Plus,
   Ribbon,
   ShieldCheck,
   Sparkles,
   Trophy,
-  Zap,
+  Zap
 } from "lucide-react";
 import type { ReactNode } from "react";
 
@@ -233,47 +231,6 @@ export const genres: GenreOption[] = [
   },
 ];
 
-export const fallbackRecommendedGenres = [
-  defaultGenre,
-  "Pop",
-  "Acoustic",
-  "Romantic Ballad",
-  "Folk Pop",
-];
-
-export const recommendedGenresByOccasion: Record<string, string[]> = {
-  "mothers-day": ["Acoustic", "Folk Pop", "Romantic Ballad", "Pop", "Country"],
-  "fathers-day": ["Country", "Folk Rock", "Classic Rock", "Acoustic", "Pop"],
-  birthday: [
-    "Birthday Pop",
-    "Pop",
-    "Pop Rock",
-    "Kids & Family",
-    "Electronic dance music (EDM)",
-  ],
-  anniversary: ["Romantic Ballad", "R&B", "Acoustic", "Jazz", "Pop"],
-  wedding: ["Romantic Ballad", "Classical", "Acoustic", "R&B", "Pop"],
-  proposal: ["Romantic Ballad", "Acoustic", "R&B", "Jazz", "Pop"],
-  "valentines-day": ["Romantic Ballad", "R&B", "Jazz", "Acoustic", "Pop"],
-  "thank-you": ["Acoustic", "Folk Pop", "Country", "Pop", "Romantic Ballad"],
-  congratulations: [
-    "Pop",
-    "Pop Rock",
-    "Electronic dance music (EDM)",
-    "Country",
-    "Hip Hop",
-  ],
-  "get-well-soon": [
-    "Acoustic",
-    "Lullaby",
-    "Folk Pop",
-    "Lo-Fi Chill",
-    "Classical",
-  ],
-  "in-memoriam": ["Classical", "Acoustic", "Folk Pop", "Jazz", "Lullaby"],
-  "just-because": ["Pop", "Acoustic", "Folk Pop", "Lo-Fi Chill", "Indie Rock"],
-};
-
 export const vocalGenderOptions = [defaultVocalGender, "Male", "Female"];
 
 export const featuredLanguages: LanguageOption[] = [
@@ -397,17 +354,17 @@ export const occasions: OccasionOption[] = [
       className: "rotate-2",
     },
   },
-  {
-    value: "proposal",
-    icon: <HeartHandshake className="size-6" />,
-    title: "Proposal",
-    subtitle: "A song for the question and the yes.",
-    art: {
-      src: "/occasion-generated/avif/08-proposal.avif",
-      alt: "Proposal song keepsake illustration",
-      className: "-rotate-2",
-    },
-  },
+  // {
+  //   value: "proposal",
+  //   icon: <HeartHandshake className="size-6" />,
+  //   title: "Proposal",
+  //   subtitle: "A song for the question and the yes.",
+  //   art: {
+  //     src: "/occasion-generated/avif/08-proposal.avif",
+  //     alt: "Proposal song keepsake illustration",
+  //     className: "-rotate-2",
+  //   },
+  // },
   {
     value: "fathers-day",
     icon: <ShieldCheck className="size-6" />,

@@ -7,16 +7,6 @@ import {
   Sparkles,
 } from "lucide-react";
 
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -28,15 +18,12 @@ import {
 } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/textarea";
 
-import type { GenreOption, LyricsVersionComparison } from "../types";
+import type { LyricsVersionComparison } from "../types";
 import { useWizardLocale } from "../i18n";
 import { LyricsVersionPanel } from "./wizard-ui";
 
 const dialogCopy = {
   en: {
-    genreTitle: "This style may not match the occasion",
-    genreDescription: "This genre can still work, but it may feel less natural for the occasion you selected.",
-    recommended: "Choose a recommended style", useGenre: "Use this genre anyway",
     newTitle: "Write a new version", newDescription: "Add optional direction for the next lyrics draft.",
     placeholder: "e.g., Add the name to the title and make the song more romantic...",
     blank: "Leave it blank for a fresh take.", cancel: "Cancel", generate: "Generate version",
@@ -44,9 +31,6 @@ const dialogCopy = {
     original: "Original", newVersion: "New version", useOriginal: "Use original", useNew: "Use new version",
   },
   es: {
-    genreTitle: "Este estilo quizá no encaje con la ocasión",
-    genreDescription: "Puede funcionar, pero podría sonar menos natural para la ocasión elegida.",
-    recommended: "Elegir un estilo recomendado", useGenre: "Usar este género",
     newTitle: "Escribir otra versión", newDescription: "Añade una indicación opcional para la siguiente letra.",
     placeholder: "Ej.: añade el nombre al título y haz la canción más romántica...",
     blank: "Déjalo en blanco para obtener una versión completamente nueva.", cancel: "Cancelar", generate: "Generar versión",
@@ -54,9 +38,6 @@ const dialogCopy = {
     original: "Original", newVersion: "Nueva versión", useOriginal: "Usar original", useNew: "Usar nueva versión",
   },
   ja: {
-    genreTitle: "このスタイルは用途に合わない可能性があります",
-    genreDescription: "選択した用途でも使えますが、曲調がやや不自然に感じられる場合があります。",
-    recommended: "おすすめを選ぶ", useGenre: "このジャンルを使う",
     newTitle: "別の歌詞を作る", newDescription: "次の歌詞に反映したい内容があれば入力してください。",
     placeholder: "例：曲名に名前を入れ、全体をもっとロマンチックにする...",
     blank: "空欄のままなら、自由な新バージョンを作ります。", cancel: "キャンセル", generate: "新しい歌詞を作る",
@@ -64,43 +45,6 @@ const dialogCopy = {
     original: "元の歌詞", newVersion: "新しい歌詞", useOriginal: "元の歌詞を使う", useNew: "新しい歌詞を使う",
   },
 } as const;
-
-export function GenreWarningDialog({
-  pendingGenre,
-  onConfirm,
-  onOpenChange,
-}: {
-  pendingGenre: GenreOption | null;
-  onConfirm: () => void;
-  onOpenChange: (open: boolean) => void;
-}) {
-  const copy = dialogCopy[useWizardLocale()];
-  return (
-    <AlertDialog open={Boolean(pendingGenre)} onOpenChange={onOpenChange}>
-      <AlertDialogContent className="rounded-2xl border-border">
-        <AlertDialogHeader>
-          <AlertDialogTitle>
-            {copy.genreTitle}
-          </AlertDialogTitle>
-          <AlertDialogDescription className="leading-6">
-            {copy.genreDescription}
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel className="rounded-full">
-            {copy.recommended}
-          </AlertDialogCancel>
-          <AlertDialogAction
-            className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
-            onClick={onConfirm}
-          >
-            {copy.useGenre}
-          </AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-  );
-}
 
 export function NewLyricsVersionDialog({
   instruction,

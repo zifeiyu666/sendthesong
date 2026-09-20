@@ -30,7 +30,7 @@ export default async function CreateSongPage() {
   ]);
 
   return (
-    <div className="w-full min-h-screen bg-background">
+    <div className="w-full min-h-screen bg-[#faf7f4]">
       <section className="sr-only" aria-labelledby="create-song-title">
         <h1 id="create-song-title">{t("srTitle")}</h1>
         <p>{t("srDescription")}</p>

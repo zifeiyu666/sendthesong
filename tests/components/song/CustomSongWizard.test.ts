@@ -12,7 +12,7 @@ describe("CustomSongWizard lyric version comparison", () => {
     const pageSource = readFileSync(
       join(
         process.cwd(),
-        "app/[locale]/(basic-layout)/create-song/page.tsx",
+        "app/[locale]/(header-only)/create-song/page.tsx",
       ),
       "utf8",
     );
@@ -407,7 +407,7 @@ describe("CustomSongWizard lyric version comparison", () => {
     );
   });
 
-  test("genre recommendations render separately and collapse more styles", () => {
+  test("genre options render as a single unranked list", () => {
     const styleStepSource = readFileSync(
       join(
         process.cwd(),
@@ -416,24 +416,14 @@ describe("CustomSongWizard lyric version comparison", () => {
       "utf8",
     );
 
-    assert.match(styleStepSource, /recommendedGenres = occasion/);
-    assert.match(styleStepSource, /selectedOccasionTitle\} Recommendations/);
-    assert.match(
-      styleStepSource,
-      /const \[showMoreGenres, setShowMoreGenres\]/,
-    );
-    assert.match(styleStepSource, /const showOtherGenres =/);
-    assert.match(styleStepSource, /aria-expanded=\{showOtherGenres\}/);
-    assert.match(
-      styleStepSource,
-      /setShowMoreGenres\(\(current\) => !current\)/,
-    );
-    assert.match(styleStepSource, /More styles/);
+    assert.match(styleStepSource, /genres\.map\(\(item\) => \{/);
     assert.equal(
       styleStepSource.match(/grid grid-cols-2 gap-2\.5 lg:grid-cols-5/g)
         ?.length,
-      2,
+      1,
     );
+    assert.doesNotMatch(styleStepSource, /recommendedGenres/);
+    assert.doesNotMatch(styleStepSource, /selectedGenreIsNotRecommended/);
     assert.doesNotMatch(styleStepSource, /Recommended for this occasion/);
     assert.doesNotMatch(styleStepSource, /May not fit this occasion/);
     assert.doesNotMatch(styleStepSource, /badge=\{/);

@@ -55,7 +55,6 @@ import type {
 import { cn } from "@/lib/utils";
 
 import {
-  stepVariants,
   steps,
   storyHelperSteps,
 } from "../constants";
@@ -162,16 +161,16 @@ export function MagneticChoiceCard({
   return (
     <motion.button
       className={cn(
-        "group relative flex cursor-pointer flex-col rounded-2xl bg-card p-3.5 shadow-sm outline-none transition-[background-color,border-color,box-shadow,color,filter,opacity] duration-300 will-change-transform focus-visible:ring-2 focus-visible:ring-primary/30",
+        "group relative flex cursor-pointer flex-col rounded-2xl bg-white p-3.5 shadow-sm outline-none transition-[background-color,border-color,box-shadow,color,filter,opacity] duration-300 will-change-transform focus-visible:ring-2 focus-visible:ring-primary/30",
         hasCenteredArt
-          ? "isolate min-h-40 items-center justify-end overflow-visible text-center hover:z-10 hover:bg-card hover:shadow-xl hover:shadow-primary/15"
+          ? "isolate min-h-40 items-center justify-end overflow-visible text-center hover:z-10 hover:bg-white hover:shadow-xl hover:shadow-primary/15"
           : "min-h-28 items-center justify-center overflow-hidden text-center hover:shadow-lg",
         recommended && "ring-1 ring-primary/15",
         muted && "opacity-55 grayscale hover:opacity-90 hover:grayscale-0",
         selected &&
           (hasCenteredArt
-            ? "bg-primary/10 shadow-lg shadow-primary/15 ring-1 ring-primary/20"
-            : "bg-primary/10 shadow-md shadow-primary/10"),
+            ? "bg-white shadow-lg shadow-primary/15 ring-2 ring-primary"
+            : "bg-white shadow-md ring-2 ring-primary"),
       )}
       style={{
         rotateX: springRotateX,
@@ -243,7 +242,7 @@ export function MagneticChoiceCard({
       )}
       {badge && !selected && (
         <motion.span
-          className="absolute left-2 top-2 max-w-[calc(100%-1rem)] truncate rounded-full bg-primary/10 px-2 py-1 text-[9px] font-black uppercase tracking-[0.08em] text-primary"
+          className="absolute left-2 top-2 max-w-[calc(100%-1rem)] truncate rounded-full bg-primary/10 px-2 py-1 text-[9px] font-medium uppercase tracking-[0.08em] text-primary"
           style={{ x: springContentX, y: springContentY, z: 24 }}
         >
           {badge}
@@ -276,8 +275,8 @@ export function MagneticChoiceCard({
         )}
         <span
           className={cn(
-            "text-sm font-semibold leading-snug text-foreground",
-            selected && hasCenteredArt && "text-primary",
+            "text-sm font-medium leading-snug text-foreground",
+            selected && "text-primary",
           )}
         >
           {label}
@@ -645,7 +644,7 @@ export function LyricsGenerationView({
             <div
               key={item}
               className={cn(
-                "flex items-center gap-4 text-base font-semibold transition",
+                "flex items-center gap-4 text-base font-medium transition",
                 active || complete
                   ? "text-foreground"
                   : "text-muted-foreground/60",
@@ -726,7 +725,7 @@ export function StoryHelperModal({
               <Wand2 className="size-5" />
             </span>
             <div>
-              <h2 className="text-xl font-black leading-tight">
+              <h2 className="text-xl font-semibold leading-tight">
                 {copy.storyHelper}
               </h2>
               <p className="mt-0.5 text-sm text-muted-foreground">
@@ -757,7 +756,7 @@ export function StoryHelperModal({
           {isCreating ? (
             <div className="flex min-h-[240px] flex-col items-center justify-center text-center">
               <Loader2 className="mb-6 size-10 animate-spin text-primary" />
-              <h3 className="text-xl font-black">
+              <h3 className="text-xl font-semibold">
                 {copy.aiPolishing}
               </h3>
               <p className="mt-3 text-sm text-muted-foreground">
@@ -773,7 +772,7 @@ export function StoryHelperModal({
                 initial={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.2 }}
               >
-                <h3 className="text-xl font-black leading-tight md:text-2xl">
+                <h3 className="text-xl font-semibold leading-tight md:text-2xl">
                   {helperStep.question}
                 </h3>
 
@@ -786,7 +785,7 @@ export function StoryHelperModal({
                         <button
                           key={option}
                           className={cn(
-                            "block w-full rounded-xl px-4 py-2.5 text-left text-sm font-bold transition",
+                            "block w-full rounded-xl px-4 py-2.5 text-left text-sm font-medium transition",
                             selected
                               ? "bg-primary/10 text-foreground"
                               : "text-foreground hover:bg-muted",
@@ -831,7 +830,7 @@ export function StoryHelperModal({
         {!isCreating && (
           <div className="flex items-center justify-between gap-4 border-t border-border bg-background/95 px-5 py-4 sm:px-7">
             <Button
-              className="h-10 rounded-full bg-muted px-6 text-sm font-bold text-muted-foreground hover:bg-muted disabled:text-muted-foreground"
+              className="h-10 rounded-full bg-muted px-6 text-sm font-medium text-muted-foreground hover:bg-muted disabled:text-muted-foreground"
               disabled={isFirstStep}
               type="button"
               variant="ghost"
@@ -841,7 +840,7 @@ export function StoryHelperModal({
               {copy.back}
             </Button>
             <Button
-              className="h-10 rounded-full bg-primary px-7 text-sm font-bold text-primary-foreground shadow-xl shadow-primary/20 hover:bg-primary/90"
+              className="h-10 rounded-full bg-primary px-7 text-sm font-medium text-primary-foreground shadow-xl shadow-primary/20 hover:bg-primary/90"
               type="button"
               onClick={onNext}
             >
@@ -871,7 +870,7 @@ export function StepProgress({ currentStep }: { currentStep: WizardStep }) {
             <div className="relative z-10 flex min-w-16 flex-col items-center gap-2">
               <div
                 className={cn(
-                  "flex size-10 items-center justify-center rounded-full border-4 text-base font-bold shadow-sm",
+                  "flex size-10 items-center justify-center rounded-full border-4 text-base font-semibold shadow-sm",
                   active
                     ? "border-foreground bg-foreground text-primary-foreground shadow-foreground/20"
                     : complete
@@ -883,7 +882,7 @@ export function StepProgress({ currentStep }: { currentStep: WizardStep }) {
               </div>
               <div
                 className={cn(
-                  "text-xs font-bold tracking-[0.12em]",
+                  "text-xs font-semibold tracking-[0.12em]",
                   active ? "text-foreground" : "text-muted-foreground",
                 )}
               >
@@ -906,7 +905,7 @@ export function StepHeading({
 }) {
   return (
     <div className="mx-auto mt-16 max-w-3xl text-center">
-      <h2 className="text-4xl font-black leading-tight tracking-normal text-foreground md:text-5xl">
+      <h2 className="text-4xl font-semibold leading-tight tracking-normal text-foreground md:text-5xl">
         {title}
       </h2>
       <p className="mt-5 text-base leading-8 text-muted-foreground">
@@ -1245,12 +1244,12 @@ export function EditableBlock({
   return (
     <section className="rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-5">
       <div className="mb-4 flex items-center justify-between gap-4">
-        <div className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground">
+        <div className="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
           {icon}
           {label}
         </div>
         <button
-          className="inline-flex items-center gap-2 text-sm font-bold text-muted-foreground transition hover:text-primary"
+          className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition hover:text-primary"
           type="button"
           onClick={onAction}
         >
@@ -1293,7 +1292,7 @@ export function LanguageChip({
       onClick={onClick}
     >
       {showCode && (
-        <span className="font-bold uppercase tracking-[0.08em] text-muted-foreground">
+        <span className="font-medium uppercase tracking-[0.08em] text-muted-foreground">
           {language.code}
         </span>
       )}
@@ -1305,11 +1304,9 @@ export function LanguageChip({
 export function StepFrame({ children }: { children: ReactNode }) {
   return (
     <motion.div
-      animate="center"
-      exit="exit"
-      initial="enter"
+      initial={{ opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.28, ease: "easeOut" }}
-      variants={stepVariants}
     >
       {children}
     </motion.div>
