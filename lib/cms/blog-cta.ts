@@ -3,6 +3,10 @@ const CREATE_SONG_PATH = "/create-song";
 const SLUG_HREFS: Record<string, string> = {
   "custom-song-for-wife": "/create-song?occasion=anniversary&recipient=wife",
   "custom-happy-birthday-song": "/create-song?occasion=birthday",
+  "songs-in-spanish-about-family": "/create-song?language=Spanish",
+  "father-daughter-songs-spanish":
+    "/create-song?occasion=wedding&language=Spanish",
+  "a-song-from-a-mother-to-her-son": "/create-song?occasion=wedding",
 };
 
 const OCCASION_MATCHES = [

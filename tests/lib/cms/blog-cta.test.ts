@@ -18,6 +18,18 @@ describe("getBlogCreateHref", () => {
       getBlogCreateHref({ slug: "/custom-happy-birthday-song" }),
       "/create-song?occasion=birthday",
     );
+    assert.equal(
+      getBlogCreateHref({ slug: "songs-in-spanish-about-family" }),
+      "/create-song?language=Spanish",
+    );
+    assert.equal(
+      getBlogCreateHref({ slug: "father-daughter-songs-spanish" }),
+      "/create-song?occasion=wedding&language=Spanish",
+    );
+    assert.equal(
+      getBlogCreateHref({ slug: "a-song-from-a-mother-to-her-son" }),
+      "/create-song?occasion=wedding",
+    );
   });
 
   test("infers occasion and recipient from tags when the slug is generic", () => {
