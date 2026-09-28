@@ -642,7 +642,31 @@ export function VoiceLibrary() {
     return new Promise<number>((resolve, reject) => {
       const audio = new Audio();
       audio.preload = "metadata";
-      audio.onloadedmetadata = () => resolve(audio.duration);
+
+      const finish = (duration: number) => {
+        audio.onloadedmetadata = null;
+        audio.ontimeupdate = null;
+        audio.onerror = null;
+        resolve(duration);
+      };
+
+      audio.onloadedmetadata = () => {
+        // Some containers (esp. webm/ogg) report Infinity until currentTime is seeked.
+        if (!Number.isFinite(audio.duration) || audio.duration === Infinity) {
+          audio.currentTime = 1e101;
+          audio.ontimeupdate = () => {
+            const duration = audio.duration;
+            audio.currentTime = 0;
+            if (Number.isFinite(duration) && duration > 0) {
+              finish(duration);
+              return;
+            }
+            reject(new Error("We could not read this audio file."));
+          };
+          return;
+        }
+        finish(audio.duration);
+      };
       audio.onerror = () => reject(new Error("We could not read this audio file."));
       audio.src = url;
     });
@@ -705,7 +729,10 @@ export function VoiceLibrary() {
         if (current) URL.revokeObjectURL(current);
         return nextPreview;
       });
-      if (openTrimDialog) setSourceTrimOpen(true);
+      if (openTrimDialog) {
+        setSourceTrimOpen(true);
+        toast.message(`Select a ${MIN_VOICE_SAMPLE_SECONDS}-${MAX_VOICE_SAMPLE_SECONDS}s clip to continue.`);
+      }
     } catch (error) {
       URL.revokeObjectURL(nextPreview);
       voiceDebugError("source-audio-read-failed", error, { contentType: file.type, size: file.size });
@@ -1081,69 +1108,116 @@ export function VoiceLibrary() {
             </div>
             <div className="grid gap-2">
               <Label>Source recording</Label>
+              <p className="text-sm text-muted-foreground">
+                Upload a file or record now. Then pick a clean {MIN_VOICE_SAMPLE_SECONDS}-{MAX_VOICE_SAMPLE_SECONDS}s clip before creating the voice.
+              </p>
               <input
                 ref={sourceRef}
                 className="hidden"
                 type="file"
-                accept="audio/*"
+                accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg,.webm,.flac"
                 onChange={(event) => {
                   const file = event.target.files?.[0];
-                  if (file) void setSourceRecording(file);
+                  if (file) void setSourceRecording(file, true);
+                  event.currentTarget.value = "";
                 }}
               />
-              <Button type="button" variant="outline" className="justify-start gap-2" onClick={() => sourceRef.current?.click()}>
-                <Upload className="size-4" /> {source?.name || "Upload clean vocal recording"}
-              </Button>
+              <div className="flex flex-wrap gap-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="justify-start gap-2"
+                  disabled={busy || sourceRecorder.isRecording}
+                  onClick={() => sourceRef.current?.click()}
+                >
+                  <Upload className="size-4" />
+                  {source?.name || "Upload clean vocal recording"}
+                </Button>
+                {!sourceRecorder.isRecording && (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="gap-2"
+                    onClick={() => toggleRecording("source")}
+                    disabled={busy || verificationRecorder.isRecording}
+                  >
+                    <Mic2 className="size-4" />
+                    {source ? "Record again" : "Record now"}
+                  </Button>
+                )}
+                {source && !sourceRecorder.isRecording && (
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    onClick={resetSourceRecording}
+                    disabled={busy}
+                  >
+                    <RotateCcw className="size-4" /> Discard
+                  </Button>
+                )}
+              </div>
               <div className="rounded-lg border bg-stone-50 p-4">
-                <div className="flex items-start gap-3">
-                  <div className="mt-0.5 rounded-full bg-white p-2 text-primary shadow-sm">
-                    <Radio className="size-4" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground">Or record your source sample</p>
-                    <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                      Sing or speak clearly in a quiet place. You can listen back and re-record before creating the voice.
-                    </p>
-                  </div>
-                </div>
-                <div className="mt-4 flex flex-wrap items-center gap-2">
-                  {!sourceRecorder.isRecording && (
-                    <Button
-                      type="button"
-                      onClick={() => toggleRecording("source")}
-                      disabled={busy || verificationRecorder.isRecording}
-                    >
-                      <Mic2 className="size-4" />
-                      {source ? "Record again" : "Start recording"}
-                    </Button>
-                  )}
-                  {source && !sourceRecorder.isRecording && (
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={resetSourceRecording}
-                      disabled={busy}
-                    >
-                      <RotateCcw className="size-4" /> Discard recording
-                    </Button>
-                  )}
-                </div>
-                {sourceRecorder.isRecording && (
+                {sourceRecorder.isRecording ? (
                   <LiveRecordingPanel
                     analyser={sourceRecorder.analyser}
                     description="Recording in progress. Sing or speak clearly now."
                     elapsedSeconds={sourceRecorder.elapsedSeconds}
                     onStop={sourceRecorder.stop}
                   />
-                )}
-                {sourcePreview && !sourceRecorder.isRecording && (
-                  <p className="mt-4 text-sm font-medium text-[#80685e]">
-                    {sourceUploadProgress !== null && sourceUploadProgress < 100
-                      ? `Uploading selected sample: ${sourceUploadProgress}%`
-                      : sourceUpload
-                        ? "Selected sample uploaded and ready."
-                        : "Choose the section you want to upload before creating the voice."}
-                  </p>
+                ) : sourcePreview ? (
+                  <div className="grid gap-3">
+                    <div className="flex items-start gap-3">
+                      <div className="mt-0.5 rounded-full bg-white p-2 text-primary shadow-sm">
+                        <Radio className="size-4" />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <p className="font-semibold text-foreground truncate">
+                          {source?.name || "Source sample ready"}
+                        </p>
+                        <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                          {sourceUploadProgress !== null && sourceUploadProgress < 100
+                            ? `Uploading selected sample: ${sourceUploadProgress}%`
+                            : sourceUpload
+                              ? "Selected sample uploaded and ready."
+                              : "Choose the section you want to upload before creating the voice."}
+                        </p>
+                      </div>
+                    </div>
+                    <audio className="w-full" controls src={sourcePreview} />
+                    {!sourceUpload ? (
+                      <Button
+                        type="button"
+                        className="gap-2"
+                        disabled={busy || (sourceUploadProgress !== null && sourceUploadProgress < 100)}
+                        onClick={() => setSourceTrimOpen(true)}
+                      >
+                        <Upload className="size-4" />
+                        Choose clip to upload
+                      </Button>
+                    ) : (
+                      <Button
+                        type="button"
+                        variant="outline"
+                        className="gap-2"
+                        disabled={busy || (sourceUploadProgress !== null && sourceUploadProgress < 100)}
+                        onClick={() => setSourceTrimOpen(true)}
+                      >
+                        Edit clip selection
+                      </Button>
+                    )}
+                  </div>
+                ) : (
+                  <div className="flex items-start gap-3">
+                    <div className="mt-0.5 rounded-full bg-white p-2 text-primary shadow-sm">
+                      <Radio className="size-4" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground">No source sample yet</p>
+                      <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                        Use Upload or Record above. Sing or speak clearly in a quiet place — at least {MIN_VOICE_SAMPLE_SECONDS} seconds.
+                      </p>
+                    </div>
+                  </div>
                 )}
               </div>
             </div>
@@ -1159,10 +1233,27 @@ export function VoiceLibrary() {
               <Checkbox checked={consent} onCheckedChange={(checked) => setConsent(checked === true)} />
               <span><ShieldCheck className="mr-1 inline size-4 text-primary" />I own this voice or have explicit permission to create and use this voice model.</span>
             </label>
-            <Button className="gap-2" disabled={busy || !sourceUpload || Boolean(image && !imageUpload)} onClick={create}>
-              {busy ? <Loader2 className="size-4 animate-spin" /> : <Mic2 className="size-4" />}
-              Prepare verification phrase
-            </Button>
+            <div className="grid gap-2">
+              <Button
+                className="gap-2"
+                disabled={busy || !sourceUpload || !name.trim() || !consent || Boolean(image && !imageUpload)}
+                onClick={create}
+              >
+                {busy ? <Loader2 className="size-4 animate-spin" /> : <Mic2 className="size-4" />}
+                Prepare verification phrase
+              </Button>
+              {!sourceUpload ? (
+                <p className="text-sm text-muted-foreground">
+                  {source
+                    ? "Upload your selected clip first — use “Choose clip to upload” above."
+                    : "Add a source recording (upload or record), then upload a selected clip to continue."}
+                </p>
+              ) : !name.trim() || !consent ? (
+                <p className="text-sm text-muted-foreground">
+                  Add a voice name and confirm authorization to continue.
+                </p>
+              ) : null}
+            </div>
           </div>
         </DialogContent>
       </Dialog>
