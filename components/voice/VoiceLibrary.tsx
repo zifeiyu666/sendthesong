@@ -697,6 +697,13 @@ export function VoiceLibrary() {
   }
 
   async function setSourceRecording(file: File, openTrimDialog = false) {
+    if (file.size > MAX_VOICE_SOURCE_UPLOAD_BYTES) {
+      const maxMegabytes = Math.round(MAX_VOICE_SOURCE_UPLOAD_BYTES / 1024 / 1024);
+      const actualMegabytes = (file.size / 1024 / 1024).toFixed(1);
+      toast.error(`Source recording is ${actualMegabytes}MB. The limit is ${maxMegabytes}MB.`);
+      return;
+    }
+
     const nextPreview = URL.createObjectURL(file);
     try {
       const duration = await getAudioDuration(nextPreview);
@@ -1115,7 +1122,7 @@ export function VoiceLibrary() {
                 ref={sourceRef}
                 className="hidden"
                 type="file"
-                accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg,.webm,.flac"
+                accept="audio/mpeg,audio/wav,audio/x-wav,audio/mp4,audio/webm,audio/ogg,.mp3,.wav,.m4a,.webm,.ogg"
                 onChange={(event) => {
                   const file = event.target.files?.[0];
                   if (file) void setSourceRecording(file, true);
