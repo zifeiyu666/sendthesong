@@ -30,7 +30,13 @@ export async function POST(request: Request) {
   } catch (error) {
     logger.error({ err: error, userId: session.user.id, action }, "Voice mutation request failed");
     await recordUserIssueSignal({ userId: session.user.id, feature: "voice", action, error, durationMs: Date.now() - startedAt });
-    return apiResponse.badRequest(error instanceof Error ? error.message : "Unable to create voice.");
+    const message =
+      error instanceof z.ZodError
+        ? error.issues[0]?.message || "Invalid voice request."
+        : error instanceof Error
+          ? error.message
+          : "Unable to create voice.";
+    return apiResponse.badRequest(message);
   }
 }
 export async function DELETE(request: Request) { const session = await getSession(); if (!session?.user) { logger.warn({}, "Rejected voice delete request without a user session"); return apiResponse.unauthorized(); } try { const { searchParams } = new URL(request.url); const { id } = deleteSchema.parse({ id: searchParams.get("id") }); logger.info({ userId: session.user.id, voiceId: id }, "Received custom voice delete request"); return apiResponse.success(await deleteCustomVoice({ id, userId: session.user.id })); } catch (error) { logger.error({ err: error, userId: session.user.id }, "Custom voice delete request failed"); return apiResponse.badRequest(error instanceof Error ? error.message : "Unable to delete voice."); } }

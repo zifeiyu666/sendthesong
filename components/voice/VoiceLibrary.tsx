@@ -55,7 +55,30 @@ type Voice = {
   status: string;
   verifyText: string | null;
   voiceId: string | null;
+  error: string | null;
 };
+
+function friendlyVoiceError(error: string | null | undefined) {
+  const message = error?.trim();
+  if (!message) {
+    return "Verification could not be completed. Retry with a clearer solo vocal recording, or delete this voice and upload a new sample.";
+  }
+
+  if (/webhook_base_url|kie_api_key|not configured/i.test(message)) {
+    return "Voice service is temporarily unavailable. Please try again in a few minutes.";
+  }
+  if (/too short|minimum|at least \d+/i.test(message)) {
+    return "The source recording is too short. Upload or record at least 10 seconds of clear solo vocals, then retry.";
+  }
+  if (/unsupported|file type|content[- ]?type/i.test(message)) {
+    return "This audio format is not supported. Use MP3, WAV, M4A, WebM, or OGG and retry.";
+  }
+  if (/network|timeout|fetch failed|ECONN|ENOTFOUND/i.test(message)) {
+    return "We could not reach the voice service. Check your connection and retry.";
+  }
+
+  return message;
+}
 
 type UploadResult = { key: string; url: string };
 type UploadProgress = number | null;
@@ -245,32 +268,44 @@ function VoiceCard({
             {deleteButton}
           </div>
         ) : voice.status === "failed" ? (
-          <div className="mt-5 flex items-center gap-2">
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="outline"
-                  className="h-10 flex-1 gap-2 rounded-full border-rose-200 bg-white text-sm font-semibold text-[#3d241b] hover:bg-rose-50"
-                  disabled={busy || retrying}
-                  onClick={onRetry}
+          <div className="mt-5 grid gap-3">
+            <div className="rounded-xl border border-rose-200 bg-rose-50/80 px-3 py-2.5">
+              <p className="text-xs font-semibold uppercase tracking-wide text-rose-700">
+                Why it failed
+              </p>
+              <p className="mt-1 text-sm leading-5 text-rose-900/90">
+                {friendlyVoiceError(voice.error)}
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="h-10 flex-1 gap-2 rounded-full border-rose-200 bg-white text-sm font-semibold text-[#3d241b] hover:bg-rose-50"
+                    disabled={busy || retrying}
+                    onClick={onRetry}
+                  >
+                    {retrying ? (
+                      <Loader2 className="size-3.5 animate-spin motion-reduce:animate-none" />
+                    ) : (
+                      <RotateCcw className="size-3.5" />
+                    )}
+                    {voice.verifyText ? "Record verification again" : "Retry verification"}
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent
+                  side="top"
+                  sideOffset={8}
+                  className="max-w-60 bg-[#3d241b] px-3 py-2 text-center leading-5 text-white"
                 >
-                  {retrying ? (
-                    <Loader2 className="size-3.5 animate-spin motion-reduce:animate-none" />
-                  ) : (
-                    <RotateCcw className="size-3.5" />
-                  )}
-                  Retry verification
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent
-                side="top"
-                sideOffset={8}
-                className="max-w-60 bg-[#3d241b] px-3 py-2 text-center leading-5 text-white"
-              >
-                Verification could not be completed. You can retry with the same source audio.
-              </TooltipContent>
-            </Tooltip>
-            {deleteButton}
+                  {voice.verifyText
+                    ? "Your phrase is still available. Record it again to continue."
+                    : "Retry with the same source audio, or delete and upload a clearer sample."}
+                </TooltipContent>
+              </Tooltip>
+              {deleteButton}
+            </div>
           </div>
         ) : isProcessing ? (
           <div className="mt-5 flex items-center gap-2" aria-hidden="true">
@@ -1030,18 +1065,50 @@ export function VoiceLibrary() {
   async function retryVoice(voice: Voice) {
     setRetryingVoiceId(voice.id);
     try {
-      voiceDebug("voice-retry-started", { voiceId: voice.id });
-      await api("/api/voices", {
+      voiceDebug("voice-retry-started", {
+        voiceId: voice.id,
+        hasVerifyText: Boolean(voice.verifyText),
+        previousError: voice.error,
+      });
+      const result = await api<{
+        id?: string;
+        status?: string;
+        verifyText?: string | null;
+        resumedRecording?: boolean;
+        taskId?: string;
+      }>("/api/voices", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "retry", id: voice.id }),
       });
-      voiceDebug("voice-retry-submitted", { voiceId: voice.id });
-      toast.success("Verification retried. We are preparing a new phrase.");
+      voiceDebug("voice-retry-submitted", {
+        voiceId: voice.id,
+        status: result.status,
+        resumedRecording: result.resumedRecording,
+      });
+
       await load();
+
+      if (result.resumedRecording || result.status === "awaiting_recording") {
+        toast.success("Ready to record your verification phrase again.");
+        const resumedVoice: Voice = {
+          ...voice,
+          status: "awaiting_recording",
+          verifyText: result.verifyText ?? voice.verifyText,
+          error: null,
+        };
+        if (resumedVoice.verifyText) {
+          openVerification(resumedVoice);
+        }
+      } else {
+        toast.success("Verification retried. We are preparing a new phrase.");
+      }
     } catch (error) {
       voiceDebugError("voice-retry-failed", error, { voiceId: voice.id });
-      toast.error(error instanceof Error ? error.message : "Unable to retry voice verification.");
+      const message =
+        error instanceof Error ? error.message : "Unable to retry voice verification.";
+      toast.error(friendlyVoiceError(message));
+      await load(true);
     } finally {
       setRetryingVoiceId(null);
     }

@@ -3,7 +3,7 @@ import { customVoices, type CustomVoiceStatus } from "@/lib/db/schema";
 import { hasActiveSubscription } from "@/lib/ai/song";
 import { deleteFile } from "@/lib/cloudflare/r2";
 import { getLogger } from "@/lib/logger";
-import { MIN_VOICE_SAMPLE_SECONDS } from "@/lib/voice-sample";
+import { MAX_VOICE_SAMPLE_SECONDS, MIN_VOICE_SAMPLE_SECONDS } from "@/lib/voice-sample";
 import { and, desc, eq, inArray, ne } from "drizzle-orm";
 
 const KIE_BASE_URL = "https://api.kie.ai";
@@ -14,11 +14,44 @@ function errorMessage(error: unknown) {
   return error instanceof Error ? error.message : String(error);
 }
 
+function firstNonEmptyString(...candidates: unknown[]) {
+  for (const candidate of candidates) {
+    if (typeof candidate === "string" && candidate.trim()) {
+      return candidate.trim();
+    }
+  }
+  return null;
+}
+
+function providerErrorMessage(data: Record<string, unknown> | null | undefined) {
+  if (!data || typeof data !== "object") return null;
+  const nested =
+    data.data && typeof data.data === "object"
+      ? (data.data as Record<string, unknown>)
+      : {};
+  return firstNonEmptyString(
+    nested.errorMessage,
+    nested.error_message,
+    nested.failMsg,
+    nested.fail_msg,
+    nested.msg,
+    nested.message,
+    nested.error,
+    data.errorMessage,
+    data.error_message,
+    data.failMsg,
+    data.fail_msg,
+    data.msg,
+    data.message,
+    data.error,
+  );
+}
+
 function taskSummary(data: Record<string, unknown>) {
   const nested = (data.data && typeof data.data === "object" ? data.data : {}) as Record<string, unknown>;
   return {
     code: data.code ?? nested.code,
-    message: data.msg ?? data.message ?? nested.msg ?? nested.message,
+    message: providerErrorMessage(data),
     status: data.status ?? nested.status,
     taskId: data.task_id ?? data.taskId ?? nested.task_id ?? nested.taskId,
     hasVerifyText: Boolean(
@@ -33,6 +66,40 @@ function taskSummary(data: Record<string, unknown>) {
     ),
     hasVoiceId: Boolean(data.voiceId ?? data.voice_id ?? nested.voiceId ?? nested.voice_id),
   };
+}
+
+/** Source uploads are trimmed WAV files with a standard 44-byte header. */
+async function resolveVocalEndSeconds(sourceAudioUrl: string) {
+  try {
+    const response = await fetch(sourceAudioUrl, {
+      headers: { Range: "bytes=0-43" },
+    });
+    if (!response.ok) {
+      throw new Error(`Unable to read source audio (${response.status}).`);
+    }
+    const header = Buffer.from(await response.arrayBuffer());
+    if (
+      header.length >= 44 &&
+      header.toString("ascii", 0, 4) === "RIFF" &&
+      header.toString("ascii", 8, 12) === "WAVE"
+    ) {
+      const byteRate = header.readUInt32LE(28);
+      const dataSize = header.readUInt32LE(40);
+      if (byteRate > 0 && dataSize > 0) {
+        const duration = Math.ceil(dataSize / byteRate);
+        return Math.min(
+          MAX_VOICE_SAMPLE_SECONDS,
+          Math.max(MIN_VOICE_SAMPLE_SECONDS, duration),
+        );
+      }
+    }
+  } catch (error) {
+    logger.warn(
+      { sourceAudioUrl, error: errorMessage(error) },
+      "Unable to resolve source audio duration for voice retry; using minimum sample length",
+    );
+  }
+  return MIN_VOICE_SAMPLE_SECONDS;
 }
 
 function apiKey() {
@@ -76,13 +143,14 @@ async function kie(path: string, payload: Record<string, unknown>) {
     headers: { Authorization: `Bearer ${apiKey()}`, "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });
-  const json = await response.json().catch(() => ({}));
+  const json = (await response.json().catch(() => ({}))) as Record<string, unknown>;
   if (!response.ok || (json.code !== undefined && json.code !== 200)) {
+    const message = providerErrorMessage(json) || `KIE Voice request failed (${response.status}).`;
     logger.error({ request, statusCode: response.status, elapsedMs: Date.now() - startedAt, response: taskSummary(json), kieResponse: json }, "KIE voice request failed");
-    throw new Error(json.msg || json.message || "KIE Voice request failed.");
+    throw new Error(message);
   }
   logger.info({ request, statusCode: response.status, elapsedMs: Date.now() - startedAt, response: taskSummary(json), kieResponse: json }, "KIE voice request accepted");
-  return json.data || {};
+  return (json.data || {}) as Record<string, any>;
 }
 
 async function kieGet(path: string) {
@@ -93,13 +161,14 @@ async function kieGet(path: string) {
   const response = await fetch(url, {
     headers: { Authorization: `Bearer ${apiKey()}` },
   });
-  const json = await response.json().catch(() => ({}));
+  const json = (await response.json().catch(() => ({}))) as Record<string, unknown>;
   if (!response.ok || (json.code !== undefined && json.code !== 200)) {
+    const message = providerErrorMessage(json) || `KIE Voice request failed (${response.status}).`;
     logger.warn({ request, statusCode: response.status, elapsedMs: Date.now() - startedAt, response: taskSummary(json), kieResponse: json }, "KIE voice task poll failed");
-    throw new Error(json.msg || json.message || "KIE Voice request failed.");
+    throw new Error(message);
   }
   logger.info({ request, statusCode: response.status, elapsedMs: Date.now() - startedAt, response: taskSummary(json), kieResponse: json }, "KIE voice task poll completed");
-  return json.data || {};
+  return (json.data || {}) as Record<string, any>;
 }
 
 export async function listCustomVoices(userId: string) {
@@ -217,13 +286,17 @@ export async function startVoiceVerification(input: { userId: string; name: stri
   logger.info({ voiceId: voice.id, userId: input.userId, status: voice.status }, "Created pending custom voice record");
   try {
     const data = await kie("/api/v1/voice/validate", { voiceUrl: input.sourceAudioUrl, vocalStartS: input.vocalStartS, vocalEndS: input.vocalEndS, language: VERIFICATION_PHRASE_LANGUAGE, callBackUrl: callbackUrl() });
-    await db.update(customVoices).set({ verificationTaskId: data.taskId }).where(eq(customVoices.id, voice.id));
+    if (!data.taskId) {
+      throw new Error("KIE did not return a verification task ID.");
+    }
+    await db.update(customVoices).set({ verificationTaskId: data.taskId, error: null }).where(eq(customVoices.id, voice.id));
     logger.info({ voiceId: voice.id, taskId: data.taskId, status: "preparing_verification" }, "KIE voice verification task created");
     return { ...voice, verificationTaskId: data.taskId, status: "preparing_verification" as CustomVoiceStatus };
   } catch (error) {
-    await db.update(customVoices).set({ status: "failed", error: error instanceof Error ? error.message : "Unable to prepare verification." }).where(eq(customVoices.id, voice.id));
+    const message = errorMessage(error) || "Unable to prepare verification.";
+    await db.update(customVoices).set({ status: "failed", error: message }).where(eq(customVoices.id, voice.id));
     logger.error({ err: error, voiceId: voice.id, userId: input.userId }, "Unable to start KIE voice verification");
-    throw error;
+    throw new Error(message);
   }
 }
 
@@ -233,10 +306,26 @@ export async function createCustomVoice(input: { id: string; userId: string; ver
   if (voice?.status !== "awaiting_recording" || !voice.verifyText || !voice.verificationTaskId) {
     throw new Error("Wait for the verification phrase before submitting your recording.");
   }
-  const data = await kie("/api/v1/voice/generate", { taskId: voice.verificationTaskId, verifyUrl: input.verifyUrl, voiceName: voice.name, description: voice.description || "", style: voice.style || "", callBackUrl: callbackUrl() });
-  await db.update(customVoices).set({ verificationAudioUrl: input.verificationAudioUrl, verificationAudioKey: input.verificationAudioKey, verifyUrl: input.verifyUrl, creationTaskId: data.taskId, status: "creating", error: null }).where(eq(customVoices.id, voice.id));
-  logger.info({ voiceId: voice.id, verificationTaskId: voice.verificationTaskId, creationTaskId: data.taskId, status: "creating" }, "KIE custom voice generation task created");
-  return { taskId: data.taskId };
+  try {
+    const data = await kie("/api/v1/voice/generate", { taskId: voice.verificationTaskId, verifyUrl: input.verifyUrl, voiceName: voice.name, description: voice.description || "", style: voice.style || "", callBackUrl: callbackUrl() });
+    if (!data.taskId) {
+      throw new Error("KIE did not return a voice creation task ID.");
+    }
+    await db.update(customVoices).set({ verificationAudioUrl: input.verificationAudioUrl, verificationAudioKey: input.verificationAudioKey, verifyUrl: input.verifyUrl, creationTaskId: data.taskId, status: "creating", error: null }).where(eq(customVoices.id, voice.id));
+    logger.info({ voiceId: voice.id, verificationTaskId: voice.verificationTaskId, creationTaskId: data.taskId, status: "creating" }, "KIE custom voice generation task created");
+    return { taskId: data.taskId };
+  } catch (error) {
+    const message = errorMessage(error);
+    await db.update(customVoices).set({
+      verificationAudioUrl: input.verificationAudioUrl,
+      verificationAudioKey: input.verificationAudioKey,
+      verifyUrl: input.verifyUrl,
+      status: "failed",
+      error: message,
+    }).where(eq(customVoices.id, voice.id));
+    logger.error({ err: error, voiceId: voice.id, userId: input.userId }, "Unable to submit KIE custom voice generation");
+    throw new Error(message);
+  }
 }
 
 export async function retryCustomVoiceVerification(input: { id: string; userId: string }) {
@@ -253,13 +342,45 @@ export async function retryCustomVoiceVerification(input: { id: string; userId: 
     throw new Error("Only failed voice verifications can be retried.");
   }
 
-  logger.info({ voiceId: voice.id, userId: input.userId, previousVerificationTaskId: voice.verificationTaskId }, "Retrying failed custom voice verification");
+  logger.info({
+    voiceId: voice.id,
+    userId: input.userId,
+    previousVerificationTaskId: voice.verificationTaskId,
+    hasVerifyText: Boolean(voice.verifyText),
+    previousError: voice.error,
+  }, "Retrying failed custom voice verification");
+
+  // Creation-stage failures still have a usable phrase — resume recording instead of re-validating.
+  if (voice.verifyText && voice.verificationTaskId) {
+    const [resumed] = await db
+      .update(customVoices)
+      .set({
+        status: "awaiting_recording",
+        creationTaskId: null,
+        verifyUrl: null,
+        verificationAudioUrl: null,
+        verificationAudioKey: null,
+        voiceId: null,
+        error: null,
+      })
+      .where(eq(customVoices.id, voice.id))
+      .returning();
+
+    logger.info({ voiceId: voice.id, status: "awaiting_recording" }, "Resumed failed custom voice at verification recording step");
+    return {
+      id: resumed.id,
+      status: resumed.status,
+      verifyText: resumed.verifyText,
+      resumedRecording: true as const,
+    };
+  }
 
   try {
+    const vocalEndS = await resolveVocalEndSeconds(voice.sourceAudioUrl);
     const data = await kie("/api/v1/voice/validate", {
       voiceUrl: voice.sourceAudioUrl,
       vocalStartS: 0,
-      vocalEndS: MIN_VOICE_SAMPLE_SECONDS,
+      vocalEndS,
       language: VERIFICATION_PHRASE_LANGUAGE,
       callBackUrl: callbackUrl(),
     });
@@ -268,7 +389,7 @@ export async function retryCustomVoiceVerification(input: { id: string; userId: 
       throw new Error("KIE did not return a verification task ID.");
     }
 
-    await db
+    const [updated] = await db
       .update(customVoices)
       .set({
         status: "preparing_verification",
@@ -281,15 +402,21 @@ export async function retryCustomVoiceVerification(input: { id: string; userId: 
         voiceId: null,
         error: null,
       })
-      .where(eq(customVoices.id, voice.id));
+      .where(eq(customVoices.id, voice.id))
+      .returning();
 
-    logger.info({ voiceId: voice.id, taskId: data.taskId, status: "preparing_verification" }, "Retried KIE voice verification task created");
-    return { taskId: data.taskId };
+    logger.info({ voiceId: voice.id, taskId: data.taskId, vocalEndS, status: "preparing_verification" }, "Retried KIE voice verification task created");
+    return {
+      id: updated.id,
+      status: updated.status,
+      taskId: data.taskId,
+      resumedRecording: false as const,
+    };
   } catch (error) {
     const message = errorMessage(error);
     await db.update(customVoices).set({ status: "failed", error: message }).where(eq(customVoices.id, voice.id));
     logger.error({ err: error, voiceId: voice.id, userId: input.userId }, "Failed to retry custom voice verification");
-    throw error;
+    throw new Error(message);
   }
 }
 
@@ -330,11 +457,14 @@ export async function completeCustomVoiceTask(taskId: string, data: any) {
     data?.data?.verify_text ||
     data?.data?.validateInfo ||
     data?.data?.validate_info;
-  const providerCode = Number(data?.code);
+  const providerCode = Number(data?.code ?? data?.data?.code);
+  const providerStatus = String(data?.status || data?.data?.status || "");
   const failed =
     (Number.isFinite(providerCode) && providerCode !== 200) ||
-    /fail/i.test(String(data?.status || data?.data?.status || ""));
-  const providerMessage = data?.data?.errorMessage || data?.msg || data?.message;
+    /fail/i.test(providerStatus);
+  const providerMessage =
+    providerErrorMessage(data) ||
+    (failed ? "Voice verification failed. Try a clearer solo vocal sample and retry." : null);
   const taskIds = [...new Set([
     taskId,
     data?.task_id,
@@ -343,7 +473,9 @@ export async function completeCustomVoiceTask(taskId: string, data: any) {
     data?.data?.taskId,
   ].filter((value): value is string => typeof value === "string" && value.length > 0))];
   const voiceId = data?.voiceId || data?.voice_id || data?.data?.voiceId || data?.data?.voice_id;
-  const [creation] = await db.select({ id: customVoices.id }).from(customVoices).where(inArray(customVoices.creationTaskId, taskIds)).limit(1);
+  const [creation] = taskIds.length
+    ? await db.select({ id: customVoices.id }).from(customVoices).where(inArray(customVoices.creationTaskId, taskIds)).limit(1)
+    : [];
 
   // KIE normally issues a new creation task ID, but process a returned voice ID as
   // generation output even when a provider reuses the verification task ID.
@@ -357,7 +489,9 @@ export async function completeCustomVoiceTask(taskId: string, data: any) {
     return;
   }
 
-  const [verification] = await db.select({ id: customVoices.id }).from(customVoices).where(eq(customVoices.verificationTaskId, taskId)).limit(1);
+  const [verification] = taskIds.length
+    ? await db.select({ id: customVoices.id }).from(customVoices).where(inArray(customVoices.verificationTaskId, taskIds)).limit(1)
+    : [];
   if (verification) {
     if (failed) {
       await db.update(customVoices).set({ status: "failed", error: providerMessage || "Voice verification failed." }).where(eq(customVoices.id, verification.id));
