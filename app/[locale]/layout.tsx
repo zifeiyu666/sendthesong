@@ -89,6 +89,10 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <head>
+        <meta
+          name="launchscaler-verify"
+          content="0dd0bddaebcb5ce31e41469d5a731026"
+        />
         <ToltScript />
       </head>
       <body

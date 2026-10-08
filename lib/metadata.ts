@@ -138,5 +138,8 @@ export async function constructMetadata({
         follow: !noIndex,
       },
     },
+    other: {
+      "launchscaler-verify": "0dd0bddaebcb5ce31e41469d5a731026",
+    },
   };
 }
